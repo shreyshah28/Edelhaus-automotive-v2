@@ -9,6 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <script src="api.js"></script>
 <script src="admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <style>
 /* ═══════════════════════════════════════════════
    EDELHAUS ADMIN — WEBSITE-MATCHED DESIGN
@@ -751,6 +752,38 @@ tbody tr:hover td{background:rgba(52,152,219,.06);color:#ddd}
           </div>
         </div>
 
+        <!-- ══ CHARTS ROW ══ -->
+        <div class="row2 equal" style="margin-bottom:1.25rem">
+          <div class="card">
+            <div class="card-head" style="display:flex;align-items:center;justify-content:space-between;">
+              <span>Inventory by Brand</span>
+              <span style="font-size:0.7rem;color:var(--muted);font-weight:400;letter-spacing:0">Top brands in stock</span>
+            </div>
+            <div class="card-body" style="padding:1rem 1.25rem;">
+              <canvas id="chartBrands" style="max-height:240px;"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head" style="display:flex;align-items:center;justify-content:space-between;">
+              <span>Inventory Status</span>
+              <span style="font-size:0.7rem;color:var(--muted);font-weight:400;letter-spacing:0">Stock breakdown</span>
+            </div>
+            <div class="card-body" style="padding:1rem 1.25rem;display:flex;align-items:center;justify-content:center;">
+              <canvas id="chartStatus" style="max-height:240px;max-width:300px;"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- ══ INQUIRIES + TEST DRIVES TIMELINE ══ -->
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="card-head" style="display:flex;align-items:center;justify-content:space-between;">
+            <span>Enquiries & Test Drives — Monthly Activity</span>
+            <span style="font-size:0.7rem;color:var(--muted);font-weight:400;letter-spacing:0">Last 6 months</span>
+          </div>
+          <div class="card-body" style="padding:1rem 1.25rem;">
+            <canvas id="chartActivity" style="max-height:200px;"></canvas>
+          </div>
+        </div>
+
         <div class="card" style="margin-bottom:1.25rem">
           <div class="card-head">Recent Activity</div>
           <div class="card-body" id="activityFeed" style="padding:.25rem 1.25rem"></div>
@@ -1250,6 +1283,8 @@ function set(id,v){const el=document.getElementById(id);if(el)el.textContent=v}
 
 /* ════════ DASHBOARD ════════ */
 function renderDashboard(){
+  // Render charts with slight delay to ensure canvas is visible
+  setTimeout(renderCharts, 100);
   updateStats();
   // Data Sources
   const dsGrid=document.getElementById('dsGrid');
@@ -1638,6 +1673,110 @@ function setSvcStatus(ts, st){
 }
 
 /* ════════ ANALYTICS ════════ */
+/* ════════ CHART INSTANCES ════════ */
+let _chartBrands=null, _chartStatus=null, _chartActivity=null;
+
+function destroyChart(c){ if(c){ try{c.destroy();}catch(e){} } return null; }
+
+function renderCharts(){
+  // ── Brand bar chart ──
+  const bc={};
+  INV.forEach(c=>{bc[c.brand]=(bc[c.brand]||0)+1});
+  const sortedBrands=Object.entries(bc).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const brandColors=['#3498db','#2ecc71','#e74c3c','#f39c12','#9b59b6','#1abc9c','#e67e22','#e91e63','#00bcd4','#8bc34a'];
+  const ctxB=document.getElementById('chartBrands');
+  if(ctxB){
+    _chartBrands=destroyChart(_chartBrands);
+    _chartBrands=new Chart(ctxB,{
+      type:'bar',
+      data:{
+        labels:sortedBrands.map(([b])=>b),
+        datasets:[{
+          label:'Cars in Stock',
+          data:sortedBrands.map(([,v])=>v),
+          backgroundColor:sortedBrands.map((_,i)=>brandColors[i%brandColors.length]+'99'),
+          borderColor:sortedBrands.map((_,i)=>brandColors[i%brandColors.length]),
+          borderWidth:1,borderRadius:6,
+        }]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.raw+' car'+(ctx.raw>1?'s':'')}}},
+        scales:{
+          x:{ticks:{color:'#888',font:{family:'Montserrat',size:10}},grid:{color:'rgba(255,255,255,0.04)'}},
+          y:{ticks:{color:'#888',font:{family:'Montserrat',size:10},stepSize:1},grid:{color:'rgba(255,255,255,0.06)'},beginAtZero:true}
+        }
+      }
+    });
+  }
+
+  // ── Status donut chart ──
+  const sc={};
+  INV.forEach(c=>{const s=c.status||'Unknown';sc[s]=(sc[s]||0)+1});
+  const statusColMap={'In Stock':'#2ecc71','Available':'#2ecc71','Exclusive':'#3498db','Premium':'#3498db','Flagship':'#3498db','Iconic':'#f39c12','Track Ready':'#e74c3c','Sold':'#555','Reserved':'#f39c12','Unknown':'#333'};
+  const ctxS=document.getElementById('chartStatus');
+  if(ctxS){
+    _chartStatus=destroyChart(_chartStatus);
+    _chartStatus=new Chart(ctxS,{
+      type:'doughnut',
+      data:{
+        labels:Object.keys(sc),
+        datasets:[{
+          data:Object.values(sc),
+          backgroundColor:Object.keys(sc).map(s=>statusColMap[s]||'#888'),
+          borderColor:'#111',borderWidth:3,hoverOffset:8
+        }]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,cutout:'68%',
+        plugins:{
+          legend:{position:'bottom',labels:{color:'#888',font:{family:'Montserrat',size:10},padding:12,boxWidth:10,boxHeight:10}},
+          tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${ctx.raw} car${ctx.raw>1?'s':''}`}}
+        }
+      }
+    });
+  }
+
+  // ── Monthly activity line chart ──
+  const months=[];const now=new Date();
+  for(let i=5;i>=0;i--){
+    const d=new Date(now.getFullYear(),now.getMonth()-i,1);
+    months.push(d.toLocaleString('default',{month:'short',year:'2-digit'}));
+  }
+  function countByMonth(arr,dateField){
+    return months.map((_,i)=>{
+      const d=new Date(now.getFullYear(),now.getMonth()-5+i,1);
+      const yr=d.getFullYear();const mo=d.getMonth();
+      return arr.filter(item=>{
+        const id=new Date(item[dateField]||item.date||item.timestamp||'');
+        return id.getFullYear()===yr && id.getMonth()===mo;
+      }).length;
+    });
+  }
+  const ctxA=document.getElementById('chartActivity');
+  if(ctxA){
+    _chartActivity=destroyChart(_chartActivity);
+    _chartActivity=new Chart(ctxA,{
+      type:'line',
+      data:{
+        labels:months,
+        datasets:[
+          {label:'Enquiries',data:countByMonth(ENQ,'date'),borderColor:'#e74c3c',backgroundColor:'rgba(231,76,60,0.08)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#e74c3c',tension:0.4,fill:true},
+          {label:'Test Drives',data:countByMonth(TD_ROWS,'date'),borderColor:'#3498db',backgroundColor:'rgba(52,152,219,0.08)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#3498db',tension:0.4,fill:true}
+        ]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,
+        plugins:{legend:{labels:{color:'#888',font:{family:'Montserrat',size:10},boxWidth:12,boxHeight:12}}},
+        scales:{
+          x:{ticks:{color:'#888',font:{family:'Montserrat',size:10}},grid:{color:'rgba(255,255,255,0.04)'}},
+          y:{ticks:{color:'#888',font:{family:'Montserrat',size:10},stepSize:1},grid:{color:'rgba(255,255,255,0.06)'},beginAtZero:true}
+        }
+      }
+    });
+  }
+}
+
 function renderAnalytics(){
   const users=getUsers();
   const td=getAllTestDrives();

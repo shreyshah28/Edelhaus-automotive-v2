@@ -11,9 +11,7 @@
     <link href="style.css" rel="stylesheet"> 
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="api.js"></script>
-<script src="first.js"></script>
-<script src="first_api_patch.js"></script>   <!-- whatever name you used -->
+    <!-- scripts loaded at bottom of body -->
 </head>
 <body>
 
@@ -485,12 +483,24 @@
                     <span class="eh-brand-badge">2</span>
                 </a>
             </div>
-            <!-- Coming Soon → Now Available -->
+            <!-- Exclusive & Hyper -->
             <div class="eh-dd-col">
                 <div class="eh-col-hd">
                     <i class="bi bi-lightning-fill"></i>
                     <span class="eh-col-title">Exclusive & Hyper</span>
                 </div>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Lamborghini');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Lamborghini_logo.png" alt="Lamborghini" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">LA</span>
+                    <span class="eh-brand-name">Lamborghini</span>
+                    <span class="eh-brand-badge">3</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Aston Martin');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Aston_Martin.png" alt="Aston Martin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">AM</span>
+                    <span class="eh-brand-name">Aston Martin</span>
+                    <span class="eh-brand-badge">3</span>
+                </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Bugatti');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">BU</span>
@@ -508,6 +518,31 @@
                     <span class="eh-brand-fb">K</span>
                     <span class="eh-brand-name">Koenigsegg</span>
                     <span class="eh-brand-badge">1</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Rimac');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Rimac.png" alt="Rimac" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">RI</span>
+                    <span class="eh-brand-name">Rimac</span>
+                    <span class="eh-brand-badge">1</span>
+                </a>
+            </div>
+            <!-- Performance & SUV -->
+            <div class="eh-dd-col">
+                <div class="eh-col-hd">
+                    <i class="bi bi-speedometer2"></i>
+                    <span class="eh-col-title">Performance & SUV</span>
+                </div>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('BMW');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/BMW.png" alt="BMW" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">BM</span>
+                    <span class="eh-brand-name">BMW</span>
+                    <span class="eh-brand-badge">4</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Audi');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Audi.png" alt="Audi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">AU</span>
+                    <span class="eh-brand-name">Audi</span>
+                    <span class="eh-brand-badge">3</span>
                 </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Range Rover');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/RANGE_ROVER_LOGO.webp" alt="Range Rover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -604,6 +639,16 @@
                     <span class="eh-brand-fb">MC</span>
                     <span class="eh-brand-name">McLaren</span>
                 </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Lamborghini');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Lamborghini_logo.png" alt="Lamborghini" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">LA</span>
+                    <span class="eh-brand-name">Lamborghini</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Aston Martin');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Aston_Martin.png" alt="Aston Martin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">AM</span>
+                    <span class="eh-brand-name">Aston Martin</span>
+                </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Bugatti');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">BU</span>
@@ -616,10 +661,38 @@
                     <span class="eh-brand-name">Pagani</span>
                     <span class="eh-brand-badge">1</span>
                 </a>
+            </div>
+            <div class="eh-dd-col">
+                <div class="eh-col-hd">
+                    <i class="bi bi-speedometer2"></i>
+                    <span class="eh-col-title">Performance &amp; SUV</span>
+                </div>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('BMW');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/BMW.png" alt="BMW" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">BM</span>
+                    <span class="eh-brand-name">BMW</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Audi');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Audi.png" alt="Audi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">AU</span>
+                    <span class="eh-brand-name">Audi</span>
+                </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Range Rover');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/RANGE_ROVER_LOGO.webp" alt="Range Rover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">RR</span>
                     <span class="eh-brand-name">Range Rover</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Rimac');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Rimac.png" alt="Rimac" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">RI</span>
+                    <span class="eh-brand-name">Rimac</span>
+                    <span class="eh-brand-badge">1</span>
+                </a>
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Koenigsegg');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Koenigsegg.jpg" alt="Koenigsegg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="eh-brand-fb">K</span>
+                    <span class="eh-brand-name">Koenigsegg</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
             </div>
         </div>
@@ -900,7 +973,7 @@
                 <button class="btn btn-outline-light btn-lg px-5 rounded-0" onclick="showPage('inventory')">
                     VIEW INVENTORY
                 </button>
-                <button class="btn btn-danger btn-lg px-5 rounded-0" onclick="showPage('contact')">
+                <button class="btn btn-gradient btn-lg px-5 rounded-0" onclick="showPage('contact')">
                     ENQUIRE NOW
                 </button>
             </div>
@@ -1328,6 +1401,81 @@
                     <p>"Speed and Class"</p>
                     <span class="brand-meta">🇸🇪 Est. 1994</span>
                     <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Koenigsegg')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lamborghini -->
+            <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="hypercar">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Lamborghini')">
+                    <div class="brand-logo-wrapper">
+                        <img src="LOGOS/Lamborghini_logo.png" alt="Lamborghini" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <h5>Lamborghini</h5>
+                    <p>"Expect the Unexpected"</p>
+                    <span class="brand-meta">🇮🇹 Est. 1963</span>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Lamborghini')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
+                </div>
+            </div>
+
+            <!-- Aston Martin -->
+            <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="luxury">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Aston Martin')">
+                    <div class="brand-logo-wrapper">
+                        <img src="LOGOS/Aston_Martin.png" alt="Aston Martin" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <h5>Aston Martin</h5>
+                    <p>"Power, Beauty and Soul"</p>
+                    <span class="brand-meta">🇬🇧 Est. 1913</span>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Aston Martin')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
+                </div>
+            </div>
+
+            <!-- BMW -->
+            <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="luxury">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('BMW')">
+                    <div class="brand-logo-wrapper">
+                        <img src="LOGOS/BMW.png" alt="BMW" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <h5>BMW</h5>
+                    <p>"The Ultimate Driving Machine"</p>
+                    <span class="brand-meta">🇩🇪 Est. 1916</span>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('BMW')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audi -->
+            <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="luxury">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Audi')">
+                    <div class="brand-logo-wrapper">
+                        <img src="LOGOS/Audi.png" alt="Audi" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <h5>Audi</h5>
+                    <p>"Vorsprung durch Technik"</p>
+                    <span class="brand-meta">🇩🇪 Est. 1909</span>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Audi')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rimac -->
+            <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="exclusive">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Rimac')">
+                    <div class="brand-logo-wrapper">
+                        <img src="LOGOS/Rimac.png" alt="Rimac" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <h5>Rimac</h5>
+                    <p>"Electric Hypercar Pioneer"</p>
+                    <span class="brand-meta">🇭🇷 Est. 2009</span>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Rimac')">
                         <i class="bi bi-car-front-fill me-2"></i>View Cars
                     </button>
                 </div>
@@ -2842,6 +2990,8 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="api.js"></script>
 <script src="first.js"></script>
+<script src="first_api_patch.js"></script>
 </body>
 </html>

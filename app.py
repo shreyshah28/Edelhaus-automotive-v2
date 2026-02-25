@@ -17,6 +17,10 @@ from datetime import datetime, timedelta
 import jwt
 import json
 import os
+import smtplib
+import threading
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # ================================================================
 #  FLASK APP SETUP
@@ -33,6 +37,92 @@ db_sql = SQLAlchemy(app)
 ADMIN_USERNAME = os.getenv('ADMIN_USER', 'admin')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASS', 'edelhaus2026')
 JWT_SECRET     = app.config['SECRET_KEY']
+
+# ================================================================
+#  EMAIL NOTIFICATION CONFIG
+#  Set these env vars to enable email alerts:
+#    MAIL_FROM    — sender email (e.g. your Gmail)
+#    MAIL_PASS    — app password (Gmail: Settings > App Passwords)
+#    MAIL_TO      — admin email to receive notifications
+#    MAIL_HOST    — SMTP host (default: smtp.gmail.com)
+#    MAIL_PORT    — SMTP port (default: 587)
+# ================================================================
+MAIL_FROM  = os.getenv('MAIL_FROM', '')
+MAIL_PASS  = os.getenv('MAIL_PASS', '')
+MAIL_TO    = os.getenv('MAIL_TO', '')
+MAIL_HOST  = os.getenv('MAIL_HOST', 'smtp.gmail.com')
+MAIL_PORT  = int(os.getenv('MAIL_PORT', '587'))
+
+def send_email_async(subject, html_body):
+    """Send email in background thread — never blocks the API response."""
+    if not MAIL_FROM or not MAIL_PASS or not MAIL_TO:
+        return  # Email not configured — skip silently
+    def _send():
+        try:
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = subject
+            msg['From']    = f'Edelhaus Automotive <{MAIL_FROM}>'
+            msg['To']      = MAIL_TO
+            msg.attach(MIMEText(html_body, 'html'))
+            with smtplib.SMTP(MAIL_HOST, MAIL_PORT) as server:
+                server.starttls()
+                server.login(MAIL_FROM, MAIL_PASS)
+                server.sendmail(MAIL_FROM, MAIL_TO, msg.as_string())
+            print(f'[EMAIL] Sent: {subject}')
+        except Exception as e:
+            print(f'[EMAIL ERROR] {e}')
+    threading.Thread(target=_send, daemon=True).start()
+
+def email_test_drive(td):
+    """Send admin notification for new test drive booking."""
+    send_email_async(
+        subject=f'🚗 New Test Drive Booking — {td.car_name}',
+        html_body=f"""
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0a0a0a;color:#f0f0f0;border-radius:12px;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1a1a1a,#111);padding:28px 32px;border-bottom:2px solid #3498db;">
+            <h1 style="font-size:1.2rem;letter-spacing:4px;color:#fff;margin:0;">EDELHAUS AUTOMOTIVE</h1>
+            <p style="color:#3498db;font-size:0.75rem;letter-spacing:2px;margin:4px 0 0;">NEW TEST DRIVE BOOKING</p>
+          </div>
+          <div style="padding:28px 32px;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;width:140px;font-size:0.85rem;">Customer</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;font-weight:600;">{td.user_name}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Email</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#3498db;">{td.user_email}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Phone</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;">{td.user_phone}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Vehicle</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;font-weight:700;">{td.car_name}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Date</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#2ecc71;">{td.date} at {td.time}</td></tr>
+              <tr><td style="padding:10px 0;color:#888;font-size:0.85rem;">Notes</td><td style="padding:10px 0;color:#ccc;">{td.notes or '—'}</td></tr>
+            </table>
+          </div>
+          <div style="padding:16px 32px;background:#111;text-align:center;">
+            <p style="color:#555;font-size:0.75rem;margin:0;">Booked on {datetime.now().strftime('%d %b %Y at %H:%M')} · Edelhaus Admin Panel</p>
+          </div>
+        </div>"""
+    )
+
+def email_inquiry(inq):
+    """Send admin notification for new inquiry."""
+    send_email_async(
+        subject=f'📩 New Inquiry — {inq.name} ({inq.car_interest or "General"})',
+        html_body=f"""
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0a0a0a;color:#f0f0f0;border-radius:12px;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1a1a1a,#111);padding:28px 32px;border-bottom:2px solid #e74c3c;">
+            <h1 style="font-size:1.2rem;letter-spacing:4px;color:#fff;margin:0;">EDELHAUS AUTOMOTIVE</h1>
+            <p style="color:#e74c3c;font-size:0.75rem;letter-spacing:2px;margin:4px 0 0;">NEW CUSTOMER INQUIRY</p>
+          </div>
+          <div style="padding:28px 32px;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;width:140px;font-size:0.85rem;">Name</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;font-weight:600;">{inq.name}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Email</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#3498db;">{inq.email}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Phone</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;">{inq.phone}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Car Interest</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#f1c40f;font-weight:700;">{inq.car_interest or '—'}</td></tr>
+              <tr><td style="padding:10px 0;color:#888;font-size:0.85rem;">Message</td><td style="padding:10px 0;color:#ccc;">{inq.message}</td></tr>
+            </table>
+          </div>
+          <div style="padding:16px 32px;background:#111;text-align:center;">
+            <p style="color:#555;font-size:0.75rem;margin:0;">Received on {datetime.now().strftime('%d %b %Y at %H:%M')} · Edelhaus Admin Panel</p>
+          </div>
+        </div>"""
+    )
 
 # ================================================================
 #  DATABASE MODELS
@@ -468,6 +558,7 @@ def book_test_drive():
     )
     db_sql.session.add(td)
     db_sql.session.commit()
+    email_test_drive(td)  # Send admin notification
     return jsonify({'id': td.id, 'message': 'Test drive booked'}), 201
 
 
@@ -574,6 +665,7 @@ def submit_inquiry():
     )
     db_sql.session.add(inq)
     db_sql.session.commit()
+    email_inquiry(inq)  # Send admin notification
     return jsonify({'id': inq.id, 'message': 'Inquiry received'}), 201
 
 

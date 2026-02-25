@@ -876,132 +876,153 @@ img.img-loaded {
 
 
 /* ==================== 7. FOOTER (First Motors Style) ==================== */
+/* ══════════════════════════════════════════
+   PREMIUM FOOTER — FULL REDESIGN
+   ══════════════════════════════════════════ */
 .footer-custom {
-    background-color: #111; /* Slightly lighter than pure black for depth */
-    padding: 80px 0 30px;
-    color: #b0b0b0;
+    background: #000;
+    padding: 0;
+    color: #888;
     font-size: 14px;
     position: relative;
-    border-top: 1px solid #222;
-    margin-top: 50px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255,255,255,0.06);
 }
-
-.footer-desc {
-    line-height: 1.8;
-    max-width: 400px;
+.footer-custom::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #3498db 30%, #2ecc71 60%, transparent 100%);
 }
-
-.footer-heading {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
+.footer-brand-section {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.footer-logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem; font-weight: 700;
+    letter-spacing: 8px; color: #fff;
     text-transform: uppercase;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
+    text-decoration: none !important;
+    display: inline-block; margin-bottom: 6px;
+    transition: color 0.3s;
 }
-
-/* Link Styling */
-.footer-links li {
-    margin-bottom: 15px;
+.footer-logo-text:hover { color: #3498db; }
+.footer-logo-sub {
+    font-size: 0.6rem; letter-spacing: 5px;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase; display: block; margin-bottom: 20px;
 }
-
-.footer-links a {
-    color: #b0b0b0;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 15px;
-    display: inline-block;
-}
-
-.footer-links a:hover {
-    color: #3498db;
-    transform: translateX(5px); /* Slide effect */
-}
-
-/* Contact List Styling */
-.footer-contact li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    color: #b0b0b0;
-}
-
-.footer-contact i {
-    color: #3498db;
-    /* color:#1D546D; */
-    font-size: 18px;
-}
-
-/* Social Buttons - Colorful Circular Icons */
-.social-links {
-    display: flex;
-    gap: 12px;
-}
-
+.footer-desc { line-height: 1.9; max-width: 340px; color: #666; font-size: 0.83rem; }
+.social-links { display: flex; gap: 10px; margin-top: 24px; }
 .social-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff !important; /* Force white icon */
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 18px;
-    border: none;
+    width: 38px; height: 38px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #555 !important; text-decoration: none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    font-size: 15px; transition: all 0.25s ease;
 }
 .social-btn:hover {
-    transform: translateY(-5px); /* Float up effect */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    color: #fff !important;
+    transform: translateY(-3px); color: #fff !important;
+    border-color: rgba(52,152,219,0.4);
+    background: rgba(52,152,219,0.12);
+    box-shadow: 0 6px 20px rgba(52,152,219,0.2);
 }
-
-/* Footer Bottom Line */
+.footer-main-grid { padding: 50px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.footer-heading {
+    color: #fff; font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 3px;
+    margin-bottom: 22px; position: relative; padding-bottom: 12px;
+}
+.footer-heading::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 24px; height: 1px; background: #3498db;
+}
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+    color: #666; text-decoration: none; font-size: 0.83rem;
+    display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
+}
+.footer-links a::before {
+    content: ''; width: 14px; height: 1px; background: #3498db;
+    opacity: 0; transition: all 0.2s ease; flex-shrink: 0;
+}
+.footer-links a:hover { color: #fff; padding-left: 4px; }
+.footer-links a:hover::before { opacity: 1; }
+.footer-contact { list-style: none; padding: 0; margin: 0; }
+.footer-contact li {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 16px; color: #666; font-size: 0.83rem; line-height: 1.5;
+}
+.footer-contact i { color: #3498db; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.footer-contact a { color: #666; text-decoration: none; transition: color 0.2s; }
+.footer-contact a:hover { color: #3498db; }
+.footer-newsletter {
+    background: rgba(52,152,219,0.04);
+    border: 1px solid rgba(52,152,219,0.12);
+    border-radius: 12px; padding: 20px 24px; margin-top: 8px;
+}
+.footer-nl-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+    color: #fff; text-transform: uppercase; margin-bottom: 4px;
+}
+.footer-nl-sub { font-size: 0.75rem; color: #555; margin-bottom: 14px; }
+.footer-nl-wrap { display: flex; gap: 8px; }
+.footer-nl-input {
+    flex: 1; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;
+    color: #fff; font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem; padding: 9px 14px; outline: none; transition: border-color 0.2s;
+}
+.footer-nl-input::placeholder { color: #444; }
+.footer-nl-input:focus { border-color: rgba(52,152,219,0.5); }
+.footer-nl-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9); border: none;
+    border-radius: 6px; color: #fff; font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+    padding: 9px 16px; cursor: pointer; white-space: nowrap; transition: all 0.2s ease;
+}
+.footer-nl-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #2471a3);
+    box-shadow: 0 4px 16px rgba(52,152,219,0.35); transform: translateY(-1px);
+}
 .footer-bottom {
-    border-top: 1px solid #222;
+    padding: 20px 0; display: flex; align-items: center;
+    justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
-/* --- SCROLL REVEAL ANIMATION — Stagger-ready --- */
-.reveal {
-    position: relative;
-    transform: translateY(40px);
-    opacity: 0;
-    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+.footer-copyright { font-size: 0.75rem; color: #444; }
+.footer-copyright span { color: #3498db; }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a {
+    font-size: 0.72rem; color: #444; text-decoration: none;
+    transition: color 0.2s; letter-spacing: 0.5px;
 }
-
-.reveal.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Stagger delays for child elements */
-.reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal:nth-child(4) { transition-delay: 240ms; }
-
-/* --- BACK TO TOP BUTTON --- */
+.footer-legal a:hover { color: #3498db; }
 #backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-    display: none; /* Hidden by default, JS shows it */
-    z-index: 9999;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    position: fixed; bottom: 90px; right: 24px;
+    width: 44px; height: 44px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(52,152,219,0.4);
+    color: #3498db; border-radius: 10px; font-size: 17px;
+    cursor: pointer; display: none; z-index: 9990;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(52,152,219,0.2);
     transition: all 0.3s ease;
+    align-items: center; justify-content: center;
 }
-
 #backToTop:hover {
-    background: #2980b9;
-    transform: translateY(-5px);
+    background: #3498db; color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(52,152,219,0.4);
+}
+@media (max-width: 768px) {
+    .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+    .footer-main-grid { padding: 36px 0 24px; }
+    .footer-brand-section { padding: 40px 0 28px; }
+    .footer-nl-wrap { flex-direction: column; }
 }
 /* ==================== FINAL VISIBILITY FIXES ==================== */
 
