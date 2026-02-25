@@ -485,29 +485,29 @@
                     <span class="eh-brand-badge">2</span>
                 </a>
             </div>
-            <!-- Coming Soon -->
+            <!-- Coming Soon → Now Available -->
             <div class="eh-dd-col">
                 <div class="eh-col-hd">
-                    <i class="bi bi-grid"></i>
-                    <span class="eh-col-title">Coming Soon</span>
+                    <i class="bi bi-lightning-fill"></i>
+                    <span class="eh-col-title">Exclusive & Hyper</span>
                 </div>
-                <a class="eh-brand-row" href="#" onclick="showPage('brands');closeAll();return false;">
-                    <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" style="opacity:.45" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Bugatti');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">BU</span>
-                    <span class="eh-brand-name" style="opacity:.45">Bugatti</span>
-                    <span class="eh-soon-tag">Soon</span>
+                    <span class="eh-brand-name">Bugatti</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
-                <a class="eh-brand-row" href="#" onclick="showPage('brands');closeAll();return false;">
-                    <img class="eh-brand-logo" src="LOGOS/Pagani.jpg" alt="Pagani" style="opacity:.45" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Pagani');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Pagani.jpg" alt="Pagani" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">PA</span>
-                    <span class="eh-brand-name" style="opacity:.45">Pagani</span>
-                    <span class="eh-soon-tag">Soon</span>
+                    <span class="eh-brand-name">Pagani</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
-                <a class="eh-brand-row" href="#" onclick="showPage('brands');closeAll();return false;">
-                    <img class="eh-brand-logo" src="LOGOS/Koenigsegg.jpg" alt="Koenigsegg" style="opacity:.45" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Koenigsegg');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Koenigsegg.jpg" alt="Koenigsegg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">K</span>
-                    <span class="eh-brand-name" style="opacity:.45">Koenigsegg</span>
-                    <span class="eh-soon-tag">Soon</span>
+                    <span class="eh-brand-name">Koenigsegg</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Range Rover');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/RANGE_ROVER_LOGO.webp" alt="Range Rover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -604,17 +604,17 @@
                     <span class="eh-brand-fb">MC</span>
                     <span class="eh-brand-name">McLaren</span>
                 </a>
-                <a class="eh-brand-row" href="#" onclick="showPage('brands');closeAll();return false;">
-                    <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" style="opacity:.4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Bugatti');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Bugatti.jpg" alt="Bugatti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">BU</span>
-                    <span class="eh-brand-name" style="opacity:.4">Bugatti</span>
-                    <span class="eh-soon-tag">Soon</span>
+                    <span class="eh-brand-name">Bugatti</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
-                <a class="eh-brand-row" href="#" onclick="showPage('brands');closeAll();return false;">
-                    <img class="eh-brand-logo" src="LOGOS/Pagani.jpg" alt="Pagani" style="opacity:.4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Pagani');closeAll();return false;">
+                    <img class="eh-brand-logo" src="LOGOS/Pagani.jpg" alt="Pagani" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                     <span class="eh-brand-fb">PA</span>
-                    <span class="eh-brand-name" style="opacity:.4">Pagani</span>
-                    <span class="eh-soon-tag">Soon</span>
+                    <span class="eh-brand-name">Pagani</span>
+                    <span class="eh-brand-badge">1</span>
                 </a>
                 <a class="eh-brand-row" href="#" onclick="filterByBrandRedirect('Range Rover');closeAll();return false;">
                     <img class="eh-brand-logo" src="LOGOS/RANGE_ROVER_LOGO.webp" alt="Range Rover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -1288,63 +1288,48 @@
                 </div>
             </div>
 
-            <!-- Bugatti — Coming Soon -->
+            <!-- Bugatti — Available -->
             <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="exclusive">
-                <div class="brand-card-simple coming-soon-simple">
-                    <div class="cs-ribbon">COMING SOON</div>
-                    <div class="brand-logo-wrapper" style="opacity:0.5;">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Bugatti')">
+                    <div class="brand-logo-wrapper">
                         <img src="LOGOS/Bugatti.jpg" alt="Bugatti">
                     </div>
                     <h5>Bugatti</h5>
                     <p>"If Comparable, It Is No Longer Bugatti"</p>
                     <span class="brand-meta">🇫🇷 Est. 1909</span>
-                    <div class="notify-wrap mt-3" onclick="event.stopPropagation()">
-                        <input type="email" class="notify-input" placeholder="Your email" id="n-Bugatti">
-                        <button class="notify-btn" onclick="saveNotify('Bugatti')">
-                            <i class="bi bi-bell-fill me-1"></i>Notify Me
-                        </button>
-                        <p class="notify-ok" id="nok-Bugatti"></p>
-                    </div>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Bugatti')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
                 </div>
             </div>
 
-            <!-- Pagani — Coming Soon -->
+            <!-- Pagani — Available -->
             <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="exclusive">
-                <div class="brand-card-simple coming-soon-simple">
-                    <div class="cs-ribbon">COMING SOON</div>
-                    <div class="brand-logo-wrapper" style="opacity:0.5;">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Pagani')">
+                    <div class="brand-logo-wrapper">
                         <img src="LOGOS/Pagani.jpg" alt="Pagani">
                     </div>
                     <h5>Pagani</h5>
                     <p>"Art and Science"</p>
                     <span class="brand-meta">🇮🇹 Est. 1992</span>
-                    <div class="notify-wrap mt-3" onclick="event.stopPropagation()">
-                        <input type="email" class="notify-input" placeholder="Your email" id="n-Pagani">
-                        <button class="notify-btn" onclick="saveNotify('Pagani')">
-                            <i class="bi bi-bell-fill me-1"></i>Notify Me
-                        </button>
-                        <p class="notify-ok" id="nok-Pagani"></p>
-                    </div>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Pagani')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
                 </div>
             </div>
 
-            <!-- Koenigsegg — Coming Soon -->
+            <!-- Koenigsegg — Available -->
             <div class="col-lg-3 col-md-4 col-sm-6 brand-filter-card" data-cat="exclusive">
-                <div class="brand-card-simple coming-soon-simple">
-                    <div class="cs-ribbon">COMING SOON</div>
-                    <div class="brand-logo-wrapper" style="opacity:0.5;">
+                <div class="brand-card-simple" onclick="filterByBrandRedirect('Koenigsegg')">
+                    <div class="brand-logo-wrapper">
                         <img src="LOGOS/Koenigsegg.jpg" alt="Koenigsegg">
                     </div>
                     <h5>Koenigsegg</h5>
                     <p>"Speed and Class"</p>
                     <span class="brand-meta">🇸🇪 Est. 1994</span>
-                    <div class="notify-wrap mt-3" onclick="event.stopPropagation()">
-                        <input type="email" class="notify-input" placeholder="Your email" id="n-Koenigsegg">
-                        <button class="notify-btn" onclick="saveNotify('Koenigsegg')">
-                            <i class="bi bi-bell-fill me-1"></i>Notify Me
-                        </button>
-                        <p class="notify-ok" id="nok-Koenigsegg"></p>
-                    </div>
+                    <button class="btn btn-gradient w-100 mt-3" onclick="filterByBrandRedirect('Koenigsegg')">
+                        <i class="bi bi-car-front-fill me-2"></i>View Cars
+                    </button>
                 </div>
             </div>
 
