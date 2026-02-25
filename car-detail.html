@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Car Detail — Edelhaus Automotive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #3498db;
+            --blue-light: #5dade2;
+            --blue-dark: #2980b9;
+            --blue-dim: rgba(52,152,219,0.15);
+            --blue-glow: rgba(52,152,219,0.35);
+            --dark: #080808;
+            --dark-2: #111111;
+            --dark-3: #1a1a1a;
+            --dark-4: #222222;
+            --light: #f5f2ee;
+            --muted: #888;
+            --border: rgba(255,255,255,0.07);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── TOP NAV ─── */
+        .detail-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 60px;
+            background: rgba(8,8,8,0.92);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: 1px solid var(--border);
+            color: #aaa;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .btn-back:hover { color: #fff; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+
+        /* ─── HERO SECTION ─── */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.8s ease;
+        }
+
+        .hero-section:hover .hero-bg {
+            transform: scale(1.03);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(8,8,8,0.2) 0%,
+                rgba(8,8,8,0.0) 30%,
+                rgba(8,8,8,0.0) 50%,
+                rgba(8,8,8,0.6) 75%,
+                rgba(8,8,8,1.0) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 4rem 5rem;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blue);
+            border: 1px solid var(--blue);
+            padding: 4px 14px;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 600;
+            line-height: 1.05;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: rgba(245,242,238,0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-price {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--blue);
+            letter-spacing: 1px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-meta-label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .hero-meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        .detail-body {
+            position: relative;
+            z-index: 5;
+            background: var(--dark);
+        }
+
+        /* ─── GALLERY STRIP ─── */
+        .gallery-strip {
+            display: flex;
+            gap: 4px;
+            padding: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .gallery-strip::-webkit-scrollbar { display: none; }
+
+        .gallery-thumb {
+            flex: 0 0 180px;
+            height: 120px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: opacity 0.3s, transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .gallery-thumb.active,
+        .gallery-thumb:hover {
+            opacity: 1;
+            border-color: var(--blue);
+        }
+
+        /* ─── STICKY SIDEBAR ─── */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ─── LEFT CONTENT ─── */
+        .detail-left { padding-right: 4rem; }
+
+        @media (max-width: 1024px) {
+            .detail-left { padding-right: 0; }
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 60px;
+        }
+
+        /* ─── SPEC GRID ─── */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .spec-cell {
+            background: var(--dark-2);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: background 0.2s;
+        }
+
+        .spec-cell:hover { background: var(--dark-3); }
+
+        .spec-icon {
+            font-size: 1.1rem;
+            color: var(--blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-val {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .spec-key {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ─── PERFORMANCE BARS ─── */
+        .perf-section { margin-bottom: 3rem; }
+
+        .perf-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .perf-label {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            min-width: 120px;
+        }
+
+        .perf-track {
+            flex: 1;
+            height: 4px;
+            background: var(--dark-4);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .perf-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--blue), var(--blue-light));
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .perf-val {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--blue);
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* ─── HIGHLIGHTS ─── */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .highlight-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1.1rem;
+            background: var(--dark-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: #ccc;
+            transition: all 0.2s;
+        }
+
+        .highlight-chip:hover {
+            border-color: var(--blue);
+            color: #fff;
+            background: var(--blue-dim);
+        }
+
+        .highlight-chip i {
+            color: var(--blue);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ─── DESCRIPTION ─── */
+        .car-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: rgba(245,242,238,0.75);
+            margin-bottom: 3rem;
+        }
+
+        /* ─── COLOR SELECTOR ─── */
+        .color-section { margin-bottom: 3rem; }
+
+        .color-swatches {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .color-swatch {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .color-swatch:hover,
+        .color-swatch.active {
+            border-color: var(--blue);
+            transform: scale(1.15);
+            box-shadow: 0 0 0 3px var(--blue-dim);
+        }
+
+        .color-swatch::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: var(--muted);
+            white-space: nowrap;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .color-swatch:hover::after { opacity: 1; }
+
+        /* ─── STICKY CTA PANEL ─── */
+        .detail-right { position: sticky; top: 80px; }
+
+        .cta-panel {
+            background: var(--dark-2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--blue), transparent);
+        }
+
+        .cta-price-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .cta-price {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--blue);
+            font-weight: 700;
+            margin: 0.3rem 0 0.15rem;
+        }
+
+        .cta-price-usd {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        .cta-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .cta-detail-row:last-child { border-bottom: none; }
+
+        .cta-detail-key {
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-detail-key i { color: var(--blue); font-size: 0.9rem; }
+
+        .cta-detail-val {
+            color: #ddd;
+            font-weight: 500;
+        }
+
+        .btn-primary-gold {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, var(--blue) 100%);
+            background-size: 200% auto;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-position 0.4s ease, transform 0.2s, box-shadow 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-primary-gold:hover {
+            background-position: right center;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px var(--blue-glow);
+        }
+
+        .btn-secondary-outline {
+            width: 100%;
+            padding: 0.75rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #ccc;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary-outline:hover {
+            border-color: var(--blue);
+            color: var(--blue-light);
+            background: var(--blue-dim);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pill.available {
+            background: rgba(46,204,113,0.12);
+            color: #2ecc71;
+            border: 1px solid rgba(46,204,113,0.3);
+        }
+
+        .status-pill.exclusive {
+            background: rgba(52,152,219,0.12);
+            color: var(--blue);
+            border: 1px solid rgba(52,152,219,0.3);
+        }
+
+        .status-pill.sold {
+            background: rgba(231,76,60,0.12);
+            color: #e74c3c;
+            border: 1px solid rgba(231,76,60,0.3);
+        }
+
+        .status-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* ─── FULL IMAGE LIGHTBOX ─── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.96);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none;
+            border: 1px solid var(--border);
+            color: #fff;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .lightbox-close:hover { background: rgba(255,255,255,0.1); }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border);
+            color: #fff;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .lightbox-nav:hover { background: rgba(52,152,219,0.2); border-color: var(--blue); }
+        .lightbox-prev { left: 2rem; }
+        .lightbox-next { right: 2rem; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+        }
+
+        /* ─── RELATED SECTION ─── */
+        .related-section {
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ─── LOADING ─── */
+        .detail-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .spinner-ring {
+            width: 48px; height: 48px;
+            border: 2px solid var(--border);
+            border-top-color: var(--blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ─── FADE IN ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 768px) {
+            .hero-content { padding: 0 1.5rem 4rem; }
+            .hero-title { font-size: 2rem; }
+            .spec-grid { grid-template-columns: repeat(2, 1fr); }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .detail-left { padding-right: 0; }
+            .hero-meta { gap: 1.25rem; }
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="detail-nav">
+    <a href="help.html" class="btn-back">
+        <i class="bi bi-arrow-left"></i> BACK
+    </a>
+    <a class="nav-brand" href="help.html">EDELHAUS</a>
+    <div id="navStatus" style="font-size:0.75rem; color: var(--muted); letter-spacing:1px;"></div>
+</nav>
+
+<!-- LOADING STATE -->
+<div class="detail-loading" id="loadingState">
+    <div class="spinner-ring"></div>
+    <p style="color:var(--muted); font-size:0.8rem; letter-spacing:2px;">LOADING</p>
+</div>
+
+<!-- PAGE CONTENT (hidden until loaded) -->
+<div id="pageContent" style="display:none;">
+
+    <!-- HERO -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge" id="heroBadge"></div>
+            <h1 class="hero-title" id="heroTitle"></h1>
+            <p class="hero-subtitle" id="heroSubtitle"></p>
+            <div class="hero-price" id="heroPrice"></div>
+            <div class="hero-meta" id="heroMeta"></div>
+        </div>
+    </section>
+
+    <!-- GALLERY STRIP -->
+    <div style="background:var(--dark-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+        <div class="gallery-strip" id="galleryStrip"></div>
+    </div>
+
+    <!-- BODY -->
+    <div class="detail-body">
+        <div class="detail-grid">
+
+            <!-- LEFT -->
+            <div class="detail-left">
+
+                <!-- Description -->
+                <div class="fade-up" style="margin-bottom:3rem;">
+                    <div class="section-label">Overview</div>
+                    <p class="car-description" id="carDescription"></p>
+                </div>
+
+                <!-- Performance -->
+                <div class="fade-up perf-section">
+                    <div class="section-label">Performance</div>
+                    <div id="perfBars"></div>
+                </div>
+
+                <!-- Full Specs -->
+                <div class="fade-up" style="margin-bottom:3rem;">
+                    <div class="section-label">Specifications</div>
+                    <div class="spec-grid" id="specGrid"></div>
+                </div>
+
+                <!-- Highlights -->
+                <div class="fade-up" style="margin-bottom:3rem;">
+                    <div class="section-label" id="highlightsLabel">Highlights</div>
+                    <div class="highlights-grid" id="highlightsGrid"></div>
+                </div>
+
+                <!-- Colors -->
+                <div class="fade-up color-section" id="colorSection">
+                    <div class="section-label">Available Colors</div>
+                    <div class="color-swatches" id="colorSwatches"></div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT - STICKY PANEL -->
+            <div class="detail-right">
+                <div class="cta-panel">
+                    <div class="cta-price-label">Starting Price</div>
+                    <div class="cta-price" id="ctaPrice"></div>
+                    <div class="cta-price-usd" id="ctaPriceUSD"></div>
+
+                    <div id="ctaDetails"></div>
+
+                    <div class="cta-divider"></div>
+
+                    <div id="statusRow"></div>
+
+                    <button class="btn-primary-gold" id="btnTestDrive" onclick="goBack('testdrive')">
+                        <i class="bi bi-calendar-check me-2"></i>BOOK TEST DRIVE
+                    </button>
+                    <button class="btn-secondary-outline" id="btnBrochure" onclick="downloadBrochure()">
+                        <i class="bi bi-file-earmark-pdf"></i> DOWNLOAD BROCHURE
+                    </button>
+                    <button class="btn-secondary-outline" onclick="shareThis()">
+                        <i class="bi bi-share"></i> SHARE THIS CAR
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="bi bi-x"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"><i class="bi bi-chevron-left"></i></button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+// ─── DATA LOADING ───────────────────────────────────────────────
+let car = null;
+let allImages = [];
+let lightboxIndex = 0;
+
+// Get car ID from URL param
+const params = new URLSearchParams(window.location.search);
+const carId = parseInt(params.get('id'));
+
+async function loadCar() {
+    // Try to get from localStorage (set by main page)
+    const cached = localStorage.getItem('edelhausDetailCar');
+    if (cached) {
+        try {
+            const parsed = JSON.parse(cached);
+            if (parsed.id === carId) {
+                initPage(parsed);
+                return;
+            }
+        } catch(e) {}
+    }
+
+    // Fallback: load from cars.json
+    try {
+        const res = await fetch('cars.json');
+        const cars = await res.json();
+        const found = cars.find(c => c.id === carId);
+        if (found) {
+            initPage(found);
+        } else {
+            showError();
+        }
+    } catch(e) {
+        // Try API
+        try {
+            const res = await fetch(`http://localhost:5000/api/cars/${carId}`);
+            const c = await res.json();
+            initPage(c);
+        } catch(e2) {
+            showError();
+        }
+    }
+}
+
+function showError() {
+    document.getElementById('loadingState').innerHTML = `
+        <div style="text-align:center;">
+            <i class="bi bi-exclamation-circle" style="font-size:3rem;color:var(--blue);"></i>
+            <p style="color:var(--muted);margin-top:1rem;letter-spacing:2px;font-size:0.85rem;">CAR NOT FOUND</p>
+            <a href="help.html" class="btn-back" style="margin-top:1rem;display:inline-flex;">← RETURN TO SHOWROOM</a>
+        </div>
+    `;
+}
+
+function initPage(data) {
+    car = data;
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('pageContent').style.display = 'block';
+    document.title = `${car.name} — Edelhaus Automotive`;
+
+    // Images
+    allImages = car.images ? [...car.images] : [];
+    if (car.colors) car.colors.forEach(c => { if (c.img && !allImages.includes(c.img)) allImages.push(c.img); });
+    if (allImages.length === 0) allImages.push('Ferrari.png');
+
+    buildHero();
+    buildGallery();
+    buildSpecs();
+    buildHighlights();
+    buildColors();
+    buildCTAPanel();
+    buildPerformance();
+
+    // Nav status
+    const statusEl = document.getElementById('navStatus');
+    const statusMap = {
+        'In Stock': 'IN STOCK',
+        'Available': 'AVAILABLE',
+        'Exclusive': 'EXCLUSIVE',
+        'Sold': 'SOLD OUT',
+    };
+    statusEl.textContent = statusMap[car.status] || car.status.toUpperCase();
+    statusEl.style.color = car.status === 'Sold' ? '#e74c3c' : 'var(--blue)';
+
+    // Fade-up observer
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+}
+
+function buildHero() {
+    document.getElementById('heroBg').style.backgroundImage = `url('${allImages[0]}')`;
+    document.getElementById('heroBadge').textContent = car.badge || car.category.toUpperCase();
+    document.getElementById('heroTitle').textContent = car.name;
+    document.getElementById('heroSubtitle').textContent = car.subtitle || '';
+    document.getElementById('heroPrice').textContent = car.price;
+
+    const metas = [
+        { label: 'Power', val: car.power },
+        { label: '0–100 km/h', val: car.acceleration?.replace('0-100: ','') },
+        { label: 'Top Speed', val: car.top_speed_kmh ? car.top_speed_kmh + ' km/h' : 'N/A' },
+        { label: 'Year', val: car.year },
+    ].filter(m => m.val);
+
+    document.getElementById('heroMeta').innerHTML = metas.map(m => `
+        <div class="hero-meta-item">
+            <span class="hero-meta-label">${m.label}</span>
+            <span class="hero-meta-value">${m.val}</span>
+        </div>
+    `).join('');
+}
+
+function buildGallery() {
+    const strip = document.getElementById('galleryStrip');
+    strip.innerHTML = allImages.map((img, i) => `
+        <img src="${img}" class="gallery-thumb ${i===0?'active':''}"
+             alt="View ${i+1}"
+             onerror="this.style.display='none'"
+             onclick="selectGalleryImg('${img}', this, ${i})">
+    `).join('');
+}
+
+function selectGalleryImg(url, el, idx) {
+    document.getElementById('heroBg').style.backgroundImage = `url('${url}')`;
+    document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    lightboxIndex = idx;
+}
+
+function buildSpecs() {
+    const specs = [
+        { icon: 'bi-gear', key: 'Engine',        val: car.engine },
+        { icon: 'bi-lightning-charge', key: 'Power', val: car.power },
+        { icon: 'bi-speedometer2', key: '0–100 km/h', val: car.acceleration?.replace('0-100: ','') },
+        { icon: 'bi-wind',         key: 'Top Speed', val: car.top_speed_kmh ? car.top_speed_kmh+' km/h' : null },
+        { icon: 'bi-arrow-repeat', key: 'Transmission', val: car.transmission },
+        { icon: 'bi-signpost-split', key: 'Drivetrain', val: car.drivetrain },
+        { icon: 'bi-fuel-pump',   key: 'Fuel Type',  val: car.fuel_type },
+        { icon: 'bi-people',      key: 'Seats',       val: car.seats ? car.seats + ' seats' : null },
+        { icon: 'bi-calendar3',   key: 'Year',        val: car.year },
+        { icon: 'bi-map',         key: 'Origin',      val: car.origin },
+        { icon: 'bi-bag-check',   key: 'Torque',      val: car.torque_nm ? car.torque_nm+' Nm' : null },
+        { icon: 'bi-archive',     key: 'Weight',      val: car.weight_kg ? car.weight_kg.toLocaleString()+' kg' : null },
+    ].filter(s => s.val);
+
+    document.getElementById('specGrid').innerHTML = specs.map(s => `
+        <div class="spec-cell">
+            <i class="bi ${s.icon} spec-icon"></i>
+            <div class="spec-val">${s.val}</div>
+            <div class="spec-key">${s.key}</div>
+        </div>
+    `).join('');
+}
+
+function buildPerformance() {
+    const perfs = [];
+    if (car.power_hp) perfs.push({ label: 'Horsepower', val: car.power_hp, max: 1500, display: car.power_hp + ' HP' });
+    if (car.torque_nm) perfs.push({ label: 'Torque', val: car.torque_nm, max: 1500, display: car.torque_nm + ' Nm' });
+    if (car.top_speed_kmh) perfs.push({ label: 'Top Speed', val: car.top_speed_kmh, max: 400, display: car.top_speed_kmh + ' km/h' });
+    if (car.acceleration) {
+        const s = parseFloat(car.acceleration.match(/[\d.]+/)?.[0] || 10);
+        perfs.push({ label: '0–100 km/h', val: 10 - s, max: 10, display: s + 's', invert: true });
+    }
+
+    document.getElementById('perfBars').innerHTML = perfs.map(p => `
+        <div class="perf-row">
+            <div class="perf-label">${p.label}</div>
+            <div class="perf-track"><div class="perf-fill" data-pct="${Math.min(100, (p.val/p.max)*100).toFixed(1)}"></div></div>
+            <div class="perf-val">${p.display}</div>
+        </div>
+    `).join('');
+
+    // Animate bars
+    setTimeout(() => {
+        document.querySelectorAll('.perf-fill').forEach(bar => {
+            bar.style.width = bar.dataset.pct + '%';
+        });
+    }, 400);
+}
+
+function buildHighlights() {
+    const hl = car.highlights || [];
+    if (hl.length === 0) { document.getElementById('highlightsLabel').style.display='none'; return; }
+    const icons = ['bi-star-fill','bi-shield-check','bi-gem','bi-lightning-fill','bi-award','bi-check-circle-fill','bi-trophy-fill','bi-fire'];
+    document.getElementById('highlightsGrid').innerHTML = hl.map((h, i) => `
+        <div class="highlight-chip">
+            <i class="bi ${icons[i % icons.length]}"></i>
+            ${h}
+        </div>
+    `).join('');
+}
+
+function buildColors() {
+    if (!car.colors || car.colors.length === 0) {
+        document.getElementById('colorSection').style.display = 'none';
+        return;
+    }
+    document.getElementById('carDescription').textContent = car.description || '';
+    document.getElementById('colorSwatches').innerHTML = car.colors.map((c, i) => `
+        <div class="color-swatch ${i===0?'active':''}"
+             style="background:${c.hex || '#333'}"
+             data-name="${c.name}"
+             title="${c.name}"
+             onclick="selectColor('${c.img}', this)">
+        </div>
+    `).join('');
+}
+
+function selectColor(img, el) {
+    if (img) {
+        document.getElementById('heroBg').style.backgroundImage = `url('${img}')`;
+        // Update gallery active
+        const thumbs = document.querySelectorAll('.gallery-thumb');
+        thumbs.forEach(t => { if (t.src.includes(img)) t.classList.add('active'); else t.classList.remove('active'); });
+    }
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+}
+
+function buildCTAPanel() {
+    document.getElementById('carDescription').textContent = car.description || '';
+    document.getElementById('ctaPrice').textContent = car.price;
+    document.getElementById('ctaPriceUSD').textContent = car.price_usd ? `≈ $${car.price_usd.toLocaleString()} USD` : '';
+
+    const rows = [
+        { icon: 'bi-gear',            key: 'Engine',        val: car.engine },
+        { icon: 'bi-calendar3',       key: 'Year',          val: car.year },
+        { icon: 'bi-map',             key: 'Origin',        val: car.origin },
+        { icon: 'bi-people',          key: 'Seating',       val: car.seats ? car.seats+' Seats' : null },
+        { icon: 'bi-arrow-repeat',    key: 'Transmission',  val: car.transmission },
+        { icon: 'bi-signpost-split',  key: 'Drivetrain',    val: car.drivetrain },
+    ].filter(r => r.val);
+
+    document.getElementById('ctaDetails').innerHTML = rows.map(r => `
+        <div class="cta-detail-row">
+            <div class="cta-detail-key"><i class="bi ${r.icon}"></i>${r.key}</div>
+            <div class="cta-detail-val">${r.val}</div>
+        </div>
+    `).join('');
+
+    const statusClass = { 'In Stock': 'available', 'Available': 'available', 'Exclusive': 'exclusive', 'Sold': 'sold' }[car.status] || 'available';
+    const statusIcon = { 'In Stock': 'bi-check-circle-fill', 'Available': 'bi-check-circle-fill', 'Exclusive': 'bi-gem', 'Sold': 'bi-x-circle-fill' }[car.status] || 'bi-check-circle-fill';
+    document.getElementById('statusRow').innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
+            <span style="font-size:0.7rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Availability</span>
+            <div class="status-pill ${statusClass}">
+                <div class="status-dot"></div>
+                ${car.status}
+            </div>
+        </div>
+    `;
+}
+
+// ─── LIGHTBOX ───────────────────────────────────────────────────
+function openLightbox(idx) {
+    lightboxIndex = idx || 0;
+    document.getElementById('lightbox').classList.add('open');
+    updateLightbox();
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+}
+
+function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + allImages.length) % allImages.length;
+    updateLightbox();
+}
+
+function updateLightbox() {
+    const img = document.getElementById('lightboxImg');
+    img.style.opacity = 0;
+    setTimeout(() => {
+        img.src = allImages[lightboxIndex];
+        img.style.opacity = 1;
+    }, 150);
+    img.style.transition = 'opacity 0.15s';
+    document.getElementById('lightboxCounter').textContent = `${lightboxIndex+1} / ${allImages.length}`;
+}
+
+document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'ArrowLeft') lightboxNav(-1);
+        if (e.key === 'ArrowRight') lightboxNav(1);
+        if (e.key === 'Escape') closeLightbox();
+    }
+});
+
+// ─── ACTIONS ────────────────────────────────────────────────────
+function goBack(action) {
+    // Save the action so the main page can pick it up
+    localStorage.setItem('edelhausDetailAction', JSON.stringify({ action, carId: car.id }));
+    // Navigate back to the main site
+    window.location.href = 'help.html';
+}
+
+function downloadBrochure() {
+    const content = `EDELHAUS AUTOMOTIVE\n${'═'.repeat(40)}\n\n${car.name.toUpperCase()}\n${car.subtitle}\n\nPrice: ${car.price}\n\nSPECIFICATIONS\n${'─'.repeat(30)}\nEngine: ${car.engine||'N/A'}\nPower: ${car.power}\n0-100: ${car.acceleration}\nTop Speed: ${car.top_speed_kmh||'N/A'} km/h\nTransmission: ${car.transmission||'N/A'}\nDrivetrain: ${car.drivetrain||'N/A'}\nSeats: ${car.seats||'N/A'}\nYear: ${car.year}\nOrigin: ${car.origin||'N/A'}\n\nDESCRIPTION\n${'─'.repeat(30)}\n${car.description}\n\n${'═'.repeat(40)}\nEdelhaus Automotive — The Art of Luxury\nContact us for pricing and availability.`;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `${car.name.replace(/\s+/g,'_')}_Brochure.txt`;
+    a.click();
+}
+
+function shareThis() {
+    if (navigator.share) {
+        navigator.share({ title: car.name, text: `${car.name} — ${car.price}`, url: window.location.href });
+    } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+    }
+}
+
+// ─── INIT ────────────────────────────────────────────────────────
+loadCar();
+</script>
+
+</body>
+</html>

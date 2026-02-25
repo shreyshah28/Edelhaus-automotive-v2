@@ -1,0 +1,2456 @@
+[
+  {
+    "id": 1,
+    "name": "Bentley Continental GT",
+    "subtitle": "British Luxury Grand Tourer",
+    "category": "sports",
+    "brand": "Bentley",
+    "badge": "GRAND TOURER",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": true,
+    "price": "₹3.20 Crore",
+    "price_usd": 248000,
+    "engine": "6.0L W12 Twin-Turbo",
+    "displacement": 5950,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "659 HP",
+    "power_hp": 659,
+    "torque_nm": 900,
+    "acceleration": "0-100: 3.6s",
+    "top_speed_kmh": 333,
+    "weight_kg": 2244,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 13,
+    "seats": 4,
+    "description": "The Bentley Continental GT is the ultimate expression of a Grand Tourer — combining breathtaking performance with handcrafted British luxury. Its W12 engine produces 659hp, catapulting it to 100km/h in just 3.6 seconds while wrapping occupants in hand-stitched leather and real wood veneers.",
+    "highlights": [
+      "Handcrafted W12 Engine",
+      "Rotating Dashboard Display",
+      "Naim Audio System",
+      "Air Suspension"
+    ],
+    "images": [
+      "BENTLY/BENTALY_CONTINENTAL_GT1.JPG",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Beluga Black",
+        "hex": "#0a0a0a",
+        "img": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Glacier White",
+        "hex": "#f0f0f0",
+        "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Silver Storm",
+        "hex": "#C0C0C0",
+        "img": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Mercedes AMG G63",
+    "subtitle": "Ultimate Luxury Off-Roader",
+    "category": "suv",
+    "brand": "Mercedes-Benz",
+    "badge": "LUXURY SUV",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Available",
+    "featured": true,
+    "price": "₹2.50 Crore",
+    "price_usd": 181000,
+    "engine": "4.0L V8 Biturbo",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "9-Speed Automatic",
+    "drivetrain": "4WD",
+    "power": "577 HP",
+    "power_hp": 577,
+    "torque_nm": 850,
+    "acceleration": "0-100: 4.5s",
+    "top_speed_kmh": 220,
+    "weight_kg": 2565,
+    "fuel_economy_city": 6,
+    "fuel_economy_highway": 10,
+    "seats": 5,
+    "description": "The G63 AMG is a living legend. Born on military roads in 1979, today's G-Wagen packs a 577hp twin-turbo V8 inside its iconic boxy body. Three locking differentials, portal axles and permanent 4WD make it unstoppable off-road, while the handcrafted Nappa leather interior rivals any luxury saloon.",
+    "highlights": [
+      "3 Differential Locks",
+      "Portal Axles",
+      "AMG Performance Exhaust",
+      "Widescreen Cockpit"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1520031441872-265e4ff70366?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1546614042-7df3c24c9e5d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Obsidian Black",
+        "hex": "#0D0D0D",
+        "img": "https://images.unsplash.com/photo-1520031441872-265e4ff70366?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "AMG Orange",
+        "hex": "#C3110C",
+        "img": "https://images.unsplash.com/photo-1546614042-7df3c24c9e5d?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Polar Silver",
+        "hex": "#C0C0C0",
+        "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Mercedes-Maybach S 680",
+    "subtitle": "Pinnacle of Automotive Luxury",
+    "category": "luxury",
+    "brand": "Mercedes-Benz",
+    "badge": "ULTRA LUXURY",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Exclusive",
+    "featured": true,
+    "price": "₹3.20 Crore",
+    "price_usd": 220000,
+    "engine": "6.0L V12 Biturbo",
+    "displacement": 5980,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "9G-TRONIC Automatic",
+    "drivetrain": "AWD",
+    "power": "621 HP",
+    "power_hp": 621,
+    "torque_nm": 1000,
+    "acceleration": "0-100: 4.5s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2395,
+    "fuel_economy_city": 6,
+    "fuel_economy_highway": 10,
+    "seats": 4,
+    "description": "The Mercedes-Maybach S 680 sits at the absolute apex of automotive luxury. The 600mm longer wheelbase over a standard S-Class transforms the rear cabin into a first-class suite — with reclining executive seats, champagne flutes, and Burmester 4D surround sound. The V12 engine delivers its 1,000 Nm of torque with a whisper.",
+    "highlights": [
+      "V12 Engine",
+      "Executive Rear Suite",
+      "Burmester 4D Audio",
+      "Magic Body Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Two-Tone Black/Silver",
+        "hex": "#2a2a2a",
+        "img": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Obsidian Black",
+        "hex": "#000000",
+        "img": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Range Rover SV",
+    "subtitle": "British Luxury SUV — Bespoke Edition",
+    "category": "suv",
+    "brand": "Range Rover",
+    "badge": "LUXURY SUV",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.75 Crore",
+    "price_usd": 200000,
+    "engine": "4.4L Twin-Turbo V8",
+    "displacement": 4395,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "523 HP",
+    "power_hp": 523,
+    "torque_nm": 750,
+    "acceleration": "0-100: 4.6s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2530,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 12,
+    "seats": 5,
+    "description": "The Range Rover SV is meticulously hand-finished by Land Rover's Special Vehicle Operations. Exclusive SV-only exterior palettes, ultra-fine Kvadrat wool upholstery, and a 35-speaker Meridian Signature audio system set it apart. Air suspension and Terrain Response 2 ensure peerless composure whether on Mayfair cobblestones or mountain passes.",
+    "highlights": [
+      "SV Bespoke Interior",
+      "Meridian Signature Audio",
+      "Terrain Response 2",
+      "Air Suspension"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519245659620-e859134f6123?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Santorini Black",
+        "hex": "#0a0a12",
+        "img": "https://images.unsplash.com/photo-1519245659620-e859134f6123?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Porsche 911 Turbo S",
+    "subtitle": "The Benchmark for Sports Cars",
+    "category": "sports",
+    "brand": "Porsche",
+    "badge": "SPORTS",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Premium",
+    "featured": true,
+    "price": "₹3.50 Crore",
+    "price_usd": 240000,
+    "engine": "3.8L Twin-Turbo Flat-6",
+    "displacement": 3745,
+    "cylinders": 6,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed PDK Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "650 HP",
+    "power_hp": 650,
+    "torque_nm": 800,
+    "acceleration": "0-100: 2.7s",
+    "top_speed_kmh": 330,
+    "weight_kg": 1640,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 4,
+    "description": "The 911 Turbo S is the all-weather supercar perfected over 55 years. Its rear-mounted flat-six breathes through twin turbos and 650hp launches it from standstill to 100km/h in 2.7 seconds — yet it remains comfortable enough for daily use. Porsche's Active Suspension Management and PCCB ceramic brakes make it as sharp as any track tool.",
+    "highlights": [
+      "PCCB Ceramic Brakes",
+      "Active Suspension Management",
+      "Sport Chrono Package",
+      "Rear-Axle Steering"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Racing Yellow",
+        "hex": "#FFD700",
+        "img": "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Carmine Red",
+        "hex": "#9D0000",
+        "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "GT Silver",
+        "hex": "#9EA0A3",
+        "img": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ferrari F8 Tributo",
+    "subtitle": "Italian Supercar Excellence",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "SUPERCAR",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Track Ready",
+    "featured": true,
+    "price": "₹4.20 Crore",
+    "price_usd": 300000,
+    "engine": "3.9L Twin-Turbo V8",
+    "displacement": 3902,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "RWD",
+    "power": "710 HP",
+    "power_hp": 710,
+    "torque_nm": 770,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 340,
+    "weight_kg": 1330,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 2,
+    "description": "The F8 Tributo is a tribute to Ferrari's most powerful V8 engine ever fitted to a mid-rear sports car. Its 3.9L twin-turbo produces 710hp with the immediacy of a naturally aspirated unit. The aerodynamic body — featuring the S-Duct from the 488 Pista — generates 50% more downforce than the 488 GTB it replaced.",
+    "highlights": [
+      "S-Duct Aerodynamics",
+      "Manettino Dial",
+      "Ferrari Dynamic Enhancer",
+      "Scuderia Shields"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Rosso Corsa",
+        "hex": "#ff2800",
+        "img": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Rolls-Royce Phantom",
+    "subtitle": "The Best Car in the World",
+    "category": "luxury",
+    "brand": "Rolls-Royce",
+    "badge": "ULTRA LUXURY",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Iconic",
+    "featured": false,
+    "price": "₹9.50 Crore",
+    "price_usd": 680000,
+    "engine": "6.75L Twin-Turbo V12",
+    "displacement": 6749,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Satellite Aided Automatic",
+    "drivetrain": "RWD",
+    "power": "563 HP",
+    "power_hp": 563,
+    "torque_nm": 900,
+    "acceleration": "0-100: 5.1s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2560,
+    "fuel_economy_city": 5,
+    "fuel_economy_highway": 8,
+    "seats": 5,
+    "description": "The Rolls-Royce Phantom is the definitive luxury car — a moving room of supreme comfort that has transported royalty, heads of state, and visionaries for over a century. Its aluminum space-frame is the stiffest body Rolls-Royce has ever built. The Gallery dashboard is a bespoke display case housing any object the owner desires, from art to cricket balls.",
+    "highlights": [
+      "Bespoke Gallery Dashboard",
+      "Starlight Headliner",
+      "Satellite Aided Gearbox",
+      "Magic Carpet Ride"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Andalusian White",
+        "hex": "#F5F5F0",
+        "img": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Rolls-Royce Ghost",
+    "subtitle": "Effortless Luxury in Motion",
+    "category": "luxury",
+    "brand": "Rolls-Royce",
+    "badge": "ULTRA LUXURY",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹7.95 Crore",
+    "price_usd": 570000,
+    "engine": "6.75L Twin-Turbo V12",
+    "displacement": 6749,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "563 HP",
+    "power_hp": 563,
+    "torque_nm": 840,
+    "acceleration": "0-100: 4.8s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2490,
+    "fuel_economy_city": 5,
+    "fuel_economy_highway": 8,
+    "seats": 5,
+    "description": "The Ghost is the most technologically sophisticated Rolls-Royce ever created. Its all-aluminum spaceframe architecture and AWD provide imperious refinement at any speed. Planar suspension with camera-based road preview delivers what Rolls-Royce calls 'Post Opulence' — a new kind of minimalist, intentional luxury.",
+    "highlights": [
+      "Planar Suspension System",
+      "Illuminated Fascia",
+      "Camera Road Preview",
+      "Bespoke Audio"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Salamanca Blue",
+        "hex": "#1a2e5a",
+        "img": "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Lamborghini Urus S",
+    "subtitle": "Super Sport Utility Vehicle",
+    "category": "suv",
+    "brand": "Lamborghini",
+    "badge": "SUPER SUV",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Available",
+    "featured": true,
+    "price": "₹4.20 Crore",
+    "price_usd": 290000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Torque Converter Automatic",
+    "drivetrain": "AWD",
+    "power": "666 HP",
+    "power_hp": 666,
+    "torque_nm": 850,
+    "acceleration": "0-100: 3.5s",
+    "top_speed_kmh": 305,
+    "weight_kg": 2197,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 5,
+    "description": "The Urus S is the first Super Sport Utility Vehicle — proving that performance and versatility need not be a compromise. With 666hp, it sprints to 100km/h in 3.5 seconds and reaches 305km/h, yet handles ski slopes, city streets and race circuits with equal confidence. ANIMA selector offers Strada, Sport, Corsa, Neve, Terra and Sabbia modes.",
+    "highlights": [
+      "ANIMA Selector (6 Modes)",
+      "Rear-Axle Steering",
+      "Carbon Ceramic Brakes",
+      "Akrapovič Exhaust"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Giallo Auge",
+        "hex": "#E8B400",
+        "img": "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Lamborghini Huracán EVO",
+    "subtitle": "V10 Naturally Aspirated Perfection",
+    "category": "sports",
+    "brand": "Lamborghini",
+    "badge": "SUPERCAR",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Reserved",
+    "featured": false,
+    "price": "₹3.73 Crore",
+    "price_usd": 270000,
+    "engine": "5.2L Naturally Aspirated V10",
+    "displacement": 5204,
+    "cylinders": 10,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed LDF Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "640 HP",
+    "power_hp": 640,
+    "torque_nm": 600,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 325,
+    "weight_kg": 1422,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 2,
+    "description": "The Huracán EVO is the distillation of Lamborghini's V10 legacy. Its 5.2L naturally aspirated engine is an aural masterpiece — screaming to 8,500rpm. The Lamborghini Dinamica Veicolo Integrata (LDVI) brain integrates all dynamics systems into one predictive intelligence, making the car an extension of the driver's instinct.",
+    "highlights": [
+      "LDVI Integrated Dynamics",
+      "Naturally Aspirated V10",
+      "ALA Aerodynamics",
+      "LPI AWD System"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Arancio Borealis",
+        "hex": "#FF6000",
+        "img": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Porsche 918 Spyder",
+    "subtitle": "Hybrid Hypercar — 1 of 918",
+    "category": "sports",
+    "brand": "Porsche",
+    "badge": "HYPERCAR",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹13.80 Crore",
+    "price_usd": 1100000,
+    "engine": "4.6L V8 + 2 Electric Motors",
+    "displacement": 4593,
+    "cylinders": 8,
+    "fuel_type": "Hybrid",
+    "transmission": "7-Speed PDK Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "887 HP",
+    "power_hp": 887,
+    "torque_nm": 1280,
+    "acceleration": "0-100: 2.6s",
+    "top_speed_kmh": 345,
+    "weight_kg": 1674,
+    "fuel_economy_city": 14,
+    "fuel_economy_highway": 16,
+    "seats": 2,
+    "description": "The 918 Spyder is one of the most significant supercars ever made. Limited to just 918 units, this hybrid hypercar combines a 608hp V8 with two electric motors for a combined 887hp. It lapped the Nürburgring Nordschleife in 6:57 when launched, smashing the lap record. The 918 proved hybrid technology could enhance, not hinder, supercar performance.",
+    "highlights": [
+      "Nürburgring Record Holder",
+      "Weissach Package",
+      "E-Drive Mode",
+      "CFRP Monocoque"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Liquid Metal Silver",
+        "hex": "#9EA0A3",
+        "img": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Arrow Grey",
+        "hex": "#5B5E62",
+        "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Porsche 911 GT3 RS",
+    "subtitle": "The Closest Thing to a Race Car for the Road",
+    "category": "sports",
+    "brand": "Porsche",
+    "badge": "TRACK",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Reserved",
+    "featured": false,
+    "price": "₹3.10 Crore",
+    "price_usd": 225000,
+    "engine": "4.0L Naturally Aspirated Flat-6",
+    "displacement": 3996,
+    "cylinders": 6,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed PDK Dual-Clutch",
+    "drivetrain": "RWD",
+    "power": "518 HP",
+    "power_hp": 518,
+    "torque_nm": 465,
+    "acceleration": "0-100: 3.2s",
+    "top_speed_kmh": 296,
+    "weight_kg": 1450,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The GT3 RS is the most extreme, driver-focused 911 ever made for the road. Its naturally aspirated flat-six revs to 9,000rpm with an intoxicating soundtrack. The swan-neck rear wing and front splitter generate over 860kg of downforce at top speed — more than its own bodyweight. Weissach Package saves a further 15kg.",
+    "highlights": [
+      "9,000rpm Flat-6",
+      "DRS Rear Wing",
+      "860kg Downforce",
+      "Fully Adjustable Suspension"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Python Green",
+        "hex": "#4a7c3f",
+        "img": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Shark Blue",
+        "hex": "#1e3f6e",
+        "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "McLaren Artura Spider",
+    "subtitle": "High-Performance Hybrid Supercar",
+    "category": "sports",
+    "brand": "McLaren",
+    "badge": "SUPERCAR",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Exclusive",
+    "featured": false,
+    "price": "₹2.80 Crore",
+    "price_usd": 220000,
+    "engine": "3.0L V6 Twin-Turbo + Electric Motor",
+    "displacement": 2994,
+    "cylinders": 6,
+    "fuel_type": "Hybrid",
+    "transmission": "8-Speed Seamless Shift Gearbox",
+    "drivetrain": "RWD",
+    "power": "700 HP",
+    "power_hp": 700,
+    "torque_nm": 720,
+    "acceleration": "0-100: 3.0s",
+    "top_speed_kmh": 330,
+    "weight_kg": 1388,
+    "fuel_economy_city": 11,
+    "fuel_economy_highway": 16,
+    "seats": 2,
+    "description": "The Artura Spider is McLaren's first series-production High-Performance Hybrid, now open to the sky. Its new twin-turbo V6 pairs with an axial flux electric motor for instant, linear power delivery. The carbon fibre MonoCell III-T chassis delivers breathtaking rigidity while keeping weight to an astonishing 1,388kg.",
+    "highlights": [
+      "MonoCell III-T Carbon Chassis",
+      "Axial Flux E-Motor",
+      "Electrochromic Roof",
+      "Proactive Chassis Control II"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Papaya Spark",
+        "hex": "#FF6B35",
+        "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Storm Grey",
+        "hex": "#6E7B8B",
+        "img": "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "McLaren 720S",
+    "subtitle": "Supercar Architecture Redefined",
+    "category": "sports",
+    "brand": "McLaren",
+    "badge": "SUPERCAR",
+    "origin": "United Kingdom",
+    "year": "2023",
+    "status": "Sold",
+    "featured": false,
+    "price": "₹4.67 Crore",
+    "price_usd": 315000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3994,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed Seamless Shift Gearbox",
+    "drivetrain": "RWD",
+    "power": "720 HP",
+    "power_hp": 720,
+    "torque_nm": 770,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 341,
+    "weight_kg": 1283,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The 720S introduced a revolutionary new design philosophy at McLaren — the Monocage II carbon fibre tub with distinctive upper structure and dihedral doors. Active Dynamics Panel gives three modes with separate Powertrain and Handling settings. Variable Drift Control lets skilled drivers catch and hold oversteer angles with precision.",
+    "highlights": [
+      "Monocage II Carbon Tub",
+      "Dihedral Doors",
+      "Variable Drift Control",
+      "Active Dynamics Panel"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Papaya Orange",
+        "hex": "#FF7A00",
+        "img": "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Ferrari Purosangue",
+    "subtitle": "Ferrari's First SUV — Pure Blood",
+    "category": "suv",
+    "brand": "Ferrari",
+    "badge": "LUXURY SUV",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Exclusive",
+    "featured": true,
+    "price": "₹9.50 Crore",
+    "price_usd": 660000,
+    "engine": "6.5L Naturally Aspirated V12",
+    "displacement": 6496,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "715 HP",
+    "power_hp": 715,
+    "torque_nm": 716,
+    "acceleration": "0-100: 3.3s",
+    "top_speed_kmh": 310,
+    "weight_kg": 2033,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 4,
+    "description": "Ferrari insists the Purosangue is not an SUV — it is a Ferrari. Its front-mid mounted V12 positioned behind the front axle for perfect 49:51 weight distribution. Rear-hinged back doors open coach-style to reveal a genuine 4-seat cabin. The naturally aspirated V12 revs to 8,250rpm and sings like nothing else in the segment.",
+    "highlights": [
+      "Front-Mid V12",
+      "Coach Doors",
+      "Active Suspension",
+      "Ferrari Stability Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Rosso Imola",
+        "hex": "#A50000",
+        "img": "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Bugatti Chiron",
+    "subtitle": "The Most Powerful Production Car Ever",
+    "category": "sports",
+    "brand": "Bugatti",
+    "badge": "HYPERCAR",
+    "origin": "France",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹25.00 Crore",
+    "price_usd": 3000000,
+    "engine": "8.0L Quad-Turbo W16",
+    "displacement": 7993,
+    "cylinders": 16,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed DSG Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "1500 HP",
+    "power_hp": 1500,
+    "torque_nm": 1600,
+    "acceleration": "0-100: 2.4s",
+    "top_speed_kmh": 420,
+    "weight_kg": 1996,
+    "fuel_economy_city": 3,
+    "fuel_economy_highway": 5,
+    "seats": 2,
+    "description": "The Bugatti Chiron is the most powerful, fastest, most luxurious and most exclusive production super sports car in Bugatti's history. Its 8.0-litre W16 engine with four turbochargers produces 1,500hp and 1,600Nm of torque — figures that require four radiators, ten separate cooling circuits, and 100 litres of fuel per 100 kilometres at full throttle.",
+    "highlights": [
+      "W16 Quad-Turbo Engine",
+      "1,600Nm Torque",
+      "420km/h Electronically Limited",
+      "Monocoque Carbon Shell"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Chiron Blue",
+        "hex": "#003399",
+        "img": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Aston Martin DB12",
+    "subtitle": "The World's First Super Tourer",
+    "category": "sports",
+    "brand": "Aston Martin",
+    "badge": "GRAND TOURER",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹4.59 Crore",
+    "price_usd": 245000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "RWD",
+    "power": "671 HP",
+    "power_hp": 671,
+    "torque_nm": 800,
+    "acceleration": "0-100: 3.6s",
+    "top_speed_kmh": 325,
+    "weight_kg": 1685,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 4,
+    "description": "Aston Martin describes the DB12 as the world's first 'Super Tourer' — transcending both the GT and sports car categories. The AMG-sourced 4.0L twin-turbo V8 produces 671hp in a new state of tune. Three drive modes — GT, Sport, Sport+ — adjust the character of the adaptive damping, electronic differential and throttle response.",
+    "highlights": [
+      "AMG-Sourced V8",
+      "Adaptive Damping",
+      "Aston Martin Audio",
+      "Full Leather Interior"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1555353540-64580b51c258?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Lunar White",
+        "hex": "#F0F0F0",
+        "img": "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Aston Martin DBX 707",
+    "subtitle": "The World's Most Powerful Luxury SUV",
+    "category": "suv",
+    "brand": "Aston Martin",
+    "badge": "LUXURY SUV",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹4.73 Crore",
+    "price_usd": 241000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "9-Speed Wet-Clutch Automatic",
+    "drivetrain": "AWD",
+    "power": "707 HP",
+    "power_hp": 707,
+    "torque_nm": 900,
+    "acceleration": "0-100: 3.3s",
+    "top_speed_kmh": 310,
+    "weight_kg": 2245,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 5,
+    "description": "The DBX707 is the result of Aston Martin's engineers extracting maximum performance from the DBX platform. The same AMG-sourced 4.0L V8 now produces 707hp — 155hp more than the standard DBX. A new 9-speed wet-clutch transmission fires off gear changes in 60 milliseconds. Carbon ceramic brakes are standard.",
+    "highlights": [
+      "707hp AMG V8",
+      "Carbon Ceramic Brakes",
+      "Sport+ Mode",
+      "Active Roll Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555353540-64580b51c258?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1519245659620-e859134f6123?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Iridescent Emerald",
+        "hex": "#1a6b44",
+        "img": "https://images.unsplash.com/photo-1555353540-64580b51c258?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "BMW M8 Competition",
+    "subtitle": "The Ultimate Driving Machine — Gran Coupe",
+    "category": "sports",
+    "brand": "BMW",
+    "badge": "PERFORMANCE",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.15 Crore",
+    "price_usd": 140000,
+    "engine": "4.4L Twin-Turbo V8",
+    "displacement": 4395,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed M Steptronic",
+    "drivetrain": "AWD",
+    "power": "625 HP",
+    "power_hp": 625,
+    "torque_nm": 750,
+    "acceleration": "0-100: 3.2s",
+    "top_speed_kmh": 305,
+    "weight_kg": 1940,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 13,
+    "seats": 4,
+    "description": "The M8 Competition Gran Coupé is BMW's most powerful series-production model. Its S63 twin-turbo V8 produces 625hp with an 8,500rpm redline. The electronically controlled M xDrive AWD system can send 100% of drive to the rear when desired. The cabin seats four in sport seats with full M Carbon interior trim.",
+    "highlights": [
+      "S63 High-Rev V8",
+      "M xDrive AWD",
+      "M Carbon Interior",
+      "Active M Differential"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Frozen Marina Bay Blue",
+        "hex": "#1a3a5c",
+        "img": "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "BMW XM",
+    "subtitle": "Extreme Performance SUV — M First",
+    "category": "suv",
+    "brand": "BMW",
+    "badge": "SUPER SUV",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.25 Crore",
+    "price_usd": 160000,
+    "engine": "4.4L V8 Hybrid",
+    "displacement": 4395,
+    "cylinders": 8,
+    "fuel_type": "Plug-in Hybrid",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "653 HP",
+    "power_hp": 653,
+    "torque_nm": 800,
+    "acceleration": "0-100: 4.3s",
+    "top_speed_kmh": 270,
+    "weight_kg": 2740,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 15,
+    "seats": 5,
+    "description": "The BMW XM is the first standalone M model since the M1 supercar of 1978. Its plug-in hybrid powertrain combines the S68 twin-turbo V8 with an electric motor for 653hp. The XM Label Red takes this to 748hp. Adaptive M suspension, M Servotronic steering and rear-axle steering give agility well beyond its considerable size.",
+    "highlights": [
+      "First Standalone M Since M1",
+      "Plug-in Hybrid",
+      "Rear-Axle Steering",
+      "M Adaptive Suspension"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Storm Bay",
+        "hex": "#2a3d4e",
+        "img": "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Audi RS7 Sportback",
+    "subtitle": "Five-Door Fastback Performance Saloon",
+    "category": "luxury",
+    "brand": "Audi",
+    "badge": "PERFORMANCE",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹1.67 Crore",
+    "price_usd": 120000,
+    "engine": "4.0L Twin-Turbo V8 MHEV",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Mild Hybrid",
+    "transmission": "8-Speed Tiptronic",
+    "drivetrain": "AWD",
+    "power": "621 HP",
+    "power_hp": 621,
+    "torque_nm": 800,
+    "acceleration": "0-100: 3.6s",
+    "top_speed_kmh": 305,
+    "weight_kg": 2100,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 5,
+    "description": "The RS7 Sportback is a design icon — its fastback roofline creates one of the most distinctive silhouettes in the segment. The mild-hybrid twin-turbo V8 can deactivate four cylinders under light loads for efficiency. Adaptive air suspension, 48V mild hybrid system, and Audi's legendary quattro AWD blend into an effortlessly rapid everyday car.",
+    "highlights": [
+      "Iconic Fastback Design",
+      "quattro AWD",
+      "Adaptive Air Suspension",
+      "RS Sport Exhaust"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Daytona Grey",
+        "hex": "#4a4e52",
+        "img": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Audi R8 V10 GT RWD",
+    "subtitle": "Final Chapter — V10 Swan Song",
+    "category": "sports",
+    "brand": "Audi",
+    "badge": "SUPERCAR",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Exclusive",
+    "featured": false,
+    "price": "₹2.78 Crore",
+    "price_usd": 200000,
+    "engine": "5.2L Naturally Aspirated V10",
+    "displacement": 5204,
+    "cylinders": 10,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed S Tronic Dual-Clutch",
+    "drivetrain": "RWD",
+    "power": "620 HP",
+    "power_hp": 620,
+    "torque_nm": 580,
+    "acceleration": "0-100: 3.4s",
+    "top_speed_kmh": 329,
+    "weight_kg": 1530,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The R8 GT RWD is Audi's final farewell to its legendary naturally aspirated V10 engine. Limited to 333 units globally, it is the purest, most driver-focused R8 ever made — stripped of quattro AWD in favour of rear-wheel drive for a more engaging experience. Front storage, rear seats and the retractable spoiler are all removed to save weight.",
+    "highlights": [
+      "333 Units Worldwide",
+      "V10 NA Last Edition",
+      "RWD Configuration",
+      "Diamond-Stitched Interior"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Kemora Grey",
+        "hex": "#6a6e72",
+        "img": "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Bentley Bentayga EWB",
+    "subtitle": "Extended Wheelbase — First Class Cabin",
+    "category": "suv",
+    "brand": "Bentley",
+    "badge": "ULTRA LUXURY SUV",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹5.50 Crore",
+    "price_usd": 400000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "550 HP",
+    "power_hp": 550,
+    "torque_nm": 770,
+    "acceleration": "0-100: 4.6s",
+    "top_speed_kmh": 290,
+    "weight_kg": 2575,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 4,
+    "description": "The Bentayga EWB's extra 180mm of wheelbase is devoted entirely to rear-passenger comfort. The Airline Seat specification reclines to near-horizontal with an extending footrest, and the Bentley Diamond Series massage programme targets 177 individual pressure points. All-season active body roll control means it never feels its weight in corners.",
+    "highlights": [
+      "Airline Seat Specification",
+      "180mm Extended Wheelbase",
+      "Active Body Roll Control",
+      "Bentley Rotating Display"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Verdant",
+        "hex": "#2d5a3d",
+        "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Range Rover Sport SVR",
+    "subtitle": "Fastest Production Land Rover",
+    "category": "suv",
+    "brand": "Range Rover",
+    "badge": "PERFORMANCE SUV",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹1.99 Crore",
+    "price_usd": 145000,
+    "engine": "5.0L Supercharged V8",
+    "displacement": 4999,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "575 HP",
+    "power_hp": 575,
+    "torque_nm": 700,
+    "acceleration": "0-100: 4.5s",
+    "top_speed_kmh": 280,
+    "weight_kg": 2370,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 5,
+    "description": "The Range Rover Sport SVR is the car that proved a performance SUV could lap the Nürburgring seriously quickly. Its supercharged 5.0L V8 bellows through the Active Sports Exhaust while Torque Vectoring by Braking ensures the front end responds precisely. Carbon fibre bonnet and roof reduce unsprung mass and improve the centre of gravity.",
+    "highlights": [
+      "Supercharged V8",
+      "Active Sports Exhaust",
+      "Torque Vectoring",
+      "Carbon Fibre Accents"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1519245659620-e859134f6123?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Estoril Blue",
+        "hex": "#1B3A6B",
+        "img": "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Porsche Cayenne Turbo GT",
+    "subtitle": "Track Record Holder in its Class",
+    "category": "suv",
+    "brand": "Porsche",
+    "badge": "PERFORMANCE SUV",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.45 Crore",
+    "price_usd": 185000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Tiptronic S",
+    "drivetrain": "AWD",
+    "power": "650 HP",
+    "power_hp": 650,
+    "torque_nm": 850,
+    "acceleration": "0-100: 3.3s",
+    "top_speed_kmh": 300,
+    "weight_kg": 2175,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 4,
+    "description": "The Cayenne Turbo GT is the most powerful and fastest Cayenne ever built — and holds the Nürburgring-Nordschleife lap record for SUVs. The twin-turbo V8 produces 650hp in a special tune, while Porsche Active Suspension Management with a 17mm lower ride height, wider track and recalibrated PDCC provide handling far beyond its class.",
+    "highlights": [
+      "Nürburgring SUV Record",
+      "PDCC Anti-Roll System",
+      "Titanium Roll Bars",
+      "Sports Exhaust"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Frozen Blue",
+        "hex": "#1e3d5c",
+        "img": "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Mercedes-AMG SL 63",
+    "subtitle": "Grand Roadster Reimagined by AMG",
+    "category": "sports",
+    "brand": "Mercedes-Benz",
+    "badge": "GRAND TOURER",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.55 Crore",
+    "price_usd": 185000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "9-Speed AMG Speedshift MCT",
+    "drivetrain": "AWD",
+    "power": "585 HP",
+    "power_hp": 585,
+    "torque_nm": 800,
+    "acceleration": "0-100: 3.6s",
+    "top_speed_kmh": 315,
+    "weight_kg": 1870,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 4,
+    "description": "For the first time, AMG has developed the new SL entirely in-house, making it a true AMG car from concept to production. The return of a fabric soft top for the first time since 2012 opens in 15 seconds at speeds up to 60km/h. The ACTIVE RIDE CONTROL suspension with integral active anti-roll bars provides extraordinary handling for a 2+2 roadster.",
+    "highlights": [
+      "AMG-Developed From Scratch",
+      "Fabric Soft Top",
+      "Active Ride Control",
+      "2+2 Configuration"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Patagonia Red",
+        "hex": "#8B1A1A",
+        "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Mercedes-AMG GT Black Series",
+    "subtitle": "The Most Extreme AMG Road Car Ever",
+    "category": "sports",
+    "brand": "Mercedes-Benz",
+    "badge": "TRACK",
+    "origin": "Germany",
+    "year": "2023",
+    "status": "Reserved",
+    "featured": false,
+    "price": "₹3.90 Crore",
+    "price_usd": 330000,
+    "engine": "4.0L Flat-Plane Twin-Turbo V8",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed Dual-Clutch",
+    "drivetrain": "RWD",
+    "power": "730 HP",
+    "power_hp": 730,
+    "torque_nm": 800,
+    "acceleration": "0-100: 3.2s",
+    "top_speed_kmh": 325,
+    "weight_kg": 1625,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 2,
+    "description": "The GT Black Series is the most extreme and exclusive Black Series AMG has ever created. Its flat-plane crankshaft V8 revs to 7,200rpm — producing 730hp and an F1-derived soundtrack. The fixed carbon rear wing generates massive downforce, while the adjustable front splitter lets drivers fine-tune aerodynamic balance between road and track.",
+    "highlights": [
+      "Flat-Plane V8",
+      "F1-Derived Aero",
+      "Adjustable Front Splitter",
+      "Titanium Roll Cage"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "High-Tech Silver",
+        "hex": "#9EA0A3",
+        "img": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Bentley Flying Spur",
+    "subtitle": "The Most Sporting Bentley Saloon",
+    "category": "luxury",
+    "brand": "Bentley",
+    "badge": "LUXURY SEDAN",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹3.50 Crore",
+    "price_usd": 220000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "550 HP",
+    "power_hp": 550,
+    "torque_nm": 770,
+    "acceleration": "0-100: 4.0s",
+    "top_speed_kmh": 318,
+    "weight_kg": 2437,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 5,
+    "description": "The Flying Spur is the most sporting saloon Bentley has ever made, yet remains every inch a luxury car. The optional V8 provides a more engaging, dynamic character than the W12, while the new all-wheel steering system pivots the rear wheels to dramatically improve agility. The Mood Lighting system offers 45,000 colour combinations.",
+    "highlights": [
+      "All-Wheel Steering",
+      "45,000 Lighting Colours",
+      "Rotating Bentley Display",
+      "Handcrafted Interior"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Viridian",
+        "hex": "#1a4a3a",
+        "img": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Ferrari 812 Superfast",
+    "subtitle": "The Most Powerful Naturally Aspirated Ferrari",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "SUPERCAR",
+    "origin": "Italy",
+    "year": "2023",
+    "status": "Reserved",
+    "featured": false,
+    "price": "₹5.20 Crore",
+    "price_usd": 400000,
+    "engine": "6.5L Naturally Aspirated V12",
+    "displacement": 6496,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "RWD",
+    "power": "789 HP",
+    "power_hp": 789,
+    "torque_nm": 718,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 340,
+    "weight_kg": 1525,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 2,
+    "description": "The 812 Superfast is the fastest, most powerful naturally aspirated front-engined Ferrari in history. Its 6.5L V12 revs to 8,900rpm — a number that seemed impossible for an engine of this displacement. The engine sound at full throttle is widely regarded as the greatest noise a production road car makes. Electric Power Steering assists the driver with Virtual Short Wheelbase technology.",
+    "highlights": [
+      "8,900rpm V12",
+      "Virtual Short Wheelbase",
+      "EPS with IBC",
+      "Aero Underbody"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Giallo Modena",
+        "hex": "#FFD700",
+        "img": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Pagani Huayra BC Roadster",
+    "subtitle": "Italian Hand-Crafted Art — Open Air",
+    "category": "sports",
+    "brand": "Pagani",
+    "badge": "HYPERCAR",
+    "origin": "Italy",
+    "year": "2023",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹18.00 Crore",
+    "price_usd": 2700000,
+    "engine": "6.0L Twin-Turbo V12 AMG",
+    "displacement": 5980,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed Sequential Manual",
+    "drivetrain": "RWD",
+    "power": "791 HP",
+    "power_hp": 791,
+    "torque_nm": 1050,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 370,
+    "weight_kg": 1250,
+    "fuel_economy_city": 5,
+    "fuel_economy_highway": 8,
+    "seats": 2,
+    "description": "The Huayra BC Roadster is perhaps the most beautiful object in automotive history. Each car is hand-built by a team of craftsmen at Pagani's factory in San Cesario sul Panaro — a process taking over a year. The Carbo-Titanium and Carbo-Triax HP62 chassis is lighter than steel yet stronger than aluminium. The AMG V12 bi-turbo has been developed exclusively for Pagani.",
+    "highlights": [
+      "Hand-Built 1+ Year",
+      "AMG Exclusive V12",
+      "Carbo-Titanium Chassis",
+      "Active Aerodynamics"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Bespoke Silver",
+        "hex": "#B0B0B0",
+        "img": "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Mercedes-Benz S 580",
+    "subtitle": "The Benchmark of Luxury Saloons",
+    "category": "luxury",
+    "brand": "Mercedes-Benz",
+    "badge": "LUXURY SEDAN",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹1.60 Crore",
+    "price_usd": 125000,
+    "engine": "4.0L Twin-Turbo V8 MHEV",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Mild Hybrid",
+    "transmission": "9G-TRONIC Automatic",
+    "drivetrain": "AWD",
+    "power": "503 HP",
+    "power_hp": 503,
+    "torque_nm": 700,
+    "acceleration": "0-100: 4.4s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2185,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 14,
+    "seats": 5,
+    "description": "The S-Class has defined automotive luxury for 75 years. The current generation introduces MBUX Hyperscreen — a 141cm curved display housing three screens under a single piece of glass. E-ACTIVE BODY CONTROL suspension with a camera-based road preview reads the tarmac ahead and adjusts each wheel independently before hitting a bump.",
+    "highlights": [
+      "MBUX Hyperscreen",
+      "E-ACTIVE Body Control",
+      "4D Burmester Audio",
+      "Rear Axle Steering"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Diamond White",
+        "hex": "#F5F5F5",
+        "img": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Porsche Panamera Turbo S E-Hybrid",
+    "subtitle": "918hp Four-Door Executive Sports Car",
+    "category": "luxury",
+    "brand": "Porsche",
+    "badge": "PERFORMANCE SEDAN",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.38 Crore",
+    "price_usd": 200000,
+    "engine": "4.0L Twin-Turbo V8 + Electric Motor",
+    "displacement": 3996,
+    "cylinders": 8,
+    "fuel_type": "Plug-in Hybrid",
+    "transmission": "8-Speed PDK Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "918 HP",
+    "power_hp": 918,
+    "torque_nm": 1100,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 315,
+    "weight_kg": 2295,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 15,
+    "seats": 4,
+    "description": "The new Panamera Turbo S E-Hybrid produces 918hp — the same figure as Porsche's legendary 918 Spyder hypercar. Its combined system output of 1,100Nm enables a 0-100km/h time of just 2.9 seconds, while up to 100km of electric range makes it a genuinely usable daily driver. Rear-axle steering, PDCC active roll stabilisation and PASM are all standard.",
+    "highlights": [
+      "918hp Combined Output",
+      "100km Electric Range",
+      "Rear-Axle Steering",
+      "Porsche Dynamic Chassis Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Gentian Blue",
+        "hex": "#1a2a5a",
+        "img": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Ferrari Roma",
+    "subtitle": "La Nuova Dolce Vita — Grand Tourer",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "GRAND TOURER",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹3.85 Crore",
+    "price_usd": 290000,
+    "engine": "3.9L Twin-Turbo V8",
+    "displacement": 3855,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed DCT",
+    "drivetrain": "RWD",
+    "power": "612 HP",
+    "power_hp": 612,
+    "torque_nm": 760,
+    "acceleration": "0-100: 3.4s",
+    "top_speed_kmh": 320,
+    "weight_kg": 1472,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The Roma embodies the carefree attitude and pleasurable lifestyle of 1950s and 1960s Rome. Its design is intentionally restrained — no scoops, wings or visual aggression — yet it produces 612hp and reaches 320km/h. The 2+ seating configuration and generous boot make it Ferrari's most usable road car. The Side Slip Control 7.0 system enables smooth, controlled oversteer.",
+    "highlights": [
+      "Side Slip Control 7.0",
+      "Manettino Steering Dial",
+      "Digital Analogue Interface",
+      "Folding Hardtop"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Grigio Ingrid",
+        "hex": "#8A8A8A",
+        "img": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Rolls-Royce Cullinan",
+    "subtitle": "The Ultimate Luxury SUV",
+    "category": "suv",
+    "brand": "Rolls-Royce",
+    "badge": "ULTRA LUXURY SUV",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Iconic",
+    "featured": false,
+    "price": "₹11.00 Crore",
+    "price_usd": 800000,
+    "engine": "6.75L Twin-Turbo V12",
+    "displacement": 6749,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "563 HP",
+    "power_hp": 563,
+    "torque_nm": 850,
+    "acceleration": "0-100: 5.2s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2660,
+    "fuel_economy_city": 5,
+    "fuel_economy_highway": 8,
+    "seats": 5,
+    "description": "The Cullinan is the most luxurious, most capable all-road vehicle ever created. Named after the largest gem-quality rough diamond ever found, it brings the Rolls-Royce 'Magic Carpet Ride' to any terrain. The Viewing Suite option replaces the third row with two rear-facing seats and a viewing deck — perfect for polo, opera or racing.",
+    "highlights": [
+      "Magic Carpet Ride",
+      "Optional Viewing Suite",
+      "All-Terrain Capability",
+      "Bespoke Audio"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Bespoke Teal",
+        "hex": "#1a5c5c",
+        "img": "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "BMW M5 Competition",
+    "subtitle": "The Definitive Sports Saloon",
+    "category": "luxury",
+    "brand": "BMW",
+    "badge": "PERFORMANCE SEDAN",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹1.55 Crore",
+    "price_usd": 117000,
+    "engine": "4.4L Twin-Turbo V8",
+    "displacement": 4395,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed M Steptronic",
+    "drivetrain": "AWD",
+    "power": "627 HP",
+    "power_hp": 627,
+    "torque_nm": 750,
+    "acceleration": "0-100: 3.3s",
+    "top_speed_kmh": 305,
+    "weight_kg": 1985,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 13,
+    "seats": 5,
+    "description": "The M5 Competition has defined the performance saloon category for over 35 years. The S63 V8 produces 627hp and can send all that power to the rear wheels only — disabling 4WD for proper driver engagement. An optional M Driver's Package raises the electronically limited top speed to 305km/h. Adaptive M suspension, M Carbon brakes and M Carbon bucket seats are available.",
+    "highlights": [
+      "S63 High-Rev V8",
+      "2WD/4WD Toggle",
+      "M Driver's Package",
+      "Adaptive M Suspension"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Frozen Marina Blue",
+        "hex": "#1B3A5E",
+        "img": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "McLaren 765LT Spider",
+    "subtitle": "Longtail Racer — Open Air",
+    "category": "sports",
+    "brand": "McLaren",
+    "badge": "TRACK",
+    "origin": "United Kingdom",
+    "year": "2023",
+    "status": "Exclusive",
+    "featured": false,
+    "price": "₹5.96 Crore",
+    "price_usd": 420000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3994,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "7-Speed Seamless Shift Gearbox",
+    "drivetrain": "RWD",
+    "power": "765 HP",
+    "power_hp": 765,
+    "torque_nm": 800,
+    "acceleration": "0-100: 2.8s",
+    "top_speed_kmh": 330,
+    "weight_kg": 1339,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The 765LT Spider combines the most powerful Longtail engine ever fitted to a McLaren with the freedom of open-top motoring. Limited to just 765 units, it weighs just 1,339kg — lighter than the Coupé thanks to Electrochromic glass replacing the fixed panel. Titanium exhaust, carbon-carbon brakes and carbon fibre seats are standard.",
+    "highlights": [
+      "765 Units Worldwide",
+      "Electrochromic Glass Roof",
+      "Carbon-Carbon Brakes",
+      "Titanium Exhaust"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Lantana Purple",
+        "hex": "#7B2FBE",
+        "img": "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Ferrari SF90 Stradale",
+    "subtitle": "Ferrari's Flagship Hybrid — 986hp",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "HYPERCAR",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹7.80 Crore",
+    "price_usd": 620000,
+    "engine": "4.0L Twin-Turbo V8 + 3 Electric Motors",
+    "displacement": 3990,
+    "cylinders": 8,
+    "fuel_type": "Plug-in Hybrid",
+    "transmission": "8-Speed F1 DCT",
+    "drivetrain": "AWD",
+    "power": "986 HP",
+    "power_hp": 986,
+    "torque_nm": 900,
+    "acceleration": "0-100: 2.5s",
+    "top_speed_kmh": 340,
+    "weight_kg": 1570,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 14,
+    "seats": 2,
+    "description": "The SF90 Stradale is the most powerful series-production Ferrari ever made. Three electric motors combine with the twin-turbo V8 to produce 986hp — enough to lap Fiorano in 1:19, beating the LaFerrari. In full electric mode, it can travel 25km at speeds up to 135km/h. The eManettino adds four powertrain modes: eDrive, Hybrid, Performance, and Qualify.",
+    "highlights": [
+      "986hp Combined Output",
+      "eManettino System",
+      "Fiorano Record Lap",
+      "3 Electric Motors"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Rosso Fuoco",
+        "hex": "#CC0000",
+        "img": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Lamborghini Revuelto",
+    "subtitle": "Hybrid V12 — Aventador Successor",
+    "category": "sports",
+    "brand": "Lamborghini",
+    "badge": "HYPERCAR",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹12.00 Crore",
+    "price_usd": 980000,
+    "engine": "6.5L Naturally Aspirated V12 + 3 Electric Motors",
+    "displacement": 6498,
+    "cylinders": 12,
+    "fuel_type": "Hybrid",
+    "transmission": "8-Speed DCT",
+    "drivetrain": "AWD",
+    "power": "1001 HP",
+    "power_hp": 1001,
+    "torque_nm": 730,
+    "acceleration": "0-100: 2.5s",
+    "top_speed_kmh": 350,
+    "weight_kg": 1772,
+    "fuel_economy_city": 8,
+    "fuel_economy_highway": 12,
+    "seats": 2,
+    "description": "The Revuelto is the first Lamborghini with 1,000+ horsepower and the first V12 Lambo to use a hybrid system. Three electric motors — two on the front axle, one integrated in the gearbox — combine with the naturally aspirated V12 for 1,001hp. The new 8-speed dual-clutch replaces the ISR gearbox for dramatically improved gear change speed.",
+    "highlights": [
+      "1,001hp Combined",
+      "3 Electric Motors",
+      "First V12 Lamborghini Hybrid",
+      "New DCT Gearbox"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Verde Scandal",
+        "hex": "#1a8a1a",
+        "img": "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Aston Martin Vantage F1 Edition",
+    "subtitle": "Official F1 Safety Car — Road Version",
+    "category": "sports",
+    "brand": "Aston Martin",
+    "badge": "PERFORMANCE",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹3.17 Crore",
+    "price_usd": 200000,
+    "engine": "4.0L Twin-Turbo V8",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed ZF Automatic",
+    "drivetrain": "RWD",
+    "power": "528 HP",
+    "power_hp": 528,
+    "torque_nm": 685,
+    "acceleration": "0-100: 3.5s",
+    "top_speed_kmh": 314,
+    "weight_kg": 1570,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 14,
+    "seats": 2,
+    "description": "The Vantage F1 Edition is the road-going version of the FIA Formula 1 Safety Car used at every Grand Prix. It features bespoke high-downforce aerodynamics, an enhanced sports exhaust, and lime green brake calipers that match the actual Safety Car. Satin Aston Martin Racing Green exterior with F1 graphic detailing makes it immediately recognisable.",
+    "highlights": [
+      "Official F1 Safety Car Replica",
+      "High-Downforce Aero Kit",
+      "Sports Exhaust",
+      "F1 Racing Livery"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1555353540-64580b51c258?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Aston Martin Racing Green",
+        "hex": "#003000",
+        "img": "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Koenigsegg Jesko Absolut",
+    "subtitle": "The Fastest Car Ever Engineered",
+    "category": "sports",
+    "brand": "Koenigsegg",
+    "badge": "HYPERCAR",
+    "origin": "Sweden",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹25.00 Crore",
+    "price_usd": 3000000,
+    "engine": "5.0L Twin-Turbo V8",
+    "displacement": 4999,
+    "cylinders": 8,
+    "fuel_type": "Gasoline / E85",
+    "transmission": "9-Speed LST (Light Speed Transmission)",
+    "drivetrain": "RWD",
+    "power": "1600 HP",
+    "power_hp": 1600,
+    "torque_nm": 1500,
+    "acceleration": "0-100: 2.5s",
+    "top_speed_kmh": 532,
+    "weight_kg": 1320,
+    "fuel_economy_city": 5,
+    "fuel_economy_highway": 8,
+    "seats": 2,
+    "description": "The Jesko Absolut is mathematically calculated to reach 532km/h — making it the fastest car ever engineered. Its revolutionary Light Speed Transmission (LST) contains seven clutches and can shift between any gear in milliseconds without torque interruption. On E85 biofuel, the 5.0L V8 produces 1,600hp — the highest figure of any internal combustion engine in production.",
+    "highlights": [
+      "532km/h Calculated Top Speed",
+      "Light Speed Transmission",
+      "1,600hp on E85",
+      "Koenigsegg Triplex Suspension"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Ghost White",
+        "hex": "#F8F8F8",
+        "img": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Mercedes-AMG EQS 53",
+    "subtitle": "AMG Performance — Zero Emissions",
+    "category": "luxury",
+    "brand": "Mercedes-Benz",
+    "badge": "ELECTRIC",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.45 Crore",
+    "price_usd": 152000,
+    "engine": "Dual Electric Motor",
+    "displacement": 0,
+    "cylinders": 0,
+    "fuel_type": "Electric",
+    "transmission": "Single-Speed AMG",
+    "drivetrain": "AWD",
+    "power": "751 HP",
+    "power_hp": 751,
+    "torque_nm": 1020,
+    "acceleration": "0-100: 3.4s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2645,
+    "fuel_economy_city": 0,
+    "fuel_economy_highway": 0,
+    "range_km": 531,
+    "seats": 5,
+    "description": "The AMG EQS 53 proves that sustainable mobility and AMG performance need not be a compromise. Two electric motors produce 751hp (with Race Start) and 1,020Nm of instant torque. AMG DYNAMIC PLUS Package adds a track mode. The Hyperscreen infotainment spans the full dashboard width with three OLED displays under a single glass panel.",
+    "highlights": [
+      "751hp Electric AMG",
+      "Instant 1,020Nm Torque",
+      "AMG Race Start",
+      "Hyperscreen Dashboard"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "High-Tech Silver",
+        "hex": "#9EA0A3",
+        "img": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Porsche Taycan Turbo S",
+    "subtitle": "Electric Supercar — Zero Compromise",
+    "category": "sports",
+    "brand": "Porsche",
+    "badge": "ELECTRIC",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.37 Crore",
+    "price_usd": 190000,
+    "engine": "Dual Electric Motor",
+    "displacement": 0,
+    "cylinders": 0,
+    "fuel_type": "Electric",
+    "transmission": "2-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "1092 HP",
+    "power_hp": 1092,
+    "torque_nm": 1340,
+    "acceleration": "0-100: 2.4s",
+    "top_speed_kmh": 260,
+    "weight_kg": 2350,
+    "range_km": 630,
+    "fuel_economy_city": 0,
+    "fuel_economy_highway": 0,
+    "seats": 4,
+    "description": "The Taycan Turbo S is the world's fastest accelerating four-door car — and it remains fast lap after lap. Unlike most EVs, the Taycan uses an 800V architecture that allows rapid DC charging at 320kW. Two overboost launches to 1,092hp can be performed back-to-back without performance degradation. The 2-speed rear transmission provides optimal efficiency.",
+    "highlights": [
+      "800V Architecture",
+      "1,092hp Launch Control",
+      "Consecutive Overboost Launches",
+      "2-Speed Rear Transmission"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Frozen Blue",
+        "hex": "#1e3d5c",
+        "img": "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Audi e-tron GT RS",
+    "subtitle": "Gran Turismo — Electric Performance",
+    "category": "sports",
+    "brand": "Audi",
+    "badge": "ELECTRIC",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.19 Crore",
+    "price_usd": 155000,
+    "engine": "Dual Electric Motor",
+    "displacement": 0,
+    "cylinders": 0,
+    "fuel_type": "Electric",
+    "transmission": "2-Speed Automatic",
+    "drivetrain": "AWD",
+    "power": "912 HP",
+    "power_hp": 912,
+    "torque_nm": 1120,
+    "acceleration": "0-100: 2.8s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2347,
+    "range_km": 598,
+    "fuel_economy_city": 0,
+    "fuel_economy_highway": 0,
+    "seats": 4,
+    "description": "The RS e-tron GT is the most powerful and desirable Audi ever made. Sharing its J1 platform and powertrains with the Porsche Taycan, it has a distinctly more GT-oriented character. The air suspension with adaptive dampers and sport air suspension with 20mm lower ride height provide supercar handling in a genuinely elegant four-seat body.",
+    "highlights": [
+      "912hp Launch Control",
+      "Air Suspension",
+      "800V Architecture",
+      "Glass Panoramic Roof"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Kemora Grey",
+        "hex": "#6a6e72",
+        "img": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "BMW M3 Competition xDrive",
+    "subtitle": "The Iconic Sports Saloon — All-Weather",
+    "category": "luxury",
+    "brand": "BMW",
+    "badge": "PERFORMANCE SEDAN",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹1.40 Crore",
+    "price_usd": 87000,
+    "engine": "3.0L Inline-6 Twin-Turbo",
+    "displacement": 2993,
+    "cylinders": 6,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed M Steptronic",
+    "drivetrain": "AWD",
+    "power": "510 HP",
+    "power_hp": 510,
+    "torque_nm": 650,
+    "acceleration": "0-100: 3.5s",
+    "top_speed_kmh": 290,
+    "weight_kg": 1870,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 14,
+    "seats": 5,
+    "description": "The M3 Competition xDrive adds all-weather capability without sacrificing the driving engagement that has made the M3 a legend for 35 years. The S58 inline-six is the most powerful six-cylinder ever fitted to an M3. M xDrive can be switched to pure 2WD for track use. The M Carbon bucket seats and M Compound brakes are available options.",
+    "highlights": [
+      "S58 510hp Inline-Six",
+      "2WD Track Mode",
+      "M Carbon Seats",
+      "M Traction Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Isle of Man Green",
+        "hex": "#2E5E38",
+        "img": "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Rimac Nevera",
+    "subtitle": "Croatian Hypercar — 1,914hp",
+    "category": "sports",
+    "brand": "Rimac",
+    "badge": "HYPERCAR",
+    "origin": "Croatia",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹18.00 Crore",
+    "price_usd": 2100000,
+    "engine": "4 Electric Motors",
+    "displacement": 0,
+    "cylinders": 0,
+    "fuel_type": "Electric",
+    "transmission": "Single-Speed Per Axle",
+    "drivetrain": "AWD",
+    "power": "1914 HP",
+    "power_hp": 1914,
+    "torque_nm": 2360,
+    "acceleration": "0-100: 1.97s",
+    "top_speed_kmh": 412,
+    "weight_kg": 2150,
+    "range_km": 490,
+    "fuel_economy_city": 0,
+    "fuel_economy_highway": 0,
+    "seats": 2,
+    "description": "The Rimac Nevera is the world's fastest production electric car — and the most powerful production car of any type. Its four motors produce 1,914hp with 2,360Nm of torque, enabling a 0-100km/h time of just 1.97 seconds. The active aerodynamics, torque vectoring system and VMAX mode allow the car to reach 412km/h while managing battery temperature through 40,000 calculations per second.",
+    "highlights": [
+      "1.97s 0-100km/h",
+      "2,360Nm Torque",
+      "All-Wheel Torque Vectoring",
+      "Active Aerodynamics"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Concept_One Silver",
+        "hex": "#D0D0D0",
+        "img": "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Ferrari 296 GTB",
+    "subtitle": "V6 Revolution — Ferrari's Most Fun Car",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "SUPERCAR",
+    "origin": "Italy",
+    "year": "2024",
+    "status": "Available",
+    "featured": false,
+    "price": "₹5.60 Crore",
+    "price_usd": 340000,
+    "engine": "3.0L Twin-Turbo V6 + Electric Motor",
+    "displacement": 2992,
+    "cylinders": 6,
+    "fuel_type": "Plug-in Hybrid",
+    "transmission": "8-Speed DCT",
+    "drivetrain": "RWD",
+    "power": "819 HP",
+    "power_hp": 819,
+    "torque_nm": 740,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 330,
+    "weight_kg": 1470,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 14,
+    "seats": 2,
+    "description": "Ferrari's first ever V6 road car produces more power than the legendary F40. The 120-degree V6 with hot-V turbos achieves the highest specific output (235hp/litre) of any Ferrari engine. An electric motor on the front axle provides torque fill and enables eDrive mode. The Virtual Short Wheelbase system enables handling response previously reserved for track cars.",
+    "highlights": [
+      "235hp/Litre Specific Output",
+      "Virtual Short Wheelbase",
+      "eDrive Mode",
+      "Hot-V Turbocharging"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Rosso Mugello",
+        "hex": "#8B0000",
+        "img": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Bentley Mulliner Batur",
+    "subtitle": "Bespoke By Mulliner — 18 Units Only",
+    "category": "sports",
+    "brand": "Bentley",
+    "badge": "BESPOKE",
+    "origin": "United Kingdom",
+    "year": "2024",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹22.00 Crore",
+    "price_usd": 2000000,
+    "engine": "6.0L W12 TSI",
+    "displacement": 5950,
+    "cylinders": 12,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed DCT",
+    "drivetrain": "AWD",
+    "power": "740 HP",
+    "power_hp": 740,
+    "torque_nm": 1000,
+    "acceleration": "0-100: 3.4s",
+    "top_speed_kmh": 320,
+    "weight_kg": 2330,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 4,
+    "description": "The Batur is the most powerful Bentley ever made and limited to just 18 examples — each completely unique. Designed by the Mulliner division (Bentley's bespoke coachbuilding arm), it previews the design language for Bentley's fully electric future. Every detail — from the texture of the dashboard veneer to the precise shade of the exterior — is chosen exclusively by the owner.",
+    "highlights": [
+      "18 Units Worldwide",
+      "740hp W12",
+      "Mulliner Bespoke Service",
+      "Future Design Preview"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Fully Bespoke",
+        "hex": "#2a1a3a",
+        "img": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Mercedes-Maybach GLS 600",
+    "subtitle": "Maybach Luxury — SUV Format",
+    "category": "suv",
+    "brand": "Mercedes-Benz",
+    "badge": "ULTRA LUXURY SUV",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "Exclusive",
+    "featured": false,
+    "price": "₹3.50 Crore",
+    "price_usd": 250000,
+    "engine": "4.0L Twin-Turbo V8 MHEV",
+    "displacement": 3982,
+    "cylinders": 8,
+    "fuel_type": "Mild Hybrid",
+    "transmission": "9G-TRONIC Automatic",
+    "drivetrain": "AWD",
+    "power": "550 HP",
+    "power_hp": 550,
+    "torque_nm": 730,
+    "acceleration": "0-100: 4.9s",
+    "top_speed_kmh": 250,
+    "weight_kg": 2700,
+    "fuel_economy_city": 7,
+    "fuel_economy_highway": 11,
+    "seats": 4,
+    "description": "The Mercedes-Maybach GLS 600 brings the Maybach philosophy of 'first class in the air, Maybach on the ground' to the SUV segment. Two-tone paintwork, a panoramic roof with electro-hydraulic blind, chauffeur function that automatically adjusts the front seat for maximum rear legroom, and Executive Rear Seats with reclining, massage and heating all come standard.",
+    "highlights": [
+      "Chauffeur Package",
+      "Executive Rear Seats",
+      "Two-Tone Paintwork",
+      "E-ACTIVE Body Control"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Obsidian Black / Hightech Silver",
+        "hex": "#1a1a1a",
+        "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Porsche 911 Dakar",
+    "subtitle": "Off-Road 911 — Desert to Mountain",
+    "category": "sports",
+    "brand": "Porsche",
+    "badge": "RALLY",
+    "origin": "Germany",
+    "year": "2024",
+    "status": "In Stock",
+    "featured": false,
+    "price": "₹2.68 Crore",
+    "price_usd": 222000,
+    "engine": "3.0L Twin-Turbo Flat-6",
+    "displacement": 2981,
+    "cylinders": 6,
+    "fuel_type": "Gasoline",
+    "transmission": "8-Speed PDK Dual-Clutch",
+    "drivetrain": "AWD",
+    "power": "480 HP",
+    "power_hp": 480,
+    "torque_nm": 570,
+    "acceleration": "0-100: 4.5s",
+    "top_speed_kmh": 240,
+    "weight_kg": 1605,
+    "fuel_economy_city": 10,
+    "fuel_economy_highway": 14,
+    "seats": 2,
+    "description": "The 911 Dakar is the most versatile 911 ever made — capable of tackling the world's most challenging terrain without sacrificing any of the everyday usability that defines the 911. Inspired by the 953 that won the Paris-Dakar Rally in 1984, it rides 50mm higher than a standard 911, with locking rear differential, Rally and Offroad driving modes, and all-terrain tyres.",
+    "highlights": [
+      "50mm Raised Suspension",
+      "Offroad & Rally Modes",
+      "Locking Rear Differential",
+      "Inspired by Dakar 1984 Winner"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Aventurine Green",
+        "hex": "#3a5a30",
+        "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Ferrari LaFerrari Aperta",
+    "subtitle": "Open-Top Hybrid Masterpiece — 210 Units",
+    "category": "sports",
+    "brand": "Ferrari",
+    "badge": "HYPERCAR",
+    "origin": "Italy",
+    "year": "2023",
+    "status": "By Order",
+    "featured": false,
+    "price": "₹35.00 Crore",
+    "price_usd": 4200000,
+    "engine": "6.3L Naturally Aspirated V12 + Electric Motor",
+    "displacement": 6262,
+    "cylinders": 12,
+    "fuel_type": "Hybrid",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "RWD",
+    "power": "963 HP",
+    "power_hp": 963,
+    "torque_nm": 900,
+    "acceleration": "0-100: 2.9s",
+    "top_speed_kmh": 350,
+    "weight_kg": 1525,
+    "fuel_economy_city": 9,
+    "fuel_economy_highway": 13,
+    "seats": 2,
+    "description": "The LaFerrari Aperta is one of the rarest, most exclusive road cars in history — limited to just 210 units, allocated personally by Enzo Ferrari's successors. Its HY-KERS hybrid system pairs a naturally aspirated V12 with an electric motor. The Aperta version removes the fixed roof and adds a removable hardtop and soft top. Each car is built around its owner's biometric measurements.",
+    "highlights": [
+      "210 Units — Owner Selected",
+      "HY-KERS Hybrid",
+      "Built to Owner's Measurements",
+      "Removable Hard & Soft Top"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+    ],
+    "colors": [
+      {
+        "name": "Rosso LaFerrari",
+        "hex": "#C20000",
+        "img": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+      }
+    ]
+  }
+]
