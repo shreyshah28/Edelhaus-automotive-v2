@@ -2285,3 +2285,459 @@ p, h1, h2, h3, h4, h5, h6, span, div {
     .pg-btn  { min-width: 36px; height: 36px; font-size: 0.75rem; padding: 0 8px; }
     .pg-btn.active { min-width: 40px; }
 }
+/* ================================================================
+   F1RST MOTORS-STYLE INVENTORY UPGRADES
+   ================================================================ */
+
+/* ── Available / Sold toggle tabs ── */
+.inv-status-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+}
+.inv-status-btn {
+    padding: 10px 28px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.45);
+    transition: all 0.22s ease;
+    position: relative;
+}
+.inv-status-btn.active {
+    background: #fff;
+    color: #000;
+}
+.inv-status-btn:first-child { border-right: 1px solid #2a2a2a; }
+
+/* ── Brand logo pill strip ── */
+.inv-brand-pills-wrap {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.brand-pill:hover {
+    border-color: rgba(52,152,219,0.5);
+    color: #fff;
+    background: rgba(52,152,219,0.1);
+}
+.brand-pill.active {
+    background: #3498db;
+    border-color: #3498db;
+    color: #fff;
+}
+.brand-pill-img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: rgba(255,255,255,0.1);
+    padding: 2px;
+}
+.brand-pill-count {
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 1px 7px;
+    font-size: 0.65rem;
+}
+.brand-pill.active .brand-pill-count {
+    background: rgba(255,255,255,0.25);
+}
+
+/* ── Sort dropdown ── */
+.inv-sort-wrap {
+    position: relative;
+}
+.inv-sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+.inv-sort-btn:hover { border-color: #3498db; color: #fff; }
+.inv-sort-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 200px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+    z-index: 200;
+    overflow: hidden;
+    display: none;
+}
+.inv-sort-dropdown.open { display: block; }
+.inv-sort-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+.inv-sort-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.inv-sort-item.active { color: #3498db; }
+.inv-sort-item i { font-size: 1rem; color: #3498db; width: 18px; }
+
+/* ── Live count badge ── */
+.inv-live-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+.inv-live-count-badge strong { color: #fff; }
+
+/* ── New card elements ── */
+
+/* 360° floating badge on card image */
+.badge-360-pill {
+    position: absolute;
+    bottom: 44px;
+    left: 12px;
+    background: rgba(0,0,0,0.72);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    z-index: 4;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, color 0.2s;
+}
+.badge-360-pill:hover {
+    background: #3498db;
+    border-color: #3498db;
+    color: #fff;
+}
+
+/* KM badge on card image (top-right below car-badge) */
+.km-badge {
+    position: absolute;
+    top: 44px;
+    right: 12px;
+    background: rgba(0,0,0,0.65);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.64rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    z-index: 3;
+    letter-spacing: 0.5px;
+}
+
+/* Body type pill in card header */
+.body-type-pill {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(52,152,219,0.1);
+    border: 1px solid rgba(52,152,219,0.3);
+    color: #3498db;
+}
+
+/* SOLD overlay on image */
+.sold-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+}
+.sold-stamp {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.9);
+    border: 3px solid rgba(255,255,255,0.7);
+    padding: 6px 22px;
+    border-radius: 4px;
+    transform: rotate(-12deg);
+    background: rgba(231,76,60,0.55);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Sold card dimming */
+.car-card-sold {
+    border-color: #2a1a1a !important;
+    opacity: 0.88;
+}
+.car-card-sold:hover {
+    box-shadow: 0 20px 45px rgba(231,76,60,0.15) !important;
+    border-color: rgba(231,76,60,0.3) !important;
+}
+
+/* Ask For Price button */
+.ask-price {
+    font-size: 1rem !important;
+    color: #3498db !important;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.ask-price:hover { color: #2980b9 !important; }
+
+/* Compare mini button on card */
+.compare-btn-sm {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+.compare-btn-sm:hover { border-color: #3498db; color: #3498db; background: rgba(52,152,219,0.1); }
+.compare-btn-sm.btn-check-active { border-color: #2ecc71; color: #2ecc71; background: rgba(46,204,113,0.1); }
+
+/* ── Recently Viewed ── */
+#recentlyViewedStrip { display:none; }
+.recently-viewed-section {
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 28px 0;
+    margin-top: 48px;
+}
+.rv-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #2a2a2a transparent;
+}
+.rv-grid::-webkit-scrollbar { height: 4px; }
+.rv-grid::-webkit-scrollbar-track { background: transparent; }
+.rv-grid::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+.rv-card {
+    flex: 0 0 180px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.25s, transform 0.25s;
+}
+.rv-card:hover { border-color: rgba(52,152,219,0.4); transform: translateY(-4px); }
+.rv-img-wrap { position: relative; height: 110px; overflow: hidden; }
+.rv-img-wrap img { width:100%; height:100%; object-fit:cover; transition: transform 0.4s; }
+.rv-card:hover .rv-img-wrap img { transform: scale(1.07); }
+.rv-sold-badge {
+    position:absolute; top:8px; right:8px;
+    background:rgba(231,76,60,0.85); color:#fff;
+    font-size:0.58rem; font-weight:700; letter-spacing:1.5px;
+    padding:2px 7px; border-radius:4px;
+}
+.rv-360-badge {
+    position:absolute; bottom:6px; left:8px;
+    background:rgba(0,0,0,0.65); color:rgba(255,255,255,0.8);
+    font-size:0.58rem; font-weight:700; letter-spacing:1px;
+    padding:2px 6px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);
+}
+.rv-info { padding: 10px 12px; }
+.rv-brand { font-size:0.58rem; font-weight:700; letter-spacing:2px; color:#3498db; text-transform:uppercase; margin-bottom:3px; }
+.rv-name { font-size:0.82rem; font-weight:700; color:#fff; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rv-price { font-size:0.78rem; font-weight:700; color:#3498db; }
+
+/* ── Compare modal spec column ── */
+.compare-spec-col {
+    background: #0d0d0d !important;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 16px !important;
+    min-width: 130px;
+    white-space: nowrap;
+}
+
+/* ── Sell My Car page ── */
+.sell-hero {
+    position: relative;
+    height: 38vh;
+    min-height: 260px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.sell-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&q=75') center/cover no-repeat;
+    opacity: 0.18;
+}
+.sell-hero-content { position: relative; z-index: 2; }
+.sell-form-card {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    padding: 40px;
+}
+.sell-label {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+#sellMyCarForm .form-control,
+#sellMyCarForm .form-select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+#sellMyCarForm .form-control:focus,
+#sellMyCarForm .form-select:focus {
+    background: rgba(255,255,255,0.06);
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.15);
+    color: #fff;
+}
+#sellMyCarForm .form-control::placeholder { color: rgba(255,255,255,0.3); }
+#sellMyCarForm .form-select option { background: #1a1a1a; color: #fff; }
+
+/* ── Quick Inquiry modal ── */
+#quickInquiryModal .modal-content {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+}
+.qi-label {
+    font-size: 0.68rem; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.45); text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px; display: block;
+}
+#qiForm .form-control {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff; border-radius: 8px;
+}
+#qiForm .form-control:focus {
+    background: rgba(255,255,255,0.06);
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.15);
+    color: #fff;
+}
+#qiForm .form-control::placeholder { color: rgba(255,255,255,0.3); }
+
+/* ── Inventory top bar responsive ── */
+.inv-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.inv-top-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.inv-top-right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+/* Body filter tabs (below brand pills) */
+.body-filter-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.body-filter-btn {
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.body-filter-btn:hover { border-color: rgba(52,152,219,0.4); color: #fff; }
+.body-filter-btn.active { background: #3498db; border-color: #3498db; color: #fff; }
+
+@media (max-width: 576px) {
+    .sold-stamp { font-size: 1.2rem; padding: 4px 14px; }
+    .inv-top-bar { flex-direction: column; align-items: stretch; }
+    .inv-top-right { justify-content: flex-end; }
+    .sell-form-card { padding: 24px 18px; }
+}

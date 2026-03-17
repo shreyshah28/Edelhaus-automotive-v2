@@ -55,7 +55,8 @@
         "hex": "#C0C0C0",
         "img": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bentley_continental_gt.glb"
   },
   {
     "id": 2,
@@ -113,7 +114,8 @@
         "hex": "#C0C0C0",
         "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "2020_mercedes-benz_g-class_amg_g_63.glb"
   },
   {
     "id": 3,
@@ -166,7 +168,8 @@
         "hex": "#000000",
         "img": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mercedes_maybach_s680.glb"
   },
   {
     "id": 4,
@@ -214,7 +217,8 @@
         "hex": "#0a0a12",
         "img": "https://images.unsplash.com/photo-1519245659620-e859134f6123?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/range_rover_sv.glb"
   },
   {
     "id": 5,
@@ -272,7 +276,8 @@
         "hex": "#9EA0A3",
         "img": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_911_turbo_s.glb"
   },
   {
     "id": 6,
@@ -368,7 +373,8 @@
         "hex": "#F5F5F0",
         "img": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/rolls_royce_phantom.glb"
   },
   {
     "id": 8,
@@ -416,7 +422,8 @@
         "hex": "#1a2e5a",
         "img": "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/rolls_royce_ghost.glb"
   },
   {
     "id": 9,
@@ -464,7 +471,8 @@
         "hex": "#E8B400",
         "img": "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "2023_lamborghini_urus_performante.glb"
   },
   {
     "id": 10,
@@ -512,7 +520,8 @@
         "hex": "#FF6000",
         "img": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/lamborghini_huracan_evo.glb"
   },
   {
     "id": 11,
@@ -565,7 +574,8 @@
         "hex": "#5B5E62",
         "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_918_spyder.glb"
   },
   {
     "id": 12,
@@ -618,7 +628,8 @@
         "hex": "#1e3f6e",
         "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "porsche_911_gt3.glb"
   },
   {
     "id": 13,
@@ -671,7 +682,8 @@
         "hex": "#6E7B8B",
         "img": "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mclaren_artura_spider.glb"
   },
   {
     "id": 14,
@@ -719,7 +731,8 @@
         "hex": "#FF7A00",
         "img": "https://images.unsplash.com/photo-1558618047-f4e90e8b0e54?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mclaren_720s.glb"
   },
   {
     "id": 15,
@@ -815,7 +828,8 @@
         "hex": "#003399",
         "img": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bugatti_chiron.glb"
   },
   {
     "id": 17,
@@ -863,7 +877,8 @@
         "hex": "#F0F0F0",
         "img": "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/aston_martin_db12.glb"
   },
   {
     "id": 18,
@@ -911,7 +926,8 @@
         "hex": "#1a6b44",
         "img": "https://images.unsplash.com/photo-1555353540-64580b51c258?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/aston_martin_dbx.glb"
   },
   {
     "id": 19,
@@ -959,7 +975,8 @@
         "hex": "#1a3a5c",
         "img": "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bmw_m8_competition.glb"
   },
   {
     "id": 20,
@@ -1007,7 +1024,8 @@
         "hex": "#2a3d4e",
         "img": "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bmw_xm.glb"
   },
   {
     "id": 21,
@@ -1055,7 +1073,8 @@
         "hex": "#4a4e52",
         "img": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/audi_rs7_sportback.glb"
   },
   {
     "id": 22,
@@ -1103,7 +1122,8 @@
         "hex": "#6a6e72",
         "img": "https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/audi_r8_v10.glb"
   },
   {
     "id": 23,
@@ -1151,7 +1171,8 @@
         "hex": "#2d5a3d",
         "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bentley_bentayga_ewb.glb"
   },
   {
     "id": 24,
@@ -1199,7 +1220,8 @@
         "hex": "#1B3A6B",
         "img": "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/range_rover_sport.glb"
   },
   {
     "id": 25,
@@ -1247,7 +1269,8 @@
         "hex": "#1e3d5c",
         "img": "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_cayenne_turbo_gt.glb"
   },
   {
     "id": 26,
@@ -1295,7 +1318,8 @@
         "hex": "#8B1A1A",
         "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mercedes_amg_sl63.glb"
   },
   {
     "id": 27,
@@ -1343,7 +1367,8 @@
         "hex": "#9EA0A3",
         "img": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "2016_mansory_mercedes-amg_gt_s.glb"
   },
   {
     "id": 28,
@@ -1391,7 +1416,8 @@
         "hex": "#1a4a3a",
         "img": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bentley_flying_spur.glb"
   },
   {
     "id": 29,
@@ -1487,7 +1513,8 @@
         "hex": "#B0B0B0",
         "img": "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/pagani_huayra.glb"
   },
   {
     "id": 31,
@@ -1535,7 +1562,8 @@
         "hex": "#F5F5F5",
         "img": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mercedes_s580.glb"
   },
   {
     "id": 32,
@@ -1583,7 +1611,8 @@
         "hex": "#1a2a5a",
         "img": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_panamera_turbo.glb"
   },
   {
     "id": 33,
@@ -1679,7 +1708,8 @@
         "hex": "#1a5c5c",
         "img": "https://images.unsplash.com/photo-1597007030739-6d2d64dc63c5?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/rolls_royce_cullinan.glb"
   },
   {
     "id": 35,
@@ -1727,7 +1757,8 @@
         "hex": "#1B3A5E",
         "img": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bmw_m5_competition.glb"
   },
   {
     "id": 36,
@@ -1775,7 +1806,8 @@
         "hex": "#7B2FBE",
         "img": "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mclaren_765lt.glb"
   },
   {
     "id": 37,
@@ -1822,8 +1854,24 @@
         "name": "Rosso Fuoco",
         "hex": "#CC0000",
         "img": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Nero Daytona",
+        "hex": "#111111",
+        "img": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Bianco Avus",
+        "hex": "#F0F0F0",
+        "img": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85&fit=crop"
+      },
+      {
+        "name": "Giallo Modena",
+        "hex": "#FFD000",
+        "img": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "2021_ferrari_sf90_spider.glb"
   },
   {
     "id": 38,
@@ -1871,7 +1919,8 @@
         "hex": "#1a8a1a",
         "img": "https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/lamborghini_revuelto.glb"
   },
   {
     "id": 39,
@@ -1919,7 +1968,8 @@
         "hex": "#003000",
         "img": "https://images.unsplash.com/photo-1617531653332-bd46c16f4d68?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/aston_martin_vantage.glb"
   },
   {
     "id": 40,
@@ -1967,7 +2017,8 @@
         "hex": "#F8F8F8",
         "img": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/koenigsegg_jesko.glb"
   },
   {
     "id": 41,
@@ -2016,7 +2067,8 @@
         "hex": "#9EA0A3",
         "img": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mercedes_amg_eqs53.glb"
   },
   {
     "id": 42,
@@ -2065,7 +2117,8 @@
         "hex": "#1e3d5c",
         "img": "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_taycan_turbo_s.glb"
   },
   {
     "id": 43,
@@ -2114,7 +2167,8 @@
         "hex": "#6a6e72",
         "img": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/audi_etron_gt_rs.glb"
   },
   {
     "id": 44,
@@ -2162,7 +2216,8 @@
         "hex": "#2E5E38",
         "img": "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bmw_m3_competition.glb"
   },
   {
     "id": 45,
@@ -2211,7 +2266,8 @@
         "hex": "#D0D0D0",
         "img": "https://images.unsplash.com/photo-1604502375462-7bc2c22e4e3f?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/rimac_nevera.glb"
   },
   {
     "id": 46,
@@ -2307,7 +2363,8 @@
         "hex": "#2a1a3a",
         "img": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/bentley_mulliner_batur.glb"
   },
   {
     "id": 48,
@@ -2355,7 +2412,8 @@
         "hex": "#1a1a1a",
         "img": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/mercedes_maybach_gls600.glb"
   },
   {
     "id": 49,
@@ -2403,7 +2461,8 @@
         "hex": "#3a5a30",
         "img": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=85&fit=crop"
       }
-    ]
+    ],
+    "model_url": "models/porsche_911_dakar.glb"
   },
   {
     "id": 50,

@@ -836,7 +836,7 @@ tbody tr:hover td{background:rgba(52,152,219,.06);color:#ddd}
           <div class="tbl-wrap">
             <table>
               <thead>
-                <tr><th>#</th><th>Car</th><th>Brand</th><th>Price</th><th>Power</th><th>Year</th><th>Category</th><th>Status</th></tr>
+                <tr><th>#</th><th>Car</th><th>Brand</th><th>Price</th><th>Power</th><th>Year</th><th>Category</th><th>Status</th><th></th></tr>
               </thead>
               <tbody id="invBody"></tbody>
             </table>
@@ -1033,6 +1033,19 @@ tbody tr:hover td{background:rgba(52,152,219,.06);color:#ddd}
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /app -->
+
+<!-- ═══════════ CAR DETAIL MODAL ═══════════ -->
+<div class="modal-backdrop" id="carDetailModal" style="z-index:900">
+  <div class="modal-box" style="max-width:780px;max-height:92vh;overflow-y:auto">
+    <div class="modal-header">
+      <div class="modal-title" id="cdTitle">Vehicle Details</div>
+      <button class="modal-close" onclick="closeModal('carDetailModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body" style="padding:0">
+      <div id="cdContent"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════ CONFIRM MODAL ═══════════ -->
 <div class="modal-backdrop" id="confirmModal">
@@ -1397,6 +1410,11 @@ function renderInv(){
         <td style="font-size:.75rem;color:#aaa">${c.year||'—'}</td>
         <td style="font-size:.75rem;color:#aaa">${c.category||'—'}</td>
         <td>${invStatusBadge(c.status)}</td>
+        <td>
+          <button class="act-btn" onclick="viewCarDetail(${c.id})" title="View Details" style="color:var(--accent2)">
+            <i class="bi bi-eye"></i>
+          </button>
+        </td>
       </tr>`;
     }).join('');
   }
@@ -1818,7 +1836,450 @@ function renderAnalytics(){
     </div>`).join('');
 }
 
-/* ════════ SETTINGS ════════ */
+/* ════════ CAR DETAIL VIEW ════════ */
+function viewCarDetail(id){
+  const c = INV.find(x => x.id === id);
+  if(!c) return;
+  document.getElementById('cdTitle').textContent = c.name;
+
+  const img = (c.images && c.images[0]) ? c.images[0] : '';
+  const stBadge = invStatusBadge(c.status);
+  const highlights = (c.highlights||[]).map(h=>`<span style="display:inline-flex;align-items:center;gap:.35rem;background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.2);border-radius:6px;padding:4px 10px;font-size:.72rem;color:#7ec8e3;margin:.2rem">${h}</span>`).join('');
+  const fuelIcon = c.fuel_type==='Electric'?'⚡':c.fuel_type?.includes('Hybrid')?'🔋':'⛽';
+
+  const specs = [
+    ['Engine',          c.engine||'—'],
+    ['Power',           c.power||'—'],
+    ['Torque',          c.torque_nm ? c.torque_nm+' Nm' : '—'],
+    ['Acceleration',    c.acceleration||'—'],
+    ['Top Speed',       c.top_speed_kmh ? c.top_speed_kmh+' km/h' : '—'],
+    ['Transmission',    c.transmission||'—'],
+    ['Drivetrain',      c.drivetrain||'—'],
+    ['Fuel Type',       fuelIcon+' '+(c.fuel_type||'—')],
+    ['Displacement',    c.displacement ? c.displacement+' cc' : '—'],
+    ['Cylinders',       c.cylinders||'—'],
+    ['Weight',          c.weight_kg ? c.weight_kg+' kg' : '—'],
+    ['Seats',           c.seats||'—'],
+    ['Origin',          c.origin||'—'],
+    ['Year',            c.year||'—'],
+    ['Category',        c.category||'—'],
+  ].map(([k,v])=>`
+    <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05)">
+      <span style="color:#888;font-size:.75rem;text-transform:uppercase;letter-spacing:.8px;font-weight:600">${k}</span>
+      <span style="color:#e0e0e0;font-size:.82rem;font-weight:500;text-align:right;max-width:55%">${v}</span>
+    </div>`).join('');
+
+  document.getElementById('cdContent').innerHTML = `
+    <!-- Hero image + basic info -->
+    <div style="position:relative;background:#0a0a0a;overflow:hidden">
+      ${img ? `<img src="${img}" alt="${c.name}" style="width:100%;height:240px;object-fit:cover;opacity:.85" onerror="this.style.display='none'">` : '<div style="height:120px;background:linear-gradient(135deg,#111,#1a1a2e)"></div>'}
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.5rem;background:linear-gradient(to top,rgba(0,0,0,.95),transparent)">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
+          ${stBadge}
+          ${c.featured ? '<span class="badge badge-blue"><i class="bi bi-star-fill" style="font-size:.55rem"></i> Featured</span>' : ''}
+          ${c.investment_grade ? '<span class="badge badge-yellow">📈 Investment Grade</span>' : ''}
+        </div>
+        <div style="font-family:\'Cinzel\',serif;font-size:1.35rem;color:#fff;margin-top:.35rem;font-weight:700">${c.name}</div>
+        <div style="color:#999;font-size:.78rem;margin-top:.15rem">${c.subtitle||''}</div>
+      </div>
+    </div>
+
+    <div style="padding:1.5rem">
+      <!-- Price + Brochure buttons row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;margin-bottom:1.25rem">
+        <div>
+          <div style="font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-1px">${c.price||'—'}</div>
+          ${c.price_usd ? `<div style="font-size:.75rem;color:#888">≈ $${c.price_usd.toLocaleString()}</div>` : ''}
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <button onclick="openBrochureTab(${c.id})" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#1a5276,#2980b9);border:none;border-radius:8px;padding:.6rem 1.2rem;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s" onmouseover="this.style.background='linear-gradient(135deg,#2471a3,#3498db)'" onmouseout="this.style.background='linear-gradient(135deg,#1a5276,#2980b9)'">
+            <i class="bi bi-file-earmark-richtext"></i> View Brochure
+          </button>
+          <button onclick="downloadBrochure(${c.id})" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);border-radius:8px;padding:.6rem 1.2rem;color:#2ecc71;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(46,204,113,.2)'" onmouseout="this.style.background='rgba(46,204,113,.1)'">
+            <i class="bi bi-download"></i> Download PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Highlights -->
+      ${highlights ? `<div style="margin-bottom:1.25rem"><div style="font-size:.62rem;color:#555;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:.5rem">Highlights</div><div>${highlights}</div></div>` : ''}
+
+      <!-- Specs grid -->
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem">
+        <div style="font-size:.62rem;color:#555;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:.75rem">Technical Specifications</div>
+        ${specs}
+      </div>
+
+      <!-- Description -->
+      ${c.description ? `<div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem 1.25rem">
+        <div style="font-size:.62rem;color:#555;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:.5rem">Overview</div>
+        <p style="color:#aaa;font-size:.82rem;line-height:1.75;margin:0">${c.description}</p>
+      </div>` : ''}
+    </div>`;
+
+  document.getElementById('carDetailModal').classList.add('open');
+}
+
+/* ════════ BROCHURE GENERATOR (jsPDF — real PDF) ════════ */
+function _loadJsPDF(){
+  return new Promise((resolve,reject)=>{
+    if(window.jsPDF){resolve();return;}
+    const s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    s.onload=resolve; s.onerror=reject;
+    document.head.appendChild(s);
+  });
+}
+
+async function _generatePDF(c){
+  await _loadJsPDF();
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const W=210, H=297;
+
+  /* ── helpers (all use array spread correctly) ── */
+  const rgb  =(r,g,b)=>doc.setTextColor(r,g,b);
+  const fill =(r,g,b)=>doc.setFillColor(r,g,b);
+  const stk  =(r,g,b)=>doc.setDrawColor(r,g,b);
+  const lw   =(w)    =>doc.setLineWidth(w);
+  const font =(sty,sz)=>{doc.setFont('helvetica',sty);doc.setFontSize(sz);}
+  const R    =(x,y,w,h,m='F')=>doc.rect(x,y,w,h,m);
+  const RR   =(x,y,w,h,rx,ry,m='FD')=>doc.roundedRect(x,y,w,h,rx,ry,m);
+  const L    =(x1,y1,x2,y2)=>doc.line(x1,y1,x2,y2);
+  const T    =(s,x,y,o={})=>doc.text(String(s==null?'—':s),x,y,o);
+  const C    =(x,y,r,m='F')=>doc.circle(x,y,r,m);
+
+  /* ── palette ── */
+  const K  =[10,10,10];     // near-black
+  const DK =[18,18,18];
+  const A  =[41,128,185];   // accent blue
+  const A2 =[52,152,219];   // lighter blue
+  const W2 =[255,255,255];
+  const OW =[245,247,250];  // off-white page bg
+  const LG =[220,226,235];  // light grey rule
+  const MG =[150,162,178];  // mid grey
+  const DG =[90,100,115];   // dark grey text
+  const GN =[46,204,113];
+  const RD =[231,76,60];
+  const YL =[241,196,15];
+
+  const stColors={'In Stock':GN,'Available':GN,'Sold':RD,'Reserved':YL,
+    'Exclusive':A2,'Premium':A2,'Flagship':A2,'Iconic':YL,'Track Ready':RD};
+  const stCol=stColors[c.status]||MG;
+
+  /* ══════════════════════════════════════════════════════
+     PAGE 1 — COVER  (dark luxury layout)
+  ══════════════════════════════════════════════════════ */
+
+  /* dark full-page bg */
+  fill(...K); R(0,0,W,H);
+
+  /* top accent stripe */
+  fill(...A); R(0,0,W,3);
+  fill(...A2); R(0,0,W,1.2);
+
+  /* subtle side panel – right side geometric element */
+  fill(20,25,32); R(W-45,0,45,H);
+  fill(...A); R(W-45,0,0.8,H);
+
+  /* top bar area */
+  fill(15,15,20); R(0,3,W-45,14);
+
+  /* brand wordmark */
+  font('bold',8); rgb(...A2);
+  T('EDELHAUS AUTOMOTIVE',10,12);
+
+  /* divider dot sequence */
+  font('normal',6); rgb(...DG);
+  T('·  OFFICIAL VEHICLE BROCHURE  ·',70,12);
+
+  /* year on right panel */
+  font('bold',7); rgb(...MG);
+  T(c.year||'2024', W-22, 12, {align:'center'});
+
+  /* main car name — large centred */
+  const nameStr=(c.name||'').toUpperCase();
+  const targetW=145;
+  font('bold',32); rgb(...W2);
+  let nW=doc.getTextWidth(nameStr);
+  const nSz=nW>targetW?Math.floor(32*targetW/nW):32;
+  font('bold',nSz); rgb(...W2);
+  T(nameStr, (W-45)/2, 85, {align:'center'});
+
+  /* subtitle */
+  font('normal',8.5); rgb(...MG);
+  T((c.subtitle||'').toUpperCase(), (W-45)/2, 95, {align:'center'});
+
+  /* central thin rule with diamond */
+  stk(...A); lw(0.4);
+  L(30,102, (W-45)/2-8, 102);
+  L((W-45)/2+8,102, W-55,102);
+  fill(...A); C((W-45)/2,102,2,'F');
+  fill(...A2); C((W-45)/2,102,1,'F');
+
+  /* badge pill */
+  const bdgStr=(c.badge||c.category||'LUXURY').toUpperCase();
+  font('bold',5.5);
+  const bdgW=doc.getTextWidth(bdgStr)+10;
+  fill(...A); R(W/2-45/2-bdgW/2,108,bdgW,7,'F');
+  rgb(...W2);
+  T(bdgStr, W/2-45/2, 113, {align:'center'});
+
+  /* price block */
+  font('bold',26); rgb(...W2);
+  T(c.price||'—', (W-45)/2, 138, {align:'center'});
+  if(c.price_usd){
+    font('normal',7.5); rgb(...DG);
+    T(`≈ USD $${c.price_usd.toLocaleString()}`, (W-45)/2, 146, {align:'center'});
+  }
+
+  /* accent separator */
+  fill(...A); R((W-45)/2-22,151,44,0.6);
+
+  /* ── 4 quick-spec boxes ── */
+  const qs=[
+    {v:c.power||'—',         l:'POWER'},
+    {v:c.acceleration?c.acceleration.replace('0-100: ',''):'—', l:'0–100 KM/H'},
+    {v:c.top_speed_kmh?c.top_speed_kmh+' km/h':'—', l:'TOP SPEED'},
+    {v:c.drivetrain||'—',    l:'DRIVETRAIN'},
+  ];
+  const bW=38, bH=20, bGap=3;
+  const bTotalW=qs.length*(bW+bGap)-bGap;
+  const bX0=(W-45)/2-bTotalW/2;
+  const bY=158;
+  qs.forEach(({v,l},i)=>{
+    const bx=bX0+i*(bW+bGap);
+    fill(22,28,38); stk(...A); lw(0.3);
+    RR(bx,bY,bW,bH,1.5,1.5,'FD');
+    /* accent left micro-bar */
+    fill(...A); R(bx,bY,1.5,bH);
+    /* value */
+    font('bold', v.length>10?5.5:7); rgb(...W2);
+    T(v, bx+bW/2+0.75, bY+8.5, {align:'center',maxWidth:bW-4});
+    /* label */
+    font('normal',4.5); rgb(...DG);
+    T(l, bx+bW/2+0.75, bY+16, {align:'center'});
+  });
+
+  /* ── status + meta ── */
+  font('normal',6.5); rgb(...MG);
+  T((c.brand||'')+'   ·   '+(c.origin||'')+'   ·   '+(c.year||''), (W-45)/2, 194, {align:'center'});
+
+  const stW=doc.getTextWidth(String(c.status||'—'))*0.8+10;
+  font('bold',6);
+  fill(stCol[0],stCol[1],stCol[2]); stk(stCol[0],stCol[1],stCol[2]); lw(0.3);
+  /* dim fill */
+  fill(30,35,42); R((W-45)/2-stW/2,199,stW,8,'F');
+  stk(stCol[0],stCol[1],stCol[2]); lw(0.35);
+  RR((W-45)/2-stW/2,199,stW,8,2,2,'D');
+  rgb(stCol[0],stCol[1],stCol[2]);
+  T(String(c.status||'—'), (W-45)/2, 205, {align:'center'});
+
+  /* ── right side panel — vertical spec list ── */
+  const sideSpecs=[
+    ['ENGINE',    c.engine||'—'],
+    ['POWER',     c.power||'—'],
+    ['TORQUE',    c.torque_nm?c.torque_nm+' Nm':'—'],
+    ['TRANS.',    c.transmission||'—'],
+    ['FUEL',      c.fuel_type||'—'],
+    ['SEATS',     String(c.seats||'—')],
+    ['WEIGHT',    c.weight_kg?c.weight_kg+' kg':'—'],
+  ];
+  let sY=30;
+  font('bold',5.5); rgb(...A2);
+  T('SPECS', W-22, sY, {align:'center'});
+  sY+=3;
+  stk(...A); lw(0.3); L(W-43,sY,W-3,sY);
+  sY+=5;
+
+  sideSpecs.forEach(([k,v])=>{
+    font('bold',4.5); rgb(...DG);
+    T(k, W-43+1, sY);
+    font('normal',5.5); rgb(...MG);
+    // clip long values
+    const vClip=v.length>14?v.substring(0,13)+'…':v;
+    T(vClip, W-3, sY, {align:'right'});
+    stk(30,35,45); lw(0.15); L(W-43,sY+1.5,W-3,sY+1.5);
+    sY+=9;
+  });
+
+  /* ── page footer ── */
+  fill(...DK); R(0,H-12,W,12);
+  stk(...A); lw(0.3); L(10,H-12,W-10,H-12);
+  font('normal',5.5); rgb(...DG);
+  T('EDELHAUS AUTOMOTIVE — OFFICIAL VEHICLE SPECIFICATION', 10, H-6.5);
+  T('edelhaus.com  ·  1 / 2', W-10, H-6.5, {align:'right'});
+
+  /* ══════════════════════════════════════════════════════
+     PAGE 2 — SPECIFICATIONS & DETAILS (light bg)
+  ══════════════════════════════════════════════════════ */
+  doc.addPage();
+  fill(...OW); R(0,0,W,H);
+
+  /* ── dark header ── */
+  fill(...K); R(0,0,W,42);
+  fill(...A); R(0,0,3,42);
+
+  font('bold',5); rgb(...A2);
+  T((c.brand||'').toUpperCase()+'  ·  '+(c.year||'')+'  ·  '+(c.origin||'').toUpperCase(), 8,9);
+  font('bold',13); rgb(...W2);
+  T(c.name||'',8,22);
+  font('normal',7); rgb(...MG);
+  T(c.subtitle||'',8,31);
+
+  /* status badge on header right */
+  const stW2=doc.getTextWidth(String(c.status||'—'))*0.9+10;
+  fill(30,35,45); stk(stCol[0],stCol[1],stCol[2]); lw(0.3);
+  RR(W-stW2-8,16,stW2,8,2,2,'FD');
+  font('bold',5.5); rgb(stCol[0],stCol[1],stCol[2]);
+  T(String(c.status||'—'), W-stW2/2-8, 21.5, {align:'center'});
+
+  /* ── perf numbers strip ── */
+  const perfItems=[
+    {v:String(c.power_hp||'—'), u:'HP',   l:'MAX POWER'},
+    {v:String(c.torque_nm||'—'),u:'Nm',   l:'TORQUE'},
+    {v:String(c.top_speed_kmh||'—'), u:'km/h',l:'TOP SPEED'},
+    {v:String(c.seats||'—'),    u:'seats',l:'CAPACITY'},
+  ];
+  const pW=W/4;
+  perfItems.forEach(({v,u,l},i)=>{
+    const px=i*pW;
+    fill(i%2===0?15:20, i%2===0?15:20, i%2===0?15:22); R(px,42,pW,22,'F');
+    if(i<3){stk(35,42,55);lw(0.2);L(px+pW,42,px+pW,64);}
+    font('bold',15); rgb(...W2);
+    T(v, px+pW/2, 55, {align:'center'});
+    font('bold',5.5); rgb(...A2);
+    T(u, px+pW/2, 60, {align:'center'});
+    font('normal',4.5); rgb(...DG);
+    T(l, px+pW/2, 63.5, {align:'center'});
+  });
+
+  /* ── specs section ── */
+  const spY0=70;
+  fill(...A); R(8,spY0,3,5);
+  font('bold',6); rgb(...A);
+  T('TECHNICAL SPECIFICATIONS',14,spY0+4);
+  stk(...LG); lw(0.25); L(8,spY0+6,W-8,spY0+6);
+
+  const allSpecs=[
+    ['Engine',       c.engine||'—'],
+    ['Power',        c.power||'—'],
+    ['Torque',       c.torque_nm?c.torque_nm+' Nm':'—'],
+    ['0–100 km/h',   c.acceleration?c.acceleration.replace('0-100: ',''):'—'],
+    ['Top Speed',    c.top_speed_kmh?c.top_speed_kmh+' km/h':'—'],
+    ['Transmission', c.transmission||'—'],
+    ['Drivetrain',   c.drivetrain||'—'],
+    ['Fuel Type',    c.fuel_type||'—'],
+    ['Displacement', c.displacement?c.displacement+' cc':'—'],
+    ['Cylinders',    c.cylinders?String(c.cylinders):'—'],
+    ['Weight',       c.weight_kg?c.weight_kg+' kg':'—'],
+    ['Seats',        c.seats?String(c.seats):'—'],
+    ['Origin',       c.origin||'—'],
+    ['Year',         c.year||'—'],
+  ];
+
+  const rH=8, cW=W/2-12, c1x=8, c2x=W/2+4, rowY0=spY0+9;
+  const half=Math.ceil(allSpecs.length/2);
+
+  allSpecs.forEach(([k,v],idx)=>{
+    const col=idx<half?0:1;
+    const row=idx<half?idx:idx-half;
+    const cx=col===0?c1x:c2x;
+    const ry=rowY0+row*rH;
+
+    if(row%2===0){fill(230,236,245);R(cx,ry-5.8,cW,rH,'F');}
+    font('bold',5.8); rgb(...DG);
+    T(k.toUpperCase(),cx+2,ry-1.5);
+    font('normal',6.8); rgb(20,25,35);
+    const vStr=String(v||'—');
+    T(vStr.length>22?vStr.substring(0,21)+'…':vStr, cx+cW-2, ry-1.5, {align:'right'});
+    stk(...LG); lw(0.12);
+    L(cx,ry+rH-6.5,cx+cW,ry+rH-6.5);
+  });
+
+  /* ── highlights ── */
+  const hlItems=c.highlights||[];
+  const hlY0=rowY0+half*rH+6;
+
+  if(hlItems.length){
+    fill(...A); R(8,hlY0,3,5);
+    font('bold',6); rgb(...A);
+    T('KEY HIGHLIGHTS',14,hlY0+4);
+    stk(...LG); lw(0.25); L(8,hlY0+6,W-8,hlY0+6);
+
+    const hlBW=W/2-12, hlBH=9;
+    hlItems.forEach((h,i)=>{
+      const hcol=i%2, hrow=Math.floor(i/2);
+      const hx=hcol===0?8:W/2+4;
+      const hy=hlY0+9+hrow*(hlBH+2.5);
+      fill(232,240,252); stk(195,210,230); lw(0.25);
+      RR(hx,hy,hlBW,hlBH,2,2,'FD');
+      fill(...A); C(hx+5.5,hy+hlBH/2,1.5,'F');
+      font('normal',6.5); rgb(30,45,65);
+      const hClip=h.length>32?h.substring(0,31)+'…':h;
+      T(hClip,hx+10,hy+hlBH/2+2,{maxWidth:hlBW-14});
+    });
+  }
+
+  /* ── description ── */
+  if(c.description){
+    const dRows=Math.ceil(hlItems.length/2);
+    const hlBH=9;
+    const dY=hlY0+9+dRows*(hlBH+2.5)+5;
+    fill(...A); R(8,dY,3,5);
+    font('bold',6); rgb(...A);
+    T('VEHICLE OVERVIEW',14,dY+4);
+    stk(...LG); lw(0.25); L(8,dY+6,W-8,dY+6);
+
+    fill(232,240,252); stk(...LG); lw(0.25);
+    RR(8,dY+8,W-16,30,3,3,'FD');
+    fill(...A); R(8,dY+8,3,30);
+
+    font('italic',7); rgb(45,60,80);
+    const dLines=doc.splitTextToSize(c.description,W-28);
+    dLines.slice(0,6).forEach((ln,i)=>T(ln,14,dY+15+i*4.8));
+  }
+
+  /* ── page 2 footer ── */
+  fill(...DK); R(0,H-12,W,12);
+  stk(...A); lw(0.3); L(8,H-12,W-8,H-12);
+  font('normal',5.5); rgb(...DG);
+  T('EDELHAUS AUTOMOTIVE  ·  OFFICIAL VEHICLE SPECIFICATION BROCHURE',8,H-6);
+  font('normal',5.5); rgb(...MG);
+  T('All specifications subject to change without notice.  ·  2 / 2',W-8,H-6,{align:'right'});
+
+  return doc;
+}
+async function openBrochureTab(id){
+  const c = INV.find(x => x.id === id);
+  if(!c){ toast('Car not found.','red'); return; }
+  toast('Generating PDF brochure…','blue');
+  try{
+    const doc = await _generatePDF(c);
+    const blob = doc.output('blob');
+    const url  = URL.createObjectURL(blob);
+    window.open(url,'_blank');
+    toast('Brochure opened in new tab!','green');
+  }catch(err){
+    console.error(err);
+    toast('PDF generation failed: '+err.message,'red');
+  }
+}
+
+async function downloadBrochure(id){
+  const c = INV.find(x => x.id === id);
+  if(!c){ toast('Car not found.','red'); return; }
+  toast('Generating PDF…','blue');
+  try{
+    const doc = await _generatePDF(c);
+    doc.save(`${(c.name||'car').replace(/\s+/g,'-')}-Edelhaus-Brochure.pdf`);
+    toast('PDF brochure downloaded!','green');
+  }catch(err){
+    console.error(err);
+    toast('PDF download failed: '+err.message,'red');
+  }
+}
+
 function changePassword(){
   const cur=document.getElementById('pw-cur').value;
   const nw=document.getElementById('pw-new').value;

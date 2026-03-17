@@ -10,6 +10,15 @@ let searchTerm         = '';
 let carsData           = [];
 let currentCurrency    = 'INR';
 const exchangeRate     = 12000;
+let currentStatusFilter= 'available';
+let currentSortOrder   = 'recommended';
+let currentViewMode    = 'carousel';
+
+// ── New inventory state variables (F1rst Motors-style) ──
+let invStatusFilter = 'available'; // 'available' | 'sold'
+let invSortMode     = 'recommended'; // 'recommended'|'price_asc'|'price_desc'|'newest'|'power'
+let invBodyFilter   = 'all';        // 'all'|'sports'|'luxury'|'suv'|'hypercar'
+let recentlyViewed  = JSON.parse(sessionStorage.getItem('ehRecentlyViewed') || '[]');
 
 // ==============================================================
 //  AUTH — STORAGE KEYS
@@ -510,13 +519,6 @@ function swapModalImg(url, el) {
     } catch(e) {}
 })();
 
-function swapModalImg(url, el) {
-    const m = document.getElementById('modalMainImg');
-    if (m) { m.style.opacity = 0; setTimeout(() => { m.src = url; m.style.opacity = 1; }, 150); }
-    document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active-thumb'));
-    if (el) el.classList.add('active-thumb');
-}
-
 // ==============================================================
 //  TEST DRIVES PAGE — Full feature render
 // ==============================================================
@@ -749,15 +751,38 @@ function updateTDNavBadge() {
 
 
 // ==============================================================
+//  STATUS HELPERS (F1rst Motors style)
+// ==============================================================
+function isSoldCar(car) {
+    return (car.status || '').toLowerCase() === 'sold';
+}
+function isAskForPrice(car) {
+    const s = (car.status || '').toLowerCase();
+    return s === 'by order' || s === 'exclusive';
+}
+function getStatusStyle(status) {
+    const s = (status || '').toLowerCase();
+    if (s === 'sold')      return { bg: 'rgba(231,76,60,0.15)',   border: '#e74c3c', color: '#e74c3c',  label: 'SOLD' };
+    if (s === 'in stock')  return { bg: 'rgba(46,204,113,0.12)',  border: '#2ecc71', color: '#2ecc71',  label: 'IN STOCK' };
+    if (s === 'available') return { bg: 'rgba(46,204,113,0.12)',  border: '#2ecc71', color: '#2ecc71',  label: 'AVAILABLE' };
+    if (s === 'exclusive') return { bg: 'rgba(142,68,173,0.15)',  border: '#8e44ad', color: '#c39bd3',  label: 'EXCLUSIVE' };
+    if (s === 'by order')  return { bg: 'rgba(52,152,219,0.12)',  border: '#3498db', color: '#3498db',  label: 'BY ORDER' };
+    return                         { bg: 'rgba(52,152,219,0.12)', border: '#3498db', color: '#3498db',  label: status || 'AVAILABLE' };
+}
+
+// ==============================================================
 //  BADGE COLOR MAP — category → gradient
 // ==============================================================
 const badgeColors = {
-    'HYPERCAR'   : 'linear-gradient(135deg,#e74c3c,#c0392b)',
-    'SPORTS'     : 'linear-gradient(135deg,#3498db,#2980b9)',
-    'LUXURY'     : 'linear-gradient(135deg,#b8960c,#f0c040)',
+    'HYPERCAR'    : 'linear-gradient(135deg,#e74c3c,#c0392b)',
+    'SPORTS'      : 'linear-gradient(135deg,#3498db,#2980b9)',
+    'LUXURY'      : 'linear-gradient(135deg,#b8960c,#f0c040)',
     'ULTRA LUXURY': 'linear-gradient(135deg,#8e44ad,#6c3483)',
-    'LUXURY SUV' : 'linear-gradient(135deg,#27ae60,#1e8449)',
-    'TRACK READY': 'linear-gradient(135deg,#e74c3c,#c0392b)',
+    'LUXURY SUV'  : 'linear-gradient(135deg,#27ae60,#1e8449)',
+    'TRACK READY' : 'linear-gradient(135deg,#e74c3c,#c0392b)',
+    'GRAND TOURER': 'linear-gradient(135deg,#2c3e50,#4ca1af)',
+    'RALLY'       : 'linear-gradient(135deg,#3498db,#2980b9)',
+    'BESPOKE'     : 'linear-gradient(135deg,#6c3483,#9b59b6)',
 };
 function getBadgeStyle(badge) {
     const bg = badgeColors[badge] || 'linear-gradient(135deg,#2980b9,#3498db)';
@@ -766,28 +791,36 @@ function getBadgeStyle(badge) {
 }
 
 // ==============================================================
-//  GENERATE CAR CARD — Fully Redesigned
+//  GENERATE CAR CARD — F1rst Motors style
 // ==============================================================
 function generateCarCard(car, staggerIndex = 0) {
+    const statusRaw  = (car.status || '').toLowerCase();
+    const isSold     = statusRaw === 'sold';
+    const isByOrder  = statusRaw === 'by order' || statusRaw === 'exclusive';
     const stockCount = getStockCount(car.name);
-    const stockText  = stockCount > 1 ? `${stockCount} Units` : '1 Unit';
-    const stockClass = stockCount > 1 ? '#2ecc71' : '#f39c12';
 
-    // Image & color dots
-    let displayImage  = car.images && car.images[0] ? car.images[0] : '';
-    let colorDotsHTML = '';
+    // Status pill
+    const statusStyle = isSold
+        ? 'color:#e74c3c;border-color:#e74c3c44;background:#e74c3c11;'
+        : isByOrder
+            ? 'color:#3498db;border-color:#3498db44;background:#3498db11;'
+            : 'color:#2ecc71;border-color:#2ecc7144;background:#2ecc7111;';
+    const statusIcon  = isSold ? 'bi-x-circle-fill' : isByOrder ? 'bi-hourglass-split' : 'bi-check-circle-fill';
+    const statusLabel = isSold ? 'SOLD' : isByOrder ? 'By Order' : stockCount > 1 ? `${stockCount} Units` : 'In Stock';
+
+    // Image & colour dots
+    let displayImage      = car.images?.[0] || '';
+    let colorDotsHTML     = '';
     let selectedColorName = '';
-
-    if (car.colors && car.colors.length > 0) {
-        displayImage     = car.colors[0].img;
+    if (car.colors?.length) {
+        displayImage      = car.colors[0].img;
         selectedColorName = car.colors[0].name;
         colorDotsHTML = `
         <div class="color-row">
             <div class="color-dots-wrap" id="color-dots-${car.id}">
                 ${car.colors.map((col, i) => `
-                    <div class="color-dot ${i === 0 ? 'active' : ''}"
-                         style="background:${col.hex};"
-                         title="${col.name}"
+                    <div class="color-dot ${i===0?'active':''}"
+                         style="background:${col.hex};" title="${col.name}"
                          onclick="changeCarImage(${car.id},'${col.img}',this,'${col.name}')"></div>
                 `).join('')}
             </div>
@@ -795,7 +828,7 @@ function generateCarCard(car, staggerIndex = 0) {
         </div>`;
     }
 
-    // Garage / wishlist state
+    // Wishlist state
     const garage   = JSON.parse(localStorage.getItem('edelhausGarage')) || [];
     const inGarage = garage.includes(car.id);
 
@@ -807,117 +840,156 @@ function generateCarCard(car, staggerIndex = 0) {
         ? `<div class="booking-pill"><i class="bi bi-calendar-check-fill me-1"></i>Test Drive: ${formatDateDisplay(booking.date)}</div>`
         : '';
 
-    // Image count badge
+    // Image count
     const imgCount = (() => {
         let all = car.images ? [...car.images] : [];
         if (car.colors) car.colors.forEach(c => { if (!all.includes(c.img)) all.push(c.img); });
         return all.length;
     })();
-    const imgCountBadge = imgCount > 1
-        ? `<span class="img-count-badge"><i class="bi bi-images me-1"></i>${imgCount}</span>`
+    const imgCountBadge = imgCount > 1 ? `<span class="img-count-badge"><i class="bi bi-images me-1"></i>${imgCount}</span>` : '';
+
+    // 360° badge — show if model_url exists
+    const badge360 = car.model_url
+        ? `<span class="badge-360-pill" onclick="event.stopPropagation();open360View(${car.id})" title="360° View">
+               <i class="bi bi-arrow-repeat me-1"></i>360°
+           </span>`
+        : '';
+
+    // KM / mileage badge
+    const kmBadge = car.mileage_km != null
+        ? `<span class="km-badge"><i class="bi bi-speedometer me-1"></i>${car.mileage_km === 0 ? '0 km' : Number(car.mileage_km).toLocaleString() + ' km'}</span>`
+        : '';
+
+    // Body type pill
+    const bodyTypeMap = { sports:'Sports Car', luxury:'Luxury Saloon', suv:'Luxury SUV', hypercar:'Hypercar' };
+    const bodyPill = car.category
+        ? `<span class="body-type-pill">${bodyTypeMap[car.category] || car.category}</span>`
+        : '';
+
+    // SOLD overlay
+    const soldOverlay = isSold
+        ? `<div class="sold-overlay"><div class="sold-stamp">SOLD</div></div>`
         : '';
 
     // Price
-    const formattedPrice = formatPrice(car.price);
+    const priceHTML = isByOrder
+        ? `<div class="price-block mt-3">
+               <span class="price-from-label">Price</span>
+               <div class="car-price ask-price" onclick="openQuickInquiry(${car.id})">
+                   <i class="bi bi-chat-dots me-1"></i>Ask For Price
+               </div>
+           </div>`
+        : `<div class="price-block mt-3">
+               <span class="price-from-label">Starting from</span>
+               <div class="car-price">${formatPrice(car.price)}</div>
+           </div>`;
 
-    // Stagger animation delay
     const delay = staggerIndex * 70;
 
     return `
     <div class="col-md-4" style="animation-delay:${delay}ms;">
-        <div class="card car-card shadow h-100">
+        <div class="card car-card shadow h-100${isSold ? ' car-card-sold' : ''}">
 
-            <!-- ── IMAGE AREA ── -->
             <div class="img-wrapper position-relative">
-
-                <!-- Badge (category-colored) -->
                 <span class="car-badge" style="${getBadgeStyle(car.badge)}">${car.badge}</span>
-
-                <!-- Image count pill -->
                 ${imgCountBadge}
-
-                <!-- Main image -->
+                ${badge360}
+                ${kmBadge}
                 <img id="car-img-${car.id}" src="${displayImage}"
-                     class="card-img-top" alt="${car.name}"
-                     loading="lazy"
-                     style="height:270px;object-fit:cover;cursor:pointer;transition:transform 0.5s ease,opacity 0.4s ease;"
+                     class="card-img-top" alt="${car.name}" loading="lazy"
+                     style="height:270px;object-fit:cover;cursor:pointer;transition:transform 0.5s ease,opacity 0.4s ease;${isSold?'filter:grayscale(50%);':''}"
                      onclick="openGalleryModal(${car.id})">
-
-                <!-- Bottom gradient overlay with car name -->
+                ${soldOverlay}
                 <div class="img-bottom-overlay">
                     <span class="img-overlay-brand">${car.brand}</span>
                 </div>
-
-                <!-- Floating action buttons — appear on hover -->
                 <div class="card-hover-actions">
-                    <button class="hover-action-btn ${inGarage ? 'active-wish' : ''}"
-                            onclick="toggleGarage(${car.id},this)"
-                            title="${inGarage ? 'Remove from Wishlist' : 'Save to Wishlist'}">
-                        <i class="bi ${inGarage ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                    <button class="hover-action-btn ${inGarage?'active-wish':''}" onclick="toggleGarage(${car.id},this)" title="${inGarage?'Remove from Wishlist':'Save to Wishlist'}">
+                        <i class="bi ${inGarage?'bi-heart-fill':'bi-heart'}"></i>
                     </button>
-                    <button class="hover-action-btn"
-                            onclick="open360View(${car.id})"
-                            title="360° View">
+                    <button class="hover-action-btn" onclick="open360View(${car.id})" title="360° View">
                         <i class="bi bi-arrow-repeat"></i>
                     </button>
-                    <button class="hover-action-btn"
-                            onclick="toggleCompare(${car.id},this)"
-                            title="Compare">
+                    <button class="hover-action-btn" onclick="toggleCompare(${car.id},this)" title="Compare">
                         <i class="bi bi-arrow-left-right"></i>
                     </button>
+                    <button class="hover-action-btn" onclick="shareCarLink(${car.id})" title="Share">
+                        <i class="bi bi-share"></i>
+                    </button>
                 </div>
-
-                <!-- Gallery hint on image hover -->
                 <div class="gallery-hint" onclick="openGalleryModal(${car.id})">
                     <i class="bi bi-fullscreen me-1"></i> Open Gallery
                 </div>
             </div>
 
-            <!-- ── CARD BODY ── -->
             <div class="card-body d-flex flex-column">
-
-                <!-- Brand + Name + Subtitle -->
-                <div class="car-brand-label">${car.brand.toUpperCase()}</div>
+                <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                    <div class="car-brand-label">${car.brand.toUpperCase()}</div>
+                    ${bodyPill}
+                </div>
                 <h5 class="card-title mb-1">${car.name}</h5>
                 <p class="car-subtitle mb-2">${car.subtitle}</p>
-
-                <!-- Color picker -->
                 ${colorDotsHTML}
-
-                <!-- Booking badge -->
                 ${bookingBadge}
-
-                <!-- Specs row -->
                 <div class="car-specs mt-2">
                     <div class="spec-item"><i class="bi bi-speedometer2"></i><span>${car.power}</span></div>
                     <div class="spec-item"><i class="bi bi-lightning-charge"></i><span>${car.acceleration}</span></div>
                     <div class="spec-item"><i class="bi bi-calendar3"></i><span>${car.year}</span></div>
                 </div>
-
-                <!-- Price block -->
-                <div class="price-block mt-3">
-                    <span class="price-from-label">Starting from</span>
-                    <div class="car-price">${formattedPrice}</div>
-                </div>
-
-                <!-- Stock + Currency toggle -->
+                ${priceHTML}
                 <div class="card-footer-info mt-2 mb-3">
-                    <span class="info-badge" style="color:${stockClass};border-color:${stockClass}22;background:${stockClass}11;">
-                        <i class="bi bi-box-seam me-1"></i>${stockText}
+                    <span class="info-badge" style="${statusStyle}">
+                        <i class="bi ${statusIcon} me-1"></i>${statusLabel}
                     </span>
                     <button class="currency-toggle-btn" onclick="toggleGlobalCurrency()">
-                        <i class="bi bi-currency-exchange me-1"></i>${currentCurrency === 'INR' ? 'USD' : 'INR'}
+                        <i class="bi bi-currency-exchange me-1"></i>${currentCurrency==='INR'?'USD':'INR'}
                     </button>
                 </div>
-
-                <!-- Main CTA -->
-                <button class="btn btn-gradient w-100 mt-auto view-details-btn" onclick="openModal(${car.id})">
-                    <i class="bi bi-eye me-2"></i>VIEW DETAILS
-                </button>
-
+                <div class="d-flex gap-2 mt-auto">
+                    <button class="btn btn-gradient flex-grow-1 view-details-btn" onclick="openModal(${car.id})">
+                        <i class="bi bi-eye me-2"></i>VIEW DETAILS
+                    </button>
+                    <button class="compare-btn-sm" onclick="toggleCompare(${car.id},this)" title="Compare">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>`;
+}
+
+// ── Quick Inquiry (Ask For Price) ──────────────────────────────
+function openQuickInquiry(carId) {
+    const car  = carsData.find(c => c.id === carId);
+    if (!car) return;
+    const user = getCurrentUser();
+    const el   = document.getElementById('quickInquiryModal');
+    if (el) {
+        document.getElementById('qiCarName').value  = car.name;
+        document.getElementById('qiCarId').value    = car.id;
+        document.getElementById('qiName').value     = user?.name  || '';
+        document.getElementById('qiEmail').value    = user?.email || '';
+        document.getElementById('qiMessage').value  =
+            `I'm interested in the ${car.name} (${car.year}). Please contact me with pricing and availability.`;
+        new bootstrap.Modal(el).show();
+    } else {
+        showToast(`📩 Contact us for pricing on <strong>${car.name}</strong>`, 'info', 4000);
+        showPage('contact');
+    }
+}
+
+// ── Share car link ────────────────────────────────────────────
+function shareCarLink(carId) {
+    const car = carsData.find(c => c.id === carId);
+    if (!car) return;
+    const url = `${window.location.origin}${window.location.pathname}?car=${carId}`;
+    if (navigator.share) {
+        navigator.share({ title: car.name, text: `Check out the ${car.name} at Edelhaus Automotive`, url });
+    } else {
+        navigator.clipboard?.writeText(url).then(() => {
+            showToast(`🔗 Link copied for <strong>${car.name}</strong>!`, 'success', 3000);
+        });
+    }
 }
 
 // ==============================================================
@@ -985,25 +1057,64 @@ function renderHomeBrands() {
 }
 
 async function loadCarsData() {
-    // Show skeletons while loading
     showSkeletons('inventoryGrid', 3);
 
+    // Try multiple path variants so it works whether opened via
+    // file://, a local server, or a subfolder deployment
+    const paths = [
+        'cars.json',
+        './cars.json',
+        window.location.pathname.replace(/\/[^/]*$/, '/') + 'cars.json'
+    ];
+
+    let raw = null;
+    let lastErr = null;
+
+    for (const path of paths) {
+        try {
+            const res = await fetch(path);
+            if (res.ok) { raw = await res.json(); break; }
+        } catch (e) { lastErr = e; }
+    }
+
+    if (!raw) {
+        console.error('Could not load cars.json. Tried:', paths, lastErr);
+        const g = document.getElementById('inventoryGrid');
+        if (g) g.innerHTML = `
+            <div class="text-center py-5 w-100">
+                <i class="bi bi-exclamation-triangle display-4 text-warning mb-3 d-block"></i>
+                <p class="text-white fs-5 mb-2">Could not load <code>cars.json</code></p>
+                <p class="text-muted small mb-3">
+                    Make sure <strong>cars.json</strong> is in the same folder as <strong>help.html</strong>
+                    and you are opening the site through a local server (not directly as a file://).
+                </p>
+                <button class="btn btn-gradient px-4" onclick="loadCarsData()">
+                    <i class="bi bi-arrow-clockwise me-2"></i>Retry
+                </button>
+            </div>`;
+        return;
+    }
+
     try {
-        carsData = await (await fetch('cars.json')).json();
+        carsData = raw;
         renderFeaturedCars();
         renderInventoryCars();
         renderHomeBrands();
         createBrandDropdown();
         updateStockDisplay();
         updateGarageUI();
-        // Populate service form car dropdown now that cars are loaded
         initServiceForm();
-        // Apply lazy loading to all newly rendered images
         setTimeout(applyLazyLoading, 100);
+
+        // Handle shared ?car=ID link
+        const urlParams   = new URLSearchParams(window.location.search);
+        const sharedCarId = urlParams.get('car');
+        if (sharedCarId) {
+            const car = carsData.find(c => c.id === parseInt(sharedCarId));
+            if (car) { showPage('inventory'); setTimeout(() => openModal(parseInt(sharedCarId)), 500); }
+        }
     } catch (err) {
-        console.error('Load error:', err);
-        const g = document.getElementById('inventoryGrid');
-        if (g) g.innerHTML = '<p class="text-white text-center py-5">Error loading cars. Please refresh.</p>';
+        console.error('Render error after loading cars.json:', err);
     }
 }
 
@@ -1027,6 +1138,7 @@ function showPage(name) {
             if (name === 'testdrives')  renderTestDrivesPage();
             if (name === 'mybookings')  renderTestDrivesPage();
             if (name === 'brands')      initBrandsPage();
+            if (name === 'sellmycar')   initSellMyCarForm();
             setTimeout(checkScroll, 120);
         });
     }
@@ -1118,39 +1230,80 @@ let invAnimating  = false;
 
 // ── Main render entry point ───────────────────────────────────
 function renderInventoryCars() {
-    const noRes   = document.getElementById('invNoResults');
-    const wrapper = document.getElementById('invSliderWrapper');
+    const noRes = document.getElementById('invNoResults');
     if (!document.getElementById('inventoryGrid')) return;
-
     invStopAuto();
     invAnimating = false;
 
-    // Build filtered + deduplicated list
-    let filtered = carsData;
+    // 1. Status filter
+    let filtered = invStatusFilter === 'sold'
+        ? carsData.filter(c => (c.status||'').toLowerCase() === 'sold')
+        : carsData.filter(c => (c.status||'').toLowerCase() !== 'sold');
+
+    // 2. Brand filter
     if (currentBrandFilter !== 'all')
         filtered = filtered.filter(c => c.brand === currentBrandFilter || c.category === currentBrandFilter);
-    if (searchTerm)
-        filtered = filtered.filter(c => c.name.toLowerCase().includes(searchTerm));
 
+    // 3. Body/category filter
+    if (invBodyFilter !== 'all')
+        filtered = filtered.filter(c => c.category === invBodyFilter);
+
+    // 4. Search (name + brand + engine + badge + subtitle)
+    if (searchTerm)
+        filtered = filtered.filter(c =>
+            (c.name||'').toLowerCase().includes(searchTerm) ||
+            (c.brand||'').toLowerCase().includes(searchTerm) ||
+            (c.badge||'').toLowerCase().includes(searchTerm) ||
+            (c.engine||'').toLowerCase().includes(searchTerm) ||
+            (c.subtitle||'').toLowerCase().includes(searchTerm)
+        );
+
+    // 5. Sort
+    switch (invSortMode) {
+        case 'price_asc':  filtered = [...filtered].sort((a,b)=>parsePriceValue(a.price)-parsePriceValue(b.price)); break;
+        case 'price_desc': filtered = [...filtered].sort((a,b)=>parsePriceValue(b.price)-parsePriceValue(a.price)); break;
+        case 'newest':     filtered = [...filtered].sort((a,b)=>(+b.year||0)-(+a.year||0)); break;
+        case 'power':      filtered = [...filtered].sort((a,b)=>(b.power_hp||0)-(a.power_hp||0)); break;
+        default: break;
+    }
+
+    // 6. Deduplicate
     const seen = new Set();
     invAllCards = filtered.filter(c => { if (seen.has(c.id)) return false; seen.add(c.id); return true; });
 
+    // Update live count label
+    const countEl = document.getElementById('invLiveCount');
+    if (countEl) countEl.textContent = invAllCards.length;
+
+    // Sync brand pills
+    _renderBrandPills();
+
     if (invAllCards.length === 0) {
         document.getElementById('inventoryGrid').innerHTML = '';
-        if (noRes) noRes.style.display = 'block';
+        if (noRes) {
+            noRes.style.display = 'block';
+            noRes.innerHTML = `
+                <i class="bi bi-search display-4 text-muted mb-3 d-block"></i>
+                <p class="fs-5 text-white">No vehicles match your search.</p>
+                <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+                    <button class="btn btn-sm btn-outline-light px-4" onclick="resetAllFilters()">
+                        <i class="bi bi-x-circle me-1"></i>Clear Filters
+                    </button>
+                </div>`;
+        }
         _hideShowArrows(false);
         _renderPagination(0);
+        _renderRecentlyViewed();
         return;
     }
     if (noRes) noRes.style.display = 'none';
 
-    // clamp page
     const totalPages = Math.ceil(invAllCards.length / INV_PER_PAGE);
     if (invPage > totalPages) invPage = 1;
-
     invCarIndex = 0;
     _renderCurrentPage();
     _renderPagination(totalPages);
+    _renderRecentlyViewed();
     setTimeout(applyLazyLoading, 80);
 }
 
@@ -1326,17 +1479,115 @@ function invGoPage(p) {
 // Pause on hover — handled in main DOMContentLoaded init block below
 
 // ==============================================================
-//  FILTER
+//  FILTER HELPERS — F1rst Motors-style
 // ==============================================================
+
+function setStatusFilter(status) {
+    invStatusFilter = status;
+    invPage = 1; invCarIndex = 0;
+    document.querySelectorAll('.inv-status-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.status === status));
+    renderInventoryCars();
+}
+
+function setSortMode(mode) {
+    invSortMode = mode;
+    invPage = 1; invCarIndex = 0;
+    const labels = { recommended:'Recommended', price_asc:'Price: Low–High',
+                     price_desc:'Price: High–Low', newest:'Newest First', power:'Most Powerful' };
+    const el = document.getElementById('invSortLabel');
+    if (el) el.textContent = labels[mode] || 'Sort';
+    document.querySelectorAll('.inv-sort-item').forEach(i =>
+        i.classList.toggle('active', i.dataset.sort === mode));
+    // Close dropdown
+    document.getElementById('invSortDropdown')?.classList.remove('open');
+    renderInventoryCars();
+}
+
+function setBodyFilter(cat, btn) {
+    invBodyFilter = cat; invPage = 1; invCarIndex = 0;
+    document.querySelectorAll('.body-filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderInventoryCars();
+}
+
 function filterCars(cat) {
-    currentBrandFilter = cat;
-    invPage     = 1;
-    invCarIndex = 0;
+    currentBrandFilter = cat; invPage = 1; invCarIndex = 0;
     document.querySelectorAll('.filter-btn').forEach(b => {
         b.classList.remove('active');
-        if (b.textContent.toLowerCase().includes(cat) || (cat === 'all' && b.textContent.includes('All'))) b.classList.add('active');
+        if (b.textContent.toLowerCase().includes(cat) || (cat==='all' && b.textContent.includes('All')))
+            b.classList.add('active');
     });
     renderInventoryCars();
+}
+
+function resetAllFilters() {
+    currentBrandFilter = 'all'; invBodyFilter = 'all';
+    invSortMode = 'recommended'; invStatusFilter = 'available';
+    searchTerm = ''; invPage = 1; invCarIndex = 0;
+    const s = document.getElementById('carSearch');
+    if (s) s.value = '';
+    const sl = document.getElementById('invSortLabel');
+    if (sl) sl.textContent = 'Recommended';
+    document.querySelectorAll('.body-filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+    document.querySelectorAll('.inv-status-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.status === 'available'));
+    renderInventoryCars();
+}
+
+// Brand logo pill row
+function _renderBrandPills() {
+    const el = document.getElementById('invBrandPills');
+    if (!el) return;
+    const logos  = JSON.parse(localStorage.getItem('edelhausBrandLogos')) || {};
+    const pool   = invStatusFilter === 'sold'
+        ? carsData.filter(c => (c.status||'').toLowerCase() === 'sold')
+        : carsData.filter(c => (c.status||'').toLowerCase() !== 'sold');
+    const counts = {};
+    pool.forEach(c => { counts[c.brand] = (counts[c.brand]||0)+1; });
+    const brands = [...new Set(pool.map(c => c.brand))];
+    el.innerHTML = `<button class="brand-pill ${currentBrandFilter==='all'?'active':''}" onclick="filterCars('all');updateStockDisplay('All Brands')">
+        <i class="bi bi-grid-3x3-gap me-1" style="font-size:0.75rem;"></i>All
+        <span class="brand-pill-count">${pool.length}</span>
+    </button>` + brands.map(b => {
+        const logo = logos[b]
+            ? `<img src="${logos[b]}" class="brand-pill-img" alt="${b}">`
+            : `<i class="bi bi-car-front me-1" style="font-size:0.75rem;"></i>`;
+        const label = b.replace('Mercedes-Benz','Merc').replace('Range Rover','Range R.');
+        return `<button class="brand-pill ${currentBrandFilter===b?'active':''}" onclick="filterCars('${b}');updateStockDisplay('${b}')">
+            ${logo}${label}<span class="brand-pill-count">${counts[b]||0}</span>
+        </button>`;
+    }).join('');
+}
+
+// Recently Viewed strip
+function _renderRecentlyViewed() {
+    const strip = document.getElementById('recentlyViewedStrip');
+    if (!strip) return;
+    const cars = recentlyViewed.map(id => carsData.find(c => c.id===id)).filter(Boolean);
+    if (!cars.length) { strip.style.display = 'none'; return; }
+    strip.style.display = 'block';
+    const grid = document.getElementById('recentlyViewedGrid');
+    if (!grid) return;
+    grid.innerHTML = cars.map(car => {
+        const img   = car.colors?.[0]?.img || car.images?.[0] || '';
+        const sold  = (car.status||'').toLowerCase() === 'sold';
+        const price = sold ? 'SOLD'
+            : (car.status||'').toLowerCase().includes('order') ? 'Ask For Price'
+            : formatPrice(car.price);
+        return `<div class="rv-card" onclick="openModal(${car.id})">
+            <div class="rv-img-wrap">
+                <img src="${img}" alt="${car.name}" loading="lazy" ${sold?'style="filter:grayscale(60%)"':''}>
+                ${sold?'<span class="rv-sold-badge">SOLD</span>':''}
+                ${car.model_url?'<span class="rv-360-badge"><i class="bi bi-arrow-repeat"></i> 360°</span>':''}
+            </div>
+            <div class="rv-info">
+                <div class="rv-brand">${car.brand}</div>
+                <div class="rv-name">${car.name}</div>
+                <div class="rv-price">${price}</div>
+            </div>
+        </div>`;
+    }).join('');
 }
 
 // ==============================================================
@@ -1383,35 +1634,126 @@ function createBrandDropdown() {
 // Brand dropdown events — handled in main DOMContentLoaded init block below
 
 // ==============================================================
-//  GALLERY MODAL
+//  GALLERY MODAL — HD Cinematic
 // ==============================================================
 function openGalleryModal(carId) {
     const car = carsData.find(c => c.id === carId);
     if (!car) return;
     let imgs = car.images ? [...car.images] : [];
-    if (car.colors) car.colors.forEach(c => { if (!imgs.includes(c.img)) imgs.push(c.img); });
+    if (car.colors) car.colors.forEach(c => { if (c.img && !imgs.includes(c.img)) imgs.push(c.img); });
     if (!imgs.length) return;
+
     let idx = 0;
-    document.getElementById('galleryCarName').innerText     = car.name;
-    document.getElementById('galleryCarSubtitle').innerText = car.subtitle;
-    function render(i) {
-        idx = ((i % imgs.length) + imgs.length) % imgs.length;
-        const m = document.getElementById('galleryMainImage');
-        m.style.opacity = 0;
-        setTimeout(() => { m.src = imgs[idx]; m.style.opacity = 1; }, 150);
-        document.getElementById('galleryCounter').innerText = `${idx + 1} / ${imgs.length}`;
-        document.getElementById('galleryThumbs').innerHTML = imgs.map((im, j) =>
-            `<img src="${im}" onclick="window._gR(${j})" class="gallery-thumb ${j === idx ? 'gallery-thumb-active' : ''}" alt="img">`).join('');
-        document.getElementById('galleryPrev').onclick = () => window._gR(idx - 1);
-        document.getElementById('galleryNext').onclick = () => window._gR(idx + 1);
+    let isAnimating = false;
+
+    const mainImg   = document.getElementById('galleryMainImage');
+    const bgBlur    = document.getElementById('galBgBlur');
+    const thumbsCon = document.getElementById('galleryThumbs');
+    const counter   = document.getElementById('galleryCounter');
+    const counter2  = document.getElementById('galleryCounter2');
+
+    document.getElementById('galleryCarName').innerText = car.name;
+
+    // ── Update both counters ──
+    function setCounter(i) {
+        const txt = `${i + 1} / ${imgs.length}`;
+        if (counter)  counter.innerText  = txt;
+        if (counter2) counter2.innerText = txt;
     }
-    window._gR = render; render(0);
+
+    // ── Build bottom thumbnail strip ──
+    function buildThumbs() {
+        thumbsCon.innerHTML = imgs.map((im, j) => `
+            <img src="${im}"
+                 class="gal-hd-thumb ${j === 0 ? 'gal-active' : ''}"
+                 alt="View ${j + 1}"
+                 onerror="this.style.display='none'"
+                 onclick="window._gNav(${j})">`
+        ).join('');
+    }
+
+    // ── Scroll active thumb into view (horizontal) ──
+    function updateThumbs() {
+        thumbsCon.querySelectorAll('.gal-hd-thumb').forEach((t, j) => {
+            t.classList.toggle('gal-active', j === idx);
+        });
+        const active = thumbsCon.querySelectorAll('.gal-hd-thumb')[idx];
+        if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    // ── Cinematic directional navigation ──
+    function navigateTo(newIdx, dir) {
+        if (isAnimating) return;
+        newIdx = ((newIdx % imgs.length) + imgs.length) % imgs.length;
+        if (newIdx === idx) return;
+        isAnimating = true;
+
+        const exitClass  = dir === 'next' ? 'gal-exit-next' : 'gal-exit-prev';
+        const enterClass = dir === 'next' ? 'gal-enter'     : 'gal-enter-prev';
+
+        mainImg.classList.remove('gal-visible');
+        mainImg.classList.add(exitClass);
+
+        setTimeout(() => {
+            idx = newIdx;
+            mainImg.src = imgs[idx];
+            bgBlur.style.backgroundImage = `url('${imgs[idx]}')`;
+            setCounter(idx);
+            updateThumbs();
+
+            mainImg.classList.remove(exitClass);
+            mainImg.classList.add(enterClass);
+            void mainImg.offsetWidth;
+            mainImg.classList.remove(enterClass);
+            mainImg.classList.add('gal-visible');
+
+            setTimeout(() => { isAnimating = false; }, 520);
+        }, 300);
+    }
+
+    // ── Wire arrow buttons ──
+    document.getElementById('galleryPrev').onclick = () => navigateTo(idx - 1, 'prev');
+    document.getElementById('galleryNext').onclick = () => navigateTo(idx + 1, 'next');
+
+    // Thumb click
+    window._gNav = (newIdx) => navigateTo(newIdx, newIdx > idx ? 'next' : 'prev');
+
+    // Keyboard
     document.onkeydown = e => {
         if (!document.getElementById('galleryModal').classList.contains('show')) return;
-        if (e.key === 'ArrowRight') window._gR(idx + 1);
-        if (e.key === 'ArrowLeft')  window._gR(idx - 1);
+        if (e.key === 'ArrowRight') navigateTo(idx + 1, 'next');
+        if (e.key === 'ArrowLeft')  navigateTo(idx - 1, 'prev');
+        if (e.key === 'Escape') bootstrap.Modal.getInstance(document.getElementById('galleryModal'))?.hide();
     };
-    new bootstrap.Modal(document.getElementById('galleryModal')).show();
+
+    // Touch swipe
+    let touchStartX = 0;
+    mainImg.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    mainImg.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) navigateTo(dx < 0 ? idx + 1 : idx - 1, dx < 0 ? 'next' : 'prev');
+    });
+
+    // ── Prepare (before modal opens) ──
+    mainImg.classList.remove('gal-visible','gal-enter','gal-enter-prev','gal-exit-next','gal-exit-prev');
+    mainImg.src = imgs[0];
+    bgBlur.style.backgroundImage = `url('${imgs[0]}')`;
+    setCounter(0);
+    buildThumbs();
+
+    // ── Open modal, trigger slide-in AFTER fully shown ──
+    const modalEl   = document.getElementById('galleryModal');
+    const modalInst = new bootstrap.Modal(modalEl);
+
+    modalEl.addEventListener('shown.bs.modal', function onShown() {
+        modalEl.removeEventListener('shown.bs.modal', onShown);
+        mainImg.classList.add('gal-enter');
+        void mainImg.offsetWidth;
+        mainImg.classList.remove('gal-enter');
+        mainImg.classList.add('gal-visible');
+    });
+
+    modalInst.show();
 }
 
 // ==============================================================
@@ -1419,7 +1761,7 @@ function openGalleryModal(carId) {
 // ==============================================================
 function showToast(msg, type = 'success', dur = 3500) {
     const icons  = { success:'bi-check-circle-fill', error:'bi-x-circle-fill', info:'bi-info-circle-fill', warning:'bi-exclamation-triangle-fill' };
-    const colors = { success:'#2ecc71', error:'#e74c3c', info:'#3498db', warning:'#f39c12' };
+    const colors = { success:'#2ecc71', error:'#e74c3c', info:'#3498db', warning:'#3498db' };
     const cont = document.getElementById('toastContainer');
     if (!cont) return;
     const id = 'toast-' + Date.now();
@@ -1586,7 +1928,7 @@ body{font-family:'Montserrat',sans-serif;background:#0a0a0a;color:#f0f0f0;-webki
     </div>
     <div style="text-align:center">
       <div class="bg">${car.badge}</div>
-      <div style="font-size:12px;color:#f39c12;margin-top:8px;letter-spacing:2px">${car.status}</div>
+      <div style="font-size:12px;color:#3498db;margin-top:8px;letter-spacing:2px">${car.status}</div>
     </div>
     <div style="text-align:right">
       <div style="font-size:10px;letter-spacing:3px;color:#666;margin-bottom:4px">MODEL YEAR</div>
@@ -1636,13 +1978,61 @@ function toggleCompare(id, btn) {
 function updateCompareBar() { const bar=document.getElementById('compareBar'),cnt=document.getElementById('compareCount'); if(compareList.length>0){bar.style.display='block';cnt.innerText=compareList.length;}else bar.style.display='none'; }
 function clearCompare() { compareList=[]; updateCompareBar(); document.querySelectorAll('[onclick^="toggleCompare"]').forEach(b=>{b.classList.remove('btn-check-active');b.innerHTML='<i class="bi bi-arrow-left-right"></i>';}); showToast('Comparison cleared.','info'); }
 function showCompareModal() {
-    if (compareList.length < 2) { showToast('Select at least 2 cars.', 'warning'); return; }
+    if (compareList.length < 2) { showToast('Select at least 2 cars to compare.', 'warning'); return; }
     const cars = carsData.filter(c => compareList.includes(c.id));
-    let hdr = '<tr><th class="bg-dark text-secondary" style="width:15%">Specs</th>';
-    cars.forEach(c => { hdr += `<th class="py-4" style="width:${85/cars.length}%"><img src="${c.images[0]}" class="img-fluid rounded mb-2" style="height:80px;object-fit:cover;"><h5 class="mb-0 text-white fs-6">${c.name}</h5></th>`; });
-    document.getElementById('compareHeader').innerHTML = hdr + '</tr>';
-    const specs = [{l:'Price',k:'price'},{l:'Engine',k:'engine'},{l:'Power',k:'power'},{l:'0-100',k:'acceleration'},{l:'Year',k:'year'}];
-    document.getElementById('compareBody').innerHTML = specs.map(s => { let row=`<tr><td class="fw-bold text-secondary text-start ps-4">${s.l}</td>`; cars.forEach(c=>{let v=c[s.k]||'-';if(s.k==='price')v=`<span class="text-primary fw-bold">${v}</span>`;row+=`<td class="text-white">${v}</td>`;}); return row+'</tr>'; }).join('');
+    let hdr = '<tr><th class="compare-spec-col">Specification</th>';
+    cars.forEach(c => {
+        const img = c.colors?.[0]?.img || c.images?.[0] || '';
+        hdr += `<th class="py-3 text-center">
+            <img src="${img}" style="width:100%;height:90px;object-fit:cover;border-radius:10px;margin-bottom:8px;">
+            <div style="font-size:0.62rem;letter-spacing:2px;color:#3498db;text-transform:uppercase;">${c.brand}</div>
+            <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-top:3px;">${c.name}</div>
+            <div style="font-size:0.72rem;color:#666;">${c.year}</div>
+        </th>`;
+    });
+    document.getElementById('compareHeader').innerHTML = hdr+'</tr>';
+
+    const specs = [
+        {l:'Price',        k:'price',        fmt: v => `<span style="color:#3498db;font-weight:700;">${formatPrice(v)}</span>`},
+        {l:'Status',       k:'status',       fmt: v => {
+            const s=(v||'').toLowerCase();
+            const col=s==='sold'?'#e74c3c':s.includes('order')?'#3498db':'#2ecc71';
+            return `<span style="color:${col};font-weight:600;">${v||'—'}</span>`;
+        }},
+        {l:'Engine',       k:'engine'},
+        {l:'Power',        k:'power',        num:'power_hp',        dir:'max'},
+        {l:'Torque',       k:'torque_nm',    fmt: v=>v?`${v} Nm`:'—', num:'torque_nm', dir:'max'},
+        {l:'0–100 km/h',   k:'acceleration'},
+        {l:'Top Speed',    k:'top_speed_kmh',fmt: v=>v?`${v} km/h`:'—', num:'top_speed_kmh', dir:'max'},
+        {l:'Transmission', k:'transmission'},
+        {l:'Drivetrain',   k:'drivetrain'},
+        {l:'Fuel Type',    k:'fuel_type'},
+        {l:'Weight',       k:'weight_kg',    fmt: v=>v?`${v.toLocaleString()} kg`:'—', num:'weight_kg', dir:'min'},
+        {l:'Seats',        k:'seats',        num:'seats', dir:'max'},
+        {l:'Origin',       k:'origin'},
+    ];
+
+    document.getElementById('compareBody').innerHTML = specs.map((s,si) => {
+        let bestIdx = -1;
+        if (s.num) {
+            const nums = cars.map(c => parseFloat(c[s.num])||0);
+            bestIdx = s.dir==='max'
+                ? nums.indexOf(Math.max(...nums))
+                : nums.indexOf(Math.min(...nums.filter(n=>n>0)));
+        }
+        let row = `<tr style="${si%2===0?'background:rgba(255,255,255,0.025)':''}">
+            <td class="compare-spec-col">${s.l}</td>`;
+        cars.forEach((c,i) => {
+            const raw = c[s.k];
+            const val = s.fmt ? s.fmt(raw) : (raw || '<span style="color:#444">—</span>');
+            const best = bestIdx===i;
+            row += `<td class="text-center text-white" style="font-size:0.88rem;padding:10px 12px;${best?'background:rgba(52,152,219,0.08);':''}" >
+                ${best?'<i class="bi bi-trophy-fill me-1" style="color:#3498db;font-size:0.72rem;"></i>':''}${val}
+            </td>`;
+        });
+        return row+'</tr>';
+    }).join('');
+
     new bootstrap.Modal(document.getElementById('compareModal')).show();
 }
 
@@ -2085,9 +2475,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wrapper) {
         wrapper.addEventListener('mouseenter', invStopAuto);
         wrapper.addEventListener('mouseleave', () => {
-            if (invCards.length > INV_VISIBLE) invStartAuto();
+            if (invAllCards.length > INV_VISIBLE) invStartAuto();
         });
     }
+
+    // Keyboard ← → for carousel
+    document.addEventListener('keydown', e => {
+        const inv = document.getElementById('inventory');
+        if (!inv?.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft')  invMove(-1);
+        if (e.key === 'ArrowRight') invMove(1);
+    });
+
+    // Sort dropdown toggle
+    document.getElementById('invSortBtn')?.addEventListener('click', e => {
+        e.stopPropagation();
+        document.getElementById('invSortDropdown')?.classList.toggle('open');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('invSortDropdown')?.classList.remove('open');
+    });
 
     // Brand dropdown toggle
     document.getElementById('brandDropdownBtn')?.addEventListener('click', e => {
@@ -2252,7 +2659,7 @@ function initServiceForm() {
             dateInp.classList.remove('is-invalid');
             dateInp.classList.add('is-valid');
             const hint = document.getElementById('svcDateHint');
-            if (hint) hint.innerHTML = '<i class="bi bi-info-circle me-1 text-warning"></i><span style="color:#f39c12">Sundays are by appointment only — our team will confirm availability.</span>';
+            if (hint) hint.innerHTML = '<i class="bi bi-info-circle me-1 text-warning"></i><span style="color:#3498db">Sundays are by appointment only — our team will confirm availability.</span>';
             return true;
         }
         dateInp.classList.remove('is-invalid');
@@ -2329,3 +2736,58 @@ function initServiceForm() {
         setTimeout(() => { if (banner) banner.style.display = 'none'; }, 8000);
     });
 }
+// ==============================================================
+//  SELL MY CAR FORM
+// ==============================================================
+function initSellMyCarForm() {
+    const form = document.getElementById('sellMyCarForm');
+    if (!form) return;
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.classList.add('was-validated'); return; }
+        const data = {
+            name:        document.getElementById('smcName')?.value.trim(),
+            email:       document.getElementById('smcEmail')?.value.trim(),
+            phone:       document.getElementById('smcPhone')?.value.trim(),
+            carMake:     document.getElementById('smcMake')?.value.trim(),
+            carModel:    document.getElementById('smcModel')?.value.trim(),
+            year:        document.getElementById('smcYear')?.value.trim(),
+            mileage:     document.getElementById('smcMileage')?.value.trim(),
+            askingPrice: document.getElementById('smcPrice')?.value.trim(),
+            condition:   document.getElementById('smcCondition')?.value,
+            notes:       document.getElementById('smcNotes')?.value.trim(),
+            timestamp:   new Date().toISOString(),
+            status:      'Pending Review'
+        };
+        const submissions = JSON.parse(localStorage.getItem('edelhaus_sell_submissions')||'[]');
+        submissions.push(data);
+        localStorage.setItem('edelhaus_sell_submissions', JSON.stringify(submissions));
+        localStorage.setItem('edelhaus_sell_admin', JSON.stringify(submissions));
+        showToast(`✅ <strong>${data.carMake} ${data.carModel}</strong> submitted! Our team will contact you within 24hrs.`, 'success', 6000);
+        form.classList.remove('was-validated');
+        form.reset();
+        const banner = document.getElementById('smcSuccessBanner');
+        if (banner) { banner.style.display='block'; setTimeout(()=>{banner.style.display='none';},8000); }
+    });
+}
+
+// ==============================================================
+//  QUICK INQUIRY FORM SUBMIT
+// ==============================================================
+function submitQuickInquiry(e) {
+    e.preventDefault();
+    const carName = document.getElementById('qiCarName')?.value || '';
+    const name    = document.getElementById('qiName')?.value.trim() || '';
+    const email   = document.getElementById('qiEmail')?.value.trim() || '';
+    const message = document.getElementById('qiMessage')?.value.trim() || '';
+    const enqs    = JSON.parse(localStorage.getItem('edelhaus_enquiries')||'[]');
+    enqs.push({ name, email, msg:message, carName, date:new Date().toISOString().split('T')[0], status:'Pending', type:'price_inquiry' });
+    localStorage.setItem('edelhaus_enquiries', JSON.stringify(enqs));
+    bootstrap.Modal.getInstance(document.getElementById('quickInquiryModal'))?.hide();
+    showToast(`📩 Inquiry sent for <strong>${carName}</strong>! We'll contact you shortly.`, 'success', 5000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSellMyCarForm();
+    document.getElementById('qiForm')?.addEventListener('submit', submitQuickInquiry);
+});

@@ -6,22 +6,19 @@
     <title id="pageTitle">Car Detail — Edelhaus Automotive</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --blue: #3498db;
-            --blue-light: #5dade2;
-            --blue-dark: #2980b9;
-            --blue-dim: rgba(52,152,219,0.15);
-            --blue-glow: rgba(52,152,219,0.35);
-            --dark: #080808;
-            --dark-2: #111111;
-            --dark-3: #1a1a1a;
-            --dark-4: #222222;
+            --orange: #e8601c;
+            --orange-light: #ff7733;
+            --dark: #2a2d2a;
+            --dark-2: #1e201e;
+            --dark-3: #161816;
             --light: #f5f2ee;
-            --muted: #888;
-            --border: rgba(255,255,255,0.07);
+            --muted: #8a8a8a;
+            --border: rgba(255,255,255,0.08);
+            --blue: #3498db;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,614 +40,41 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            height: 60px;
-            background: rgba(8,8,8,0.92);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(16px);
+            height: 56px;
+            background: rgba(30,32,30,0.96);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
         }
 
         .nav-brand {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            color: var(--blue);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #fff;
             text-decoration: none;
+            text-transform: uppercase;
         }
 
         .btn-back {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             background: none;
-            border: 1px solid var(--border);
-            color: #aaa;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
+            padding: 0.35rem 0.9rem;
+            border-radius: 3px;
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
-        }
-        .btn-back:hover { color: #fff; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
-
-        /* ─── HERO SECTION ─── */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: transform 0.8s ease;
-        }
-
-        .hero-section:hover .hero-bg {
-            transform: scale(1.03);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(8,8,8,0.2) 0%,
-                rgba(8,8,8,0.0) 30%,
-                rgba(8,8,8,0.0) 50%,
-                rgba(8,8,8,0.6) 75%,
-                rgba(8,8,8,1.0) 100%
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 4rem 5rem;
-            width: 100%;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            font-size: 0.68rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--blue);
-            border: 1px solid var(--blue);
-            padding: 4px 14px;
-            border-radius: 3px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            line-height: 1.05;
-            color: #fff;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
         }
-
-        .hero-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: rgba(245,242,238,0.6);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-price {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--blue);
-            letter-spacing: 1px;
-        }
-
-        .hero-meta {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hero-meta-label {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .hero-meta-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-top: 2px;
-        }
-
-        /* ─── MAIN CONTENT ─── */
-        .detail-body {
-            position: relative;
-            z-index: 5;
-            background: var(--dark);
-        }
-
-        /* ─── GALLERY STRIP ─── */
-        .gallery-strip {
-            display: flex;
-            gap: 4px;
-            padding: 0;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .gallery-strip::-webkit-scrollbar { display: none; }
-
-        .gallery-thumb {
-            flex: 0 0 180px;
-            height: 120px;
-            object-fit: cover;
-            cursor: pointer;
-            opacity: 0.55;
-            transition: opacity 0.3s, transform 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .gallery-thumb.active,
-        .gallery-thumb:hover {
-            opacity: 1;
-            border-color: var(--blue);
-        }
-
-        /* ─── STICKY SIDEBAR ─── */
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            align-items: start;
-        }
-
-        @media (max-width: 1024px) {
-            .detail-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ─── LEFT CONTENT ─── */
-        .detail-left { padding-right: 4rem; }
-
-        @media (max-width: 1024px) {
-            .detail-left { padding-right: 0; }
-        }
-
-        .section-label {
-            font-size: 0.65rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--blue);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-            max-width: 60px;
-        }
-
-        /* ─── SPEC GRID ─── */
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 3rem;
-        }
-
-        .spec-cell {
-            background: var(--dark-2);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            transition: background 0.2s;
-        }
-
-        .spec-cell:hover { background: var(--dark-3); }
-
-        .spec-icon {
-            font-size: 1.1rem;
-            color: var(--blue);
-            margin-bottom: 0.25rem;
-        }
-
-        .spec-val {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .spec-key {
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        /* ─── PERFORMANCE BARS ─── */
-        .perf-section { margin-bottom: 3rem; }
-
-        .perf-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .perf-label {
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--muted);
-            min-width: 120px;
-        }
-
-        .perf-track {
-            flex: 1;
-            height: 4px;
-            background: var(--dark-4);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .perf-fill {
-            height: 100%;
-            background: linear-gradient(to right, var(--blue), var(--blue-light));
-            border-radius: 2px;
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .perf-val {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--blue);
-            min-width: 60px;
-            text-align: right;
-        }
-
-        /* ─── HIGHLIGHTS ─── */
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 3rem;
-        }
-
-        .highlight-chip {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.9rem 1.1rem;
-            background: var(--dark-2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.82rem;
-            color: #ccc;
-            transition: all 0.2s;
-        }
-
-        .highlight-chip:hover {
-            border-color: var(--blue);
-            color: #fff;
-            background: var(--blue-dim);
-        }
-
-        .highlight-chip i {
-            color: var(--blue);
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        /* ─── DESCRIPTION ─── */
-        .car-description {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            line-height: 1.9;
-            color: rgba(245,242,238,0.75);
-            margin-bottom: 3rem;
-        }
-
-        /* ─── COLOR SELECTOR ─── */
-        .color-section { margin-bottom: 3rem; }
-
-        .color-swatches {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 0.75rem;
-        }
-
-        .color-swatch {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 3px solid transparent;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .color-swatch:hover,
-        .color-swatch.active {
-            border-color: var(--blue);
-            transform: scale(1.15);
-            box-shadow: 0 0 0 3px var(--blue-dim);
-        }
-
-        .color-swatch::after {
-            content: attr(data-name);
-            position: absolute;
-            bottom: -1.8rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.6rem;
-            color: var(--muted);
-            white-space: nowrap;
-            letter-spacing: 1px;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .color-swatch:hover::after { opacity: 1; }
-
-        /* ─── STICKY CTA PANEL ─── */
-        .detail-right { position: sticky; top: 80px; }
-
-        .cta-panel {
-            background: var(--dark-2);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--blue), transparent);
-        }
-
-        .cta-price-label {
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .cta-price {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--blue);
-            font-weight: 700;
-            margin: 0.3rem 0 0.15rem;
-        }
-
-        .cta-price-usd {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 1.5rem 0;
-        }
-
-        .cta-detail-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            font-size: 0.82rem;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-
-        .cta-detail-row:last-child { border-bottom: none; }
-
-        .cta-detail-key {
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cta-detail-key i { color: var(--blue); font-size: 0.9rem; }
-
-        .cta-detail-val {
-            color: #ddd;
-            font-weight: 500;
-        }
-
-        .btn-primary-gold {
-            width: 100%;
-            padding: 0.9rem;
-            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, var(--blue) 100%);
-            background-size: 200% auto;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-position 0.4s ease, transform 0.2s, box-shadow 0.2s;
-            margin-top: 1.5rem;
-        }
-
-        .btn-primary-gold:hover {
-            background-position: right center;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px var(--blue-glow);
-        }
-
-        .btn-secondary-outline {
-            width: 100%;
-            padding: 0.75rem;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: #ccc;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-secondary-outline:hover {
-            border-color: var(--blue);
-            color: var(--blue-light);
-            background: var(--blue-dim);
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .status-pill.available {
-            background: rgba(46,204,113,0.12);
-            color: #2ecc71;
-            border: 1px solid rgba(46,204,113,0.3);
-        }
-
-        .status-pill.exclusive {
-            background: rgba(52,152,219,0.12);
-            color: var(--blue);
-            border: 1px solid rgba(52,152,219,0.3);
-        }
-
-        .status-pill.sold {
-            background: rgba(231,76,60,0.12);
-            color: #e74c3c;
-            border: 1px solid rgba(231,76,60,0.3);
-        }
-
-        .status-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: currentColor;
-        }
-
-        /* ─── FULL IMAGE LIGHTBOX ─── */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0,0,0,0.96);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .lightbox.open { display: flex; }
-
-        .lightbox-img {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 4px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 1.5rem; right: 1.5rem;
-            background: none;
-            border: 1px solid var(--border);
-            color: #fff;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .lightbox-close:hover { background: rgba(255,255,255,0.1); }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.08);
-            border: 1px solid var(--border);
-            color: #fff;
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .lightbox-nav:hover { background: rgba(52,152,219,0.2); border-color: var(--blue); }
-        .lightbox-prev { left: 2rem; }
-        .lightbox-next { right: 2rem; }
-
-        .lightbox-counter {
-            position: absolute;
-            bottom: 2rem;
-            font-size: 0.75rem;
-            color: var(--muted);
-            letter-spacing: 2px;
-        }
-
-        /* ─── RELATED SECTION ─── */
-        .related-section {
-            border-top: 1px solid var(--border);
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .btn-back:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 
         /* ─── LOADING ─── */
         .detail-loading {
@@ -661,43 +85,647 @@
             flex-direction: column;
             gap: 1rem;
         }
-
         .spinner-ring {
-            width: 48px; height: 48px;
-            border: 2px solid var(--border);
-            border-top-color: var(--blue);
+            width: 44px; height: 44px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-top-color: var(--orange);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
-
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ─── FADE IN ─── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* ═══════════════════════════════════
+           HD HERO SECTION — main display
+        ═══════════════════════════════════ */
+        .hd-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding-top: 56px;
         }
 
-        .fade-up.visible {
+        /* Background subtle texture */
+        .hd-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 75% 50%, rgba(40,45,40,0.6) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(20,22,20,0.8) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ── HERO CONTENT LAYOUT ── */
+        .hd-hero-inner {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 56px);
+            padding: 2rem 5vw 2rem 7vw;
+            gap: 0;
+        }
+
+        /* ── LEFT PANEL — text content ── */
+        .hd-left {
+            flex: 0 0 42%;
+            max-width: 42%;
+            position: relative;
+            z-index: 4;
+        }
+
+        /* Category pill above title */
+        .hd-category-pill {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 0.75rem;
+            padding: 0;
+        }
+
+        /* Main HD-style title — HUGE and bold */
+        .hd-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: #fff;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Color name — orange like HD */
+        .hd-color-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+            min-height: 1.4rem;
+            transition: opacity 0.3s;
+        }
+
+        /* Description text */
+        .hd-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.6);
+            max-width: 400px;
+            margin-bottom: 2rem;
+            letter-spacing: 0.2px;
+        }
+
+        /* ── SPEC ROW ── */
+        .hd-specs-row {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            width: fit-content;
+        }
+
+        .hd-spec-item {
+            padding: 12px 20px;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .hd-spec-item:last-child { border-right: none; }
+
+        .hd-spec-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+        .hd-spec-key {
+            font-size: 0.58rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ── COLOR SWATCHES ── */
+        .hd-color-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hd-color-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2.5px solid transparent;
+            outline: 2px solid transparent;
+            outline-offset: 3px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .hd-color-dot:hover { transform: scale(1.2); }
+        .hd-color-dot.active {
+            outline-color: rgba(255,255,255,0.7);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* ── CTA BUTTONS ── */
+        .hd-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Primary — orange "Buy Now" HD style */
+        .btn-hd-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--orange);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.85rem 2.2rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-hd-primary:hover {
+            background: var(--orange-light);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(232,96,28,0.45);
+        }
+
+        /* Secondary outline button */
+        .btn-hd-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.8rem 1.6rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-hd-secondary:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* ── PRICE tag — top right of left panel ── */
+        .hd-price-tag {
+            position: absolute;
+            top: 0;
+            right: -2rem;
+            text-align: right;
+        }
+        .hd-price-from {
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            display: block;
+            margin-bottom: 3px;
+        }
+        .hd-price-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0;
+        }
+        .hd-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 2px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(46,204,113,0.15);
+            border: 1px solid rgba(46,204,113,0.3);
+            color: #2ecc71;
+            margin-top: 6px;
+        }
+        .hd-status-pill::before {
+            content: '';
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 5px currentColor;
+        }
+
+        /* ── RIGHT PANEL — big vehicle image ── */
+        .hd-right {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 500px;
+        }
+
+        /* The hero car image — large, right-aligned like HD bikes */
+        .hd-car-img {
+            width: 100%;
+            max-width: 780px;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            object-position: center right;
+            filter: drop-shadow(-40px 20px 60px rgba(0,0,0,0.7));
+            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+            transform-origin: center right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hd-car-img.swapping {
+            opacity: 0;
+            transform: scale(0.97) translateX(20px);
+        }
+
+        /* Glow under car */
+        .hd-car-glow {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            width: 70%;
+            height: 60px;
+            background: radial-gradient(ellipse, rgba(232,96,28,0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Decorative diagonal slash behind image */
+        .hd-bg-slash {
+            position: absolute;
+            top: 0; bottom: 0;
+            right: 0;
+            width: 70%;
+            background: linear-gradient(170deg, transparent 30%, rgba(20,22,20,0.5) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Decorative arc — like HD site */
+        .hd-arc {
+            position: absolute;
+            bottom: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 200px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.04);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ─── THUMBNAIL STRIP ─── */
+        .hd-thumb-strip {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            z-index: 10;
+            display: flex;
+            align-items: stretch;
+            background: rgba(20,22,20,0.92);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            height: 90px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .hd-thumb-strip::-webkit-scrollbar { display: none; }
+
+        .hd-thumb {
+            flex: 0 0 140px;
+            height: 90px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.45;
+            transition: opacity 0.25s, border-color 0.25s;
+            border-right: 1px solid rgba(255,255,255,0.06);
+            border-top: 2px solid transparent;
+        }
+        .hd-thumb:hover { opacity: 0.8; }
+        .hd-thumb.active {
             opacity: 1;
-            transform: translateY(0);
+            border-top-color: var(--orange);
+        }
+
+        /* 360 thumb button */
+        .hd-thumb-360 {
+            flex: 0 0 100px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            background: rgba(232,96,28,0.07);
+            border-left: 1px solid rgba(232,96,28,0.2);
+            border-right: 1px solid rgba(255,255,255,0.06);
+            color: var(--orange);
+            transition: background 0.2s;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hd-thumb-360:hover { background: rgba(232,96,28,0.15); }
+        .hd-thumb-360 i { font-size: 1.4rem; }
+
+        /* ─── DETAIL PANEL (below hero) ─── */
+        .hd-detail-section {
+            background: var(--dark-3);
+            position: relative;
+            z-index: 5;
+            padding-bottom: 90px; /* thumb strip height */
+        }
+
+        /* Sticky sub-nav tabs */
+        .hd-tabs {
+            display: flex;
+            background: var(--dark-2);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            overflow-x: auto;
+            scrollbar-width: none;
+            position: sticky;
+            top: 56px;
+            z-index: 20;
+        }
+        .hd-tabs::-webkit-scrollbar { display: none; }
+
+        .hd-tab {
+            padding: 1rem 1.8rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .hd-tab:hover { color: rgba(255,255,255,0.8); }
+        .hd-tab.active {
+            color: #fff;
+            border-bottom-color: var(--orange);
+        }
+
+        /* Tab panels */
+        .hd-tab-panel {
+            display: none;
+            padding: 3rem 7vw;
+        }
+        .hd-tab-panel.active { display: block; }
+
+        /* ── Full Specs Grid ── */
+        .spec-grid-hd {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .spec-cell-hd {
+            background: var(--dark-2);
+            padding: 1.25rem 1.5rem;
+            transition: background 0.2s;
+        }
+        .spec-cell-hd:hover { background: rgba(255,255,255,0.03); }
+
+        .spec-cell-hd .key {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 6px;
+        }
+        .spec-cell-hd .val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Highlights ── */
+        .hl-grid-hd {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .hl-chip-hd {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 1.25rem;
+            background: var(--dark-2);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: #ccc;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .hl-chip-hd:hover { border-color: var(--orange); color: #fff; }
+        .hl-chip-hd i { color: var(--orange); font-size: 1rem; flex-shrink: 0; }
+
+        /* ── Overview description ── */
+        .overview-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.9;
+            color: rgba(245,242,238,0.7);
+            max-width: 750px;
+        }
+
+        /* ── Perf bars ── */
+        .perf-row-hd {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .perf-label-hd {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            min-width: 130px;
+        }
+        .perf-track-hd {
+            flex: 1;
+            height: 3px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .perf-fill-hd {
+            height: 100%;
+            background: linear-gradient(to right, var(--orange), var(--orange-light));
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .perf-val-hd {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--orange);
+            min-width: 70px;
+            text-align: right;
+        }
+
+        /* ── Section heading ── */
+        .hd-section-head {
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hd-section-head::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            max-width: 80px;
+        }
+
+        /* ─── SIDE PANEL — sticky booking (replaces old right sidebar) ─── */
+        .hd-aside-panel {
+            position: fixed;
+            right: 0;
+            top: 56px;
+            width: 300px;
+            height: calc(100vh - 56px - 90px);
+            background: rgba(18,20,18,0.97);
+            border-left: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            z-index: 50;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+            overflow-y: auto;
+        }
+        .hd-aside-panel.open { transform: translateX(0); }
+
+        .hd-aside-toggle {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 51;
+            background: var(--orange);
+            color: #fff;
+            border: none;
+            width: 28px;
+            padding: 14px 0;
+            cursor: pointer;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            text-transform: uppercase;
+            transition: background 0.2s, right 0.35s cubic-bezier(0.4,0,0.2,1);
+            border-radius: 3px 0 0 3px;
+        }
+        .hd-aside-toggle.panel-open {
+            right: 300px;
+            background: var(--dark-2);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-right: none;
         }
 
         /* ─── MOBILE ─── */
-        @media (max-width: 768px) {
-            .hero-content { padding: 0 1.5rem 4rem; }
-            .hero-title { font-size: 2rem; }
-            .spec-grid { grid-template-columns: repeat(2, 1fr); }
-            .highlights-grid { grid-template-columns: 1fr; }
-            .detail-left { padding-right: 0; }
-            .hero-meta { gap: 1.25rem; }
+        @media (max-width: 900px) {
+            .hd-hero-inner {
+                flex-direction: column-reverse;
+                padding: 2rem 1.5rem 110px;
+                min-height: auto;
+                gap: 2rem;
+            }
+            .hd-left {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+            }
+            .hd-right {
+                width: 100%;
+                min-height: 280px;
+                justify-content: center;
+            }
+            .hd-car-img {
+                max-height: 55vw;
+                object-position: center;
+            }
+            .hd-price-tag { position: static; text-align: left; margin-bottom: 1rem; }
+            .hd-tab-panel { padding: 2rem 1.5rem; }
         }
 
         /* ─── SCROLLBAR ─── */
         ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: var(--dark-3); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
     </style>
 </head>
 <body>
@@ -705,434 +733,496 @@
 <!-- NAV -->
 <nav class="detail-nav">
     <a href="help.html" class="btn-back">
-        <i class="bi bi-arrow-left"></i> BACK
+        <i class="bi bi-arrow-left"></i> Back
     </a>
     <a class="nav-brand" href="help.html">EDELHAUS</a>
-    <div id="navStatus" style="font-size:0.75rem; color: var(--muted); letter-spacing:1px;"></div>
+    <div id="navBadge" style="font-size:0.65rem;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;"></div>
 </nav>
 
-<!-- LOADING STATE -->
+<!-- LOADING -->
 <div class="detail-loading" id="loadingState">
     <div class="spinner-ring"></div>
-    <p style="color:var(--muted); font-size:0.8rem; letter-spacing:2px;">LOADING</p>
+    <p style="color:var(--muted);font-size:0.72rem;letter-spacing:3px;margin-top:0.5rem;">LOADING</p>
 </div>
 
-<!-- PAGE CONTENT (hidden until loaded) -->
+<!-- MAIN PAGE -->
 <div id="pageContent" style="display:none;">
 
-    <!-- HERO -->
-    <section class="hero-section" id="heroSection">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge" id="heroBadge"></div>
-            <h1 class="hero-title" id="heroTitle"></h1>
-            <p class="hero-subtitle" id="heroSubtitle"></p>
-            <div class="hero-price" id="heroPrice"></div>
-            <div class="hero-meta" id="heroMeta"></div>
-        </div>
-    </section>
+    <!-- ═══ HD HERO ═══ -->
+    <section class="hd-hero" id="hdHero">
 
-    <!-- GALLERY STRIP -->
-    <div style="background:var(--dark-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-        <div class="gallery-strip" id="galleryStrip"></div>
-    </div>
+        <div class="hd-hero-inner">
 
-    <!-- BODY -->
-    <div class="detail-body">
-        <div class="detail-grid">
+            <!-- LEFT: text content -->
+            <div class="hd-left">
 
-            <!-- LEFT -->
-            <div class="detail-left">
+                <!-- Price tag (absolute on desktop) -->
+                <div class="hd-price-tag" id="hdPriceTag">
+                    <span class="hd-price-from">Starting from</span>
+                    <div class="hd-price-val" id="heroPrice"></div>
+                    <div id="heroStatus"></div>
+                </div>
+
+                <!-- Category -->
+                <div class="hd-category-pill" id="heroBadge"></div>
+
+                <!-- BIG BOLD TITLE -->
+                <h1 class="hd-title" id="heroTitle"></h1>
+
+                <!-- Color name in orange -->
+                <div class="hd-color-name" id="hdColorName"></div>
 
                 <!-- Description -->
-                <div class="fade-up" style="margin-bottom:3rem;">
-                    <div class="section-label">Overview</div>
-                    <p class="car-description" id="carDescription"></p>
+                <p class="hd-description" id="heroDesc"></p>
+
+                <!-- Quick specs row -->
+                <div class="hd-specs-row" id="hdSpecsRow"></div>
+
+                <!-- Color swatches -->
+                <div class="hd-color-row" id="hdColorRow"></div>
+
+                <!-- CTA Buttons -->
+                <div class="hd-cta-row">
+                    <button class="btn-hd-primary" id="btnTestDrive" onclick="goBack('testdrive')">
+                        Book Test Drive
+                    </button>
+                    <button class="btn-hd-secondary" onclick="toggle360()">
+                        <i class="bi bi-arrow-repeat"></i> 360° View
+                    </button>
+                    <button class="btn-hd-secondary" onclick="togglePanel()">
+                        <i class="bi bi-file-earmark-text"></i> Specs
+                    </button>
                 </div>
 
-                <!-- Performance -->
-                <div class="fade-up perf-section">
-                    <div class="section-label">Performance</div>
-                    <div id="perfBars"></div>
-                </div>
+            </div><!-- /hd-left -->
 
-                <!-- Full Specs -->
-                <div class="fade-up" style="margin-bottom:3rem;">
-                    <div class="section-label">Specifications</div>
-                    <div class="spec-grid" id="specGrid"></div>
-                </div>
-
-                <!-- Highlights -->
-                <div class="fade-up" style="margin-bottom:3rem;">
-                    <div class="section-label" id="highlightsLabel">Highlights</div>
-                    <div class="highlights-grid" id="highlightsGrid"></div>
-                </div>
-
-                <!-- Colors -->
-                <div class="fade-up color-section" id="colorSection">
-                    <div class="section-label">Available Colors</div>
-                    <div class="color-swatches" id="colorSwatches"></div>
-                </div>
-
+            <!-- RIGHT: large car image -->
+            <div class="hd-right">
+                <div class="hd-bg-slash"></div>
+                <div class="hd-car-glow"></div>
+                <div class="hd-arc"></div>
+                <img class="hd-car-img" id="hdCarImg" src="" alt="">
             </div>
 
-            <!-- RIGHT - STICKY PANEL -->
-            <div class="detail-right">
-                <div class="cta-panel">
-                    <div class="cta-price-label">Starting Price</div>
-                    <div class="cta-price" id="ctaPrice"></div>
-                    <div class="cta-price-usd" id="ctaPriceUSD"></div>
+        </div><!-- /hd-hero-inner -->
 
-                    <div id="ctaDetails"></div>
+        <!-- Thumbnail strip at bottom -->
+        <div class="hd-thumb-strip" id="hdThumbStrip"></div>
 
-                    <div class="cta-divider"></div>
+    </section>
 
-                    <div id="statusRow"></div>
+    <!-- ═══ DETAIL SECTION ═══ -->
+    <div class="hd-detail-section" id="hdDetailSection">
 
-                    <button class="btn-primary-gold" id="btnTestDrive" onclick="goBack('testdrive')">
-                        <i class="bi bi-calendar-check me-2"></i>BOOK TEST DRIVE
-                    </button>
-                    <button class="btn-secondary-outline" id="btnBrochure" onclick="downloadBrochure()">
-                        <i class="bi bi-file-earmark-pdf"></i> DOWNLOAD BROCHURE
-                    </button>
-                    <button class="btn-secondary-outline" onclick="shareThis()">
-                        <i class="bi bi-share"></i> SHARE THIS CAR
-                    </button>
-                </div>
-            </div>
-
+        <!-- Tab nav -->
+        <div class="hd-tabs">
+            <div class="hd-tab active" onclick="switchTab('overview', this)">Overview</div>
+            <div class="hd-tab" onclick="switchTab('performance', this)">Performance</div>
+            <div class="hd-tab" onclick="switchTab('specs', this)">Specifications</div>
+            <div class="hd-tab" onclick="switchTab('highlights', this)">Highlights</div>
         </div>
+
+        <!-- Overview -->
+        <div class="hd-tab-panel active" id="tab-overview">
+            <div class="hd-section-head">About This Vehicle</div>
+            <p class="overview-text" id="overviewText"></p>
+        </div>
+
+        <!-- Performance -->
+        <div class="hd-tab-panel" id="tab-performance">
+            <div class="hd-section-head">Performance Figures</div>
+            <div id="perfBarsHD"></div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="hd-tab-panel" id="tab-specs">
+            <div class="hd-section-head">Full Specifications</div>
+            <div class="spec-grid-hd" id="specGridHD"></div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="hd-tab-panel" id="tab-highlights">
+            <div class="hd-section-head">Key Highlights</div>
+            <div class="hl-grid-hd" id="hlGridHD"></div>
+        </div>
+
     </div>
 
-</div>
+</div><!-- /pageContent -->
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()"><i class="bi bi-x"></i></button>
-    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"><i class="bi bi-chevron-left"></i></button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)"><i class="bi bi-chevron-right"></i></button>
-    <div class="lightbox-counter" id="lightboxCounter"></div>
+<!-- ASIDE PANEL toggle button -->
+<button class="hd-aside-toggle" id="asideToggle" onclick="togglePanel()" style="display:none;">Specs</button>
+
+<!-- ASIDE PANEL -->
+<div class="hd-aside-panel" id="asidePanel">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+        <span style="font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:3px;color:#fff;text-transform:uppercase;">Vehicle Details</span>
+        <button onclick="togglePanel()" style="background:none;border:none;color:#888;font-size:1.1rem;cursor:pointer;"><i class="bi bi-x-lg"></i></button>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+        <div style="font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">Starting Price</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#fff;" id="panelPrice"></div>
+        <div style="font-size:0.75rem;color:var(--muted);" id="panelPriceUSD"></div>
+    </div>
+
+    <div id="panelRows" style="flex:1;overflow-y:auto;"></div>
+
+    <div style="margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:0.75rem;">
+        <button class="btn-hd-primary" style="justify-content:center;" onclick="goBack('testdrive')">
+            <i class="bi bi-calendar-check"></i> Book Test Drive
+        </button>
+        <button class="btn-hd-secondary" style="justify-content:center;" onclick="downloadBrochureDetail()">
+            <i class="bi bi-file-earmark-pdf"></i> Brochure
+        </button>
+    </div>
 </div>
 
 <script>
-// ─── DATA LOADING ───────────────────────────────────────────────
 let car = null;
 let allImages = [];
-let lightboxIndex = 0;
+let currentImgIdx = 0;
 
-// Get car ID from URL param
 const params = new URLSearchParams(window.location.search);
 const carId = parseInt(params.get('id'));
 
+/* ─── LOAD ─── */
 async function loadCar() {
-    // Try to get from localStorage (set by main page)
     const cached = localStorage.getItem('edelhausDetailCar');
     if (cached) {
         try {
-            const parsed = JSON.parse(cached);
-            if (parsed.id === carId) {
-                initPage(parsed);
-                return;
-            }
+            const p = JSON.parse(cached);
+            if (p.id === carId) { initPage(p); return; }
         } catch(e) {}
     }
-
-    // Fallback: load from cars.json
     try {
         const res = await fetch('cars.json');
         const cars = await res.json();
         const found = cars.find(c => c.id === carId);
-        if (found) {
-            initPage(found);
-        } else {
-            showError();
-        }
-    } catch(e) {
-        // Try API
-        try {
-            const res = await fetch(`http://localhost:5000/api/cars/${carId}`);
-            const c = await res.json();
-            initPage(c);
-        } catch(e2) {
-            showError();
-        }
-    }
+        if (found) { initPage(found); return; }
+    } catch(e) {}
+    try {
+        const res = await fetch(`http://localhost:5000/api/cars/${carId}`);
+        const c = await res.json();
+        initPage(c);
+    } catch(e) { showError(); }
 }
 
 function showError() {
     document.getElementById('loadingState').innerHTML = `
         <div style="text-align:center;">
-            <i class="bi bi-exclamation-circle" style="font-size:3rem;color:var(--blue);"></i>
-            <p style="color:var(--muted);margin-top:1rem;letter-spacing:2px;font-size:0.85rem;">CAR NOT FOUND</p>
-            <a href="help.html" class="btn-back" style="margin-top:1rem;display:inline-flex;">← RETURN TO SHOWROOM</a>
-        </div>
-    `;
+            <i class="bi bi-exclamation-circle" style="font-size:3rem;color:var(--orange);"></i>
+            <p style="color:var(--muted);margin-top:1rem;letter-spacing:2px;font-size:0.8rem;">CAR NOT FOUND</p>
+            <a href="help.html" class="btn-back" style="margin-top:1.5rem;display:inline-flex;">← BACK TO SHOWROOM</a>
+        </div>`;
 }
 
+/* ─── INIT ─── */
 function initPage(data) {
     car = data;
     document.getElementById('loadingState').style.display = 'none';
     document.getElementById('pageContent').style.display = 'block';
     document.title = `${car.name} — Edelhaus Automotive`;
 
-    // Images
+    // Build image list
     allImages = car.images ? [...car.images] : [];
     if (car.colors) car.colors.forEach(c => { if (c.img && !allImages.includes(c.img)) allImages.push(c.img); });
-    if (allImages.length === 0) allImages.push('Ferrari.png');
+    if (!allImages.length) allImages.push('');
 
     buildHero();
-    buildGallery();
+    buildThumbs();
     buildSpecs();
+    buildPerf();
     buildHighlights();
-    buildColors();
-    buildCTAPanel();
-    buildPerformance();
+    buildPanel();
 
-    // Nav status
-    const statusEl = document.getElementById('navStatus');
-    const statusMap = {
-        'In Stock': 'IN STOCK',
-        'Available': 'AVAILABLE',
-        'Exclusive': 'EXCLUSIVE',
-        'Sold': 'SOLD OUT',
-    };
-    statusEl.textContent = statusMap[car.status] || car.status.toUpperCase();
-    statusEl.style.color = car.status === 'Sold' ? '#e74c3c' : 'var(--blue)';
+    // Show aside toggle
+    document.getElementById('asideToggle').style.display = 'flex';
 
-    // Fade-up observer
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    // Animate perf bars after brief delay
+    setTimeout(() => {
+        document.querySelectorAll('.perf-fill-hd').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+    }, 600);
 }
 
+/* ─── HERO ─── */
 function buildHero() {
-    document.getElementById('heroBg').style.backgroundImage = `url('${allImages[0]}')`;
-    document.getElementById('heroBadge').textContent = car.badge || car.category.toUpperCase();
+    // Nav badge
+    document.getElementById('navBadge').textContent = car.badge || '';
+
+    // Badge / category pill
+    document.getElementById('heroBadge').textContent = (car.brand + ' · ' + (car.year || '')).toUpperCase();
+
+    // Big title
     document.getElementById('heroTitle').textContent = car.name;
-    document.getElementById('heroSubtitle').textContent = car.subtitle || '';
-    document.getElementById('heroPrice').textContent = car.price;
 
-    const metas = [
-        { label: 'Power', val: car.power },
-        { label: '0–100 km/h', val: car.acceleration?.replace('0-100: ','') },
-        { label: 'Top Speed', val: car.top_speed_kmh ? car.top_speed_kmh + ' km/h' : 'N/A' },
-        { label: 'Year', val: car.year },
-    ].filter(m => m.val);
+    // Description
+    document.getElementById('heroDesc').textContent = car.description || car.subtitle || '';
 
-    document.getElementById('heroMeta').innerHTML = metas.map(m => `
-        <div class="hero-meta-item">
-            <span class="hero-meta-label">${m.label}</span>
-            <span class="hero-meta-value">${m.val}</span>
-        </div>
-    `).join('');
+    // Price
+    document.getElementById('heroPrice').textContent = car.price || '';
+
+    // Status pill
+    const statusColor = { 'In Stock':'#2ecc71','Available':'#2ecc71','Exclusive':'#3498db','Sold':'#e74c3c' }[car.status] || '#2ecc71';
+    document.getElementById('heroStatus').innerHTML = `
+        <span class="hd-status-pill" style="color:${statusColor};border-color:${statusColor}44;background:${statusColor}18;">
+            ${car.status || 'Available'}
+        </span>`;
+
+    // Quick specs row
+    const qs = [
+        { val: car.power, key: 'Power' },
+        { val: car.acceleration ? car.acceleration.replace('0-100: ','') : null, key: '0–100' },
+        { val: car.engine, key: 'Engine' },
+        { val: car.year, key: 'Year' },
+    ].filter(s => s.val);
+    document.getElementById('hdSpecsRow').innerHTML = qs.map(s => `
+        <div class="hd-spec-item">
+            <div class="hd-spec-val">${s.val}</div>
+            <div class="hd-spec-key">${s.key}</div>
+        </div>`).join('');
+
+    // Color swatches
+    if (car.colors && car.colors.length) {
+        const firstColor = car.colors[0];
+        document.getElementById('hdColorName').textContent = firstColor.name;
+        setHeroImage(firstColor.img || allImages[0], 0);
+
+        document.getElementById('hdColorRow').innerHTML = car.colors.map((c, i) => `
+            <div class="hd-color-dot ${i===0?'active':''}"
+                 style="background:${c.hex || '#555'};"
+                 title="${c.name}"
+                 onclick="selectColor('${c.img}','${c.name}',this)">
+            </div>`).join('');
+    } else {
+        document.getElementById('hdColorRow').style.display = 'none';
+        document.getElementById('hdColorName').style.display = 'none';
+        setHeroImage(allImages[0], 0);
+    }
+
+    // Overview tab
+    document.getElementById('overviewText').textContent = car.description || '';
 }
 
-function buildGallery() {
-    const strip = document.getElementById('galleryStrip');
-    strip.innerHTML = allImages.map((img, i) => `
-        <img src="${img}" class="gallery-thumb ${i===0?'active':''}"
-             alt="View ${i+1}"
+function setHeroImage(url, idx) {
+    const img = document.getElementById('hdCarImg');
+    img.classList.add('swapping');
+    setTimeout(() => {
+        img.src = url || '';
+        img.alt = car.name;
+        img.classList.remove('swapping');
+        currentImgIdx = idx;
+        // Update thumb active state
+        document.querySelectorAll('.hd-thumb').forEach((t, i) => {
+            t.classList.toggle('active', i === idx);
+        });
+    }, 250);
+}
+
+function selectColor(imgUrl, colorName, dotEl) {
+    document.getElementById('hdColorName').textContent = colorName;
+    document.querySelectorAll('.hd-color-dot').forEach(d => d.classList.remove('active'));
+    dotEl.classList.add('active');
+    const idx = allImages.indexOf(imgUrl);
+    setHeroImage(imgUrl, idx >= 0 ? idx : currentImgIdx);
+}
+
+/* ─── THUMBNAILS ─── */
+function buildThumbs() {
+    const strip = document.getElementById('hdThumbStrip');
+    let html = '';
+
+    // 360 button first
+    html += `<div class="hd-thumb-360" onclick="toggle360()">
+        <i class="bi bi-arrow-repeat"></i>
+        <span>360°</span>
+    </div>`;
+
+    // Image thumbs
+    html += allImages.map((img, i) => `
+        <img class="hd-thumb ${i===0?'active':''}"
+             src="${img}" alt="View ${i+1}"
              onerror="this.style.display='none'"
-             onclick="selectGalleryImg('${img}', this, ${i})">
-    `).join('');
+             onclick="setHeroImage('${img}', ${i})">`).join('');
+
+    strip.innerHTML = html;
 }
 
-function selectGalleryImg(url, el, idx) {
-    document.getElementById('heroBg').style.backgroundImage = `url('${url}')`;
-    document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-    lightboxIndex = idx;
-}
-
+/* ─── SPECIFICATIONS ─── */
 function buildSpecs() {
     const specs = [
-        { icon: 'bi-gear', key: 'Engine',        val: car.engine },
-        { icon: 'bi-lightning-charge', key: 'Power', val: car.power },
-        { icon: 'bi-speedometer2', key: '0–100 km/h', val: car.acceleration?.replace('0-100: ','') },
-        { icon: 'bi-wind',         key: 'Top Speed', val: car.top_speed_kmh ? car.top_speed_kmh+' km/h' : null },
-        { icon: 'bi-arrow-repeat', key: 'Transmission', val: car.transmission },
-        { icon: 'bi-signpost-split', key: 'Drivetrain', val: car.drivetrain },
-        { icon: 'bi-fuel-pump',   key: 'Fuel Type',  val: car.fuel_type },
-        { icon: 'bi-people',      key: 'Seats',       val: car.seats ? car.seats + ' seats' : null },
-        { icon: 'bi-calendar3',   key: 'Year',        val: car.year },
-        { icon: 'bi-map',         key: 'Origin',      val: car.origin },
-        { icon: 'bi-bag-check',   key: 'Torque',      val: car.torque_nm ? car.torque_nm+' Nm' : null },
-        { icon: 'bi-archive',     key: 'Weight',      val: car.weight_kg ? car.weight_kg.toLocaleString()+' kg' : null },
-    ].filter(s => s.val);
+        { key: 'Engine',       val: car.engine },
+        { key: 'Power',        val: car.power },
+        { key: 'Torque',       val: car.torque_nm ? car.torque_nm + ' Nm' : null },
+        { key: '0–100 km/h',   val: car.acceleration ? car.acceleration.replace('0-100: ','') : null },
+        { key: 'Top Speed',    val: car.top_speed_kmh ? car.top_speed_kmh + ' km/h' : null },
+        { key: 'Transmission', val: car.transmission },
+        { key: 'Drivetrain',   val: car.drivetrain },
+        { key: 'Fuel Type',    val: car.fuel_type },
+        { key: 'Displacement', val: car.displacement ? car.displacement + ' cc' : null },
+        { key: 'Cylinders',    val: car.cylinders },
+        { key: 'Weight',       val: car.weight_kg ? car.weight_kg.toLocaleString() + ' kg' : null },
+        { key: 'Seats',        val: car.seats },
+        { key: 'Year',         val: car.year },
+        { key: 'Origin',       val: car.origin },
+        { key: 'Category',     val: car.category },
+        { key: 'Status',       val: car.status },
+    ].filter(s => s.val != null);
 
-    document.getElementById('specGrid').innerHTML = specs.map(s => `
-        <div class="spec-cell">
-            <i class="bi ${s.icon} spec-icon"></i>
-            <div class="spec-val">${s.val}</div>
-            <div class="spec-key">${s.key}</div>
-        </div>
-    `).join('');
+    document.getElementById('specGridHD').innerHTML = specs.map(s => `
+        <div class="spec-cell-hd">
+            <div class="key">${s.key}</div>
+            <div class="val">${s.val}</div>
+        </div>`).join('');
 }
 
-function buildPerformance() {
+/* ─── PERFORMANCE BARS ─── */
+function buildPerf() {
     const perfs = [];
     if (car.power_hp) perfs.push({ label: 'Horsepower', val: car.power_hp, max: 1500, display: car.power_hp + ' HP' });
     if (car.torque_nm) perfs.push({ label: 'Torque', val: car.torque_nm, max: 1500, display: car.torque_nm + ' Nm' });
     if (car.top_speed_kmh) perfs.push({ label: 'Top Speed', val: car.top_speed_kmh, max: 400, display: car.top_speed_kmh + ' km/h' });
     if (car.acceleration) {
         const s = parseFloat(car.acceleration.match(/[\d.]+/)?.[0] || 10);
-        perfs.push({ label: '0–100 km/h', val: 10 - s, max: 10, display: s + 's', invert: true });
+        perfs.push({ label: '0–100 km/h', val: 10 - s, max: 10, display: s + 's' });
     }
 
-    document.getElementById('perfBars').innerHTML = perfs.map(p => `
-        <div class="perf-row">
-            <div class="perf-label">${p.label}</div>
-            <div class="perf-track"><div class="perf-fill" data-pct="${Math.min(100, (p.val/p.max)*100).toFixed(1)}"></div></div>
-            <div class="perf-val">${p.display}</div>
-        </div>
-    `).join('');
-
-    // Animate bars
-    setTimeout(() => {
-        document.querySelectorAll('.perf-fill').forEach(bar => {
-            bar.style.width = bar.dataset.pct + '%';
-        });
-    }, 400);
+    document.getElementById('perfBarsHD').innerHTML = perfs.map(p => `
+        <div class="perf-row-hd">
+            <div class="perf-label-hd">${p.label}</div>
+            <div class="perf-track-hd"><div class="perf-fill-hd" data-pct="${Math.min(100,(p.val/p.max)*100).toFixed(1)}"></div></div>
+            <div class="perf-val-hd">${p.display}</div>
+        </div>`).join('');
 }
 
+/* ─── HIGHLIGHTS ─── */
 function buildHighlights() {
-    const hl = car.highlights || [];
-    if (hl.length === 0) { document.getElementById('highlightsLabel').style.display='none'; return; }
     const icons = ['bi-star-fill','bi-shield-check','bi-gem','bi-lightning-fill','bi-award','bi-check-circle-fill','bi-trophy-fill','bi-fire'];
-    document.getElementById('highlightsGrid').innerHTML = hl.map((h, i) => `
-        <div class="highlight-chip">
-            <i class="bi ${icons[i % icons.length]}"></i>
-            ${h}
-        </div>
-    `).join('');
+    const hl = car.highlights || [];
+    document.getElementById('hlGridHD').innerHTML = hl.length
+        ? hl.map((h,i) => `<div class="hl-chip-hd"><i class="bi ${icons[i%icons.length]}"></i>${h}</div>`).join('')
+        : '<p style="color:var(--muted);font-size:0.82rem;">No highlights listed.</p>';
 }
 
-function buildColors() {
-    if (!car.colors || car.colors.length === 0) {
-        document.getElementById('colorSection').style.display = 'none';
-        return;
-    }
-    document.getElementById('carDescription').textContent = car.description || '';
-    document.getElementById('colorSwatches').innerHTML = car.colors.map((c, i) => `
-        <div class="color-swatch ${i===0?'active':''}"
-             style="background:${c.hex || '#333'}"
-             data-name="${c.name}"
-             title="${c.name}"
-             onclick="selectColor('${c.img}', this)">
-        </div>
-    `).join('');
-}
-
-function selectColor(img, el) {
-    if (img) {
-        document.getElementById('heroBg').style.backgroundImage = `url('${img}')`;
-        // Update gallery active
-        const thumbs = document.querySelectorAll('.gallery-thumb');
-        thumbs.forEach(t => { if (t.src.includes(img)) t.classList.add('active'); else t.classList.remove('active'); });
-    }
-    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-    el.classList.add('active');
-}
-
-function buildCTAPanel() {
-    document.getElementById('carDescription').textContent = car.description || '';
-    document.getElementById('ctaPrice').textContent = car.price;
-    document.getElementById('ctaPriceUSD').textContent = car.price_usd ? `≈ $${car.price_usd.toLocaleString()} USD` : '';
+/* ─── SIDE PANEL ─── */
+function buildPanel() {
+    document.getElementById('panelPrice').textContent = car.price || '';
+    document.getElementById('panelPriceUSD').textContent = car.price_usd ? `≈ $${car.price_usd.toLocaleString()} USD` : '';
 
     const rows = [
-        { icon: 'bi-gear',            key: 'Engine',        val: car.engine },
-        { icon: 'bi-calendar3',       key: 'Year',          val: car.year },
-        { icon: 'bi-map',             key: 'Origin',        val: car.origin },
-        { icon: 'bi-people',          key: 'Seating',       val: car.seats ? car.seats+' Seats' : null },
-        { icon: 'bi-arrow-repeat',    key: 'Transmission',  val: car.transmission },
-        { icon: 'bi-signpost-split',  key: 'Drivetrain',    val: car.drivetrain },
-    ].filter(r => r.val);
+        { k: 'Engine',       v: car.engine },
+        { k: 'Year',         v: car.year },
+        { k: 'Origin',       v: car.origin },
+        { k: 'Seats',        v: car.seats ? car.seats + ' Seats' : null },
+        { k: 'Transmission', v: car.transmission },
+        { k: 'Drivetrain',   v: car.drivetrain },
+        { k: 'Top Speed',    v: car.top_speed_kmh ? car.top_speed_kmh + ' km/h' : null },
+    ].filter(r => r.v);
 
-    document.getElementById('ctaDetails').innerHTML = rows.map(r => `
-        <div class="cta-detail-row">
-            <div class="cta-detail-key"><i class="bi ${r.icon}"></i>${r.key}</div>
-            <div class="cta-detail-val">${r.val}</div>
-        </div>
-    `).join('');
-
-    const statusClass = { 'In Stock': 'available', 'Available': 'available', 'Exclusive': 'exclusive', 'Sold': 'sold' }[car.status] || 'available';
-    const statusIcon = { 'In Stock': 'bi-check-circle-fill', 'Available': 'bi-check-circle-fill', 'Exclusive': 'bi-gem', 'Sold': 'bi-x-circle-fill' }[car.status] || 'bi-check-circle-fill';
-    document.getElementById('statusRow').innerHTML = `
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
-            <span style="font-size:0.7rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Availability</span>
-            <div class="status-pill ${statusClass}">
-                <div class="status-dot"></div>
-                ${car.status}
-            </div>
-        </div>
-    `;
+    document.getElementById('panelRows').innerHTML = rows.map(r => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.78rem;">
+            <span style="color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;font-size:0.65rem;">${r.k}</span>
+            <span style="color:#ddd;font-weight:600;">${r.v}</span>
+        </div>`).join('');
 }
 
-// ─── LIGHTBOX ───────────────────────────────────────────────────
-function openLightbox(idx) {
-    lightboxIndex = idx || 0;
-    document.getElementById('lightbox').classList.add('open');
-    updateLightbox();
-}
+/* ─── TABS ─── */
+function switchTab(id, el) {
+    document.querySelectorAll('.hd-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.hd-tab-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
 
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-}
-
-function lightboxNav(dir) {
-    lightboxIndex = (lightboxIndex + dir + allImages.length) % allImages.length;
-    updateLightbox();
-}
-
-function updateLightbox() {
-    const img = document.getElementById('lightboxImg');
-    img.style.opacity = 0;
-    setTimeout(() => {
-        img.src = allImages[lightboxIndex];
-        img.style.opacity = 1;
-    }, 150);
-    img.style.transition = 'opacity 0.15s';
-    document.getElementById('lightboxCounter').textContent = `${lightboxIndex+1} / ${allImages.length}`;
-}
-
-document.addEventListener('keydown', e => {
-    if (document.getElementById('lightbox').classList.contains('open')) {
-        if (e.key === 'ArrowLeft') lightboxNav(-1);
-        if (e.key === 'ArrowRight') lightboxNav(1);
-        if (e.key === 'Escape') closeLightbox();
+    // Animate perf bars when performance tab opens
+    if (id === 'performance') {
+        setTimeout(() => {
+            document.querySelectorAll('.perf-fill-hd').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+        }, 150);
     }
-});
+}
 
-// ─── ACTIONS ────────────────────────────────────────────────────
+/* ─── PANEL TOGGLE ─── */
+function togglePanel() {
+    const panel = document.getElementById('asidePanel');
+    const toggle = document.getElementById('asideToggle');
+    const open = panel.classList.toggle('open');
+    toggle.classList.toggle('panel-open', open);
+    toggle.textContent = open ? '✕' : 'Specs';
+}
+
+/* ─── 360 ─── */
+function toggle360() {
+    if (!car) return;
+    try { localStorage.setItem('edelhausDetailCar', JSON.stringify(car)); } catch(e) {}
+    window.location.href = `Car_360_3d.html?id=${car.id}`;
+}
+
+/* ─── ACTIONS ─── */
 function goBack(action) {
-    // Save the action so the main page can pick it up
     localStorage.setItem('edelhausDetailAction', JSON.stringify({ action, carId: car.id }));
-    // Navigate back to the main site
     window.location.href = 'help.html';
 }
 
-function downloadBrochure() {
-    const content = `EDELHAUS AUTOMOTIVE\n${'═'.repeat(40)}\n\n${car.name.toUpperCase()}\n${car.subtitle}\n\nPrice: ${car.price}\n\nSPECIFICATIONS\n${'─'.repeat(30)}\nEngine: ${car.engine||'N/A'}\nPower: ${car.power}\n0-100: ${car.acceleration}\nTop Speed: ${car.top_speed_kmh||'N/A'} km/h\nTransmission: ${car.transmission||'N/A'}\nDrivetrain: ${car.drivetrain||'N/A'}\nSeats: ${car.seats||'N/A'}\nYear: ${car.year}\nOrigin: ${car.origin||'N/A'}\n\nDESCRIPTION\n${'─'.repeat(30)}\n${car.description}\n\n${'═'.repeat(40)}\nEdelhaus Automotive — The Art of Luxury\nContact us for pricing and availability.`;
-    const blob = new Blob([content], { type: 'text/plain' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `${car.name.replace(/\s+/g,'_')}_Brochure.txt`;
-    a.click();
+function downloadBrochureDetail() {
+    if (!car) return;
+    // Build simple brochure
+    const c = car;
+    const img = (c.images && c.images[0]) || '';
+    const blob = new Blob([`<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>${c.name} — Edelhaus Brochure</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Montserrat,sans-serif;background:#0a0a0a;color:#f0f0f0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cover{min-height:100vh;position:relative;display:flex;flex-direction:column;overflow:hidden}
+.cover-bg{position:absolute;inset:0;background-image:url('${img}');background-size:cover;background-position:center;filter:brightness(.45)}
+.cover-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.9) 90%)}
+.cover-content{position:relative;z-index:2;margin-top:auto;padding:60px 80px 60px}
+.brand{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+.title{font-size:52px;font-weight:900;color:#fff;line-height:1;margin-bottom:12px;text-transform:uppercase;letter-spacing:-1px}
+.subtitle{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:28px;font-style:italic}
+.price{font-size:32px;font-weight:700;color:#e8601c;margin-bottom:30px}
+.specs-row{display:flex;gap:0;margin-bottom:40px;border:1px solid rgba(255,255,255,.1);width:fit-content}
+.sp{padding:14px 24px;border-right:1px solid rgba(255,255,255,.1)}
+.sp:last-child{border-right:none}
+.sp-v{font-size:18px;font-weight:700;color:#fff;display:block}
+.sp-k{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;display:block;margin-top:3px}
+.footer{position:relative;z-index:2;padding:20px 80px;background:rgba(0,0,0,.6);border-top:1px solid rgba(255,255,255,.07);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:2px;display:flex;justify-content:space-between}
+.toolbar{position:fixed;top:0;left:0;right:0;background:#111;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #333;z-index:999}
+.tbtn{padding:8px 20px;background:#e8601c;color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+@media print{.toolbar{display:none}.cover{margin-top:0}}
+</style></head><body>
+<div class="toolbar">
+<span style="color:#fff;font-size:12px;letter-spacing:3px;font-weight:700">EDELHAUS AUTOMOTIVE</span>
+<button class="tbtn" onclick="window.print()">Download PDF</button>
+</div>
+<div style="margin-top:44px">
+<div class="cover">
+<div class="cover-bg"></div><div class="cover-gradient"></div>
+<div class="cover-content">
+<div class="brand">${c.brand} &nbsp;·&nbsp; ${c.year} &nbsp;·&nbsp; ${c.origin || ''}</div>
+<div class="title">${c.name}</div>
+<div class="subtitle">${c.subtitle || ''}</div>
+<div class="price">${c.price}</div>
+<div class="specs-row">
+${c.power ? `<div class="sp"><span class="sp-v">${c.power}</span><span class="sp-k">Power</span></div>` : ''}
+${c.acceleration ? `<div class="sp"><span class="sp-v">${c.acceleration.replace('0-100: ','')}</span><span class="sp-k">0-100 km/h</span></div>` : ''}
+${c.top_speed_kmh ? `<div class="sp"><span class="sp-v">${c.top_speed_kmh} km/h</span><span class="sp-k">Top Speed</span></div>` : ''}
+${c.engine ? `<div class="sp"><span class="sp-v">${c.engine}</span><span class="sp-k">Engine</span></div>` : ''}
+</div>
+<p style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);max-width:600px">${c.description || ''}</p>
+</div>
+<div class="footer"><span>EDELHAUS AUTOMOTIVE</span><span>Official Vehicle Brochure</span><span>edelhaus.in</span></div>
+</div>
+</div>
+</body></html>`], { type: 'text/html' });
+    window.open(URL.createObjectURL(blob), '_blank');
 }
 
-function shareThis() {
-    if (navigator.share) {
-        navigator.share({ title: car.name, text: `${car.name} — ${car.price}`, url: window.location.href });
-    } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
-    }
-}
+/* ─── KEYBOARD NAV ─── */
+document.addEventListener('keydown', e => {
+    if (!allImages.length) return;
+    if (e.key === 'ArrowRight') { const n = (currentImgIdx + 1) % allImages.length; setHeroImage(allImages[n], n); }
+    if (e.key === 'ArrowLeft') { const n = (currentImgIdx - 1 + allImages.length) % allImages.length; setHeroImage(allImages[n], n); }
+});
 
-// ─── INIT ────────────────────────────────────────────────────────
 loadCar();
 </script>
 

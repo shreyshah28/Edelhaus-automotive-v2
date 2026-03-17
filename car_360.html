@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° View — Edelhaus Automotive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #3498db;
+            --blue-glow: rgba(52,152,219,0.4);
+            --gold: #3498db;
+            --gold-glow: rgba(52,152,219,0.3);
+            --dark: #060608;
+            --dark-2: #0e0e12;
+            --dark-3: #16161c;
+            --dark-4: #1e1e26;
+            --border: rgba(255,255,255,0.07);
+            --border-blue: rgba(52,152,219,0.25);
+            --light: #f0ede8;
+            --muted: #6a6a78;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── TOP NAV ─── */
+        .viewer-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            background: rgba(6,6,8,0.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+        }
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        .nav-title {
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: 1px solid var(--border);
+            color: #aaa;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-back:hover { color: #fff; border-color: var(--border-blue); background: rgba(52,152,219,0.08); }
+
+        /* ─── MAIN VIEWER WRAPPER ─── */
+        .viewer-wrapper {
+            min-height: 100vh;
+            padding-top: 58px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── CAR INFO HEADER ─── */
+        .car-info-bar {
+            background: var(--dark-2);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .car-name-block .car-brand {
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 3px;
+        }
+        .car-name-block .car-full-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .car-name-block .car-subtitle-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+        .car-price-block {
+            text-align: right;
+        }
+        .car-price-block .price-main {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .car-price-block .price-usd {
+            font-size: 0.72rem;
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(46,204,113,0.4);
+            background: rgba(46,204,113,0.1);
+            color: #2ecc71;
+        }
+        .status-pill::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #2ecc71;
+            box-shadow: 0 0 6px #2ecc71;
+        }
+
+        /* ─── 360 STAGE ─── */
+        .stage-container {
+            flex: 1;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 60%, #0d1525 0%, #070709 60%, #030305 100%);
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Atmospheric glow under car */
+        .stage-floor-glow {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 80px;
+            background: radial-gradient(ellipse at center, rgba(52,152,219,0.18) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .stage-floor-reflect {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(52,152,219,0.3), transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Corner decorative lines */
+        .corner-decor {
+            position: absolute;
+            width: 32px; height: 32px;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .corner-decor::before, .corner-decor::after {
+            content: '';
+            position: absolute;
+            background: rgba(52,152,219,0.4);
+        }
+        .corner-decor::before { width: 2px; height: 100%; }
+        .corner-decor::after  { width: 100%; height: 2px; }
+        .corner-tl { top: 16px; left: 16px; }
+        .corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+        .corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+        .corner-br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+        /* ─── 360 CANVAS ─── */
+        .viewer-360 {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            cursor: grab;
+            z-index: 2;
+            user-select: none;
+        }
+        .viewer-360.dragging { cursor: grabbing; }
+
+        .frame-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.05s;
+            pointer-events: none;
+            filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9));
+        }
+        .frame-img.active {
+            opacity: 1;
+        }
+        /* Canvas frames: scale to fill viewer while preserving aspect ratio */
+        canvas.frame-img {
+            object-fit: contain;
+            /* Canvas doesn't support object-fit natively — use max sizing instead */
+            width: auto !important;
+            height: 100% !important;
+            max-width: 100%;
+            left: 50% !important;
+            transform: translateX(-50%);
+        }
+
+        /* 360 badge overlay */
+        .badge-360 {
+            position: absolute;
+            top: 1rem; left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(52,152,219,0.15);
+            border: 1px solid rgba(52,152,219,0.4);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            pointer-events: none;
+            z-index: 10;
+        }
+        .badge-360 .spin-icon {
+            font-size: 1rem;
+            animation: rotate-icon 3s linear infinite;
+        }
+        @keyframes rotate-icon {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Drag hint overlay */
+        .drag-hint {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            pointer-events: none;
+            transition: opacity 0.6s;
+        }
+        .drag-hint.hidden { opacity: 0; }
+        .drag-hint-icon {
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+            animation: drag-pulse 2s ease-in-out infinite;
+        }
+        @keyframes drag-pulse {
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            25% { transform: translateX(-12px); opacity: 0.9; }
+            75% { transform: translateX(12px); opacity: 0.9; }
+        }
+        .drag-hint-text {
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Angle indicator */
+        .angle-indicator {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 52px; height: 52px;
+            z-index: 10;
+        }
+        .angle-ring {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(52,152,219,0.3);
+            background: rgba(6,6,8,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .angle-needle {
+            position: absolute;
+            width: 2px;
+            height: 18px;
+            background: linear-gradient(to bottom, var(--blue), transparent);
+            top: 5px;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: translateX(-50%) rotate(0deg);
+            transition: transform 0.05s linear;
+            border-radius: 1px;
+        }
+        .angle-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 8px var(--blue);
+        }
+        .angle-text {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.58rem;
+            letter-spacing: 1px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ─── LOADING OVERLAY ─── */
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.5s;
+        }
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-spinner {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(52,152,219,0.15);
+            border-top-color: var(--blue);
+            animation: spin-loader 0.9s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin-loader { to { transform: rotate(360deg); } }
+        .loading-text {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .loading-progress {
+            margin-top: 0.75rem;
+            width: 160px;
+            height: 2px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--blue), #5dade2);
+            border-radius: 1px;
+            transition: width 0.1s;
+        }
+
+        /* ─── CONTROLS BAR ─── */
+        .controls-bar {
+            background: var(--dark-2);
+            border-top: 1px solid var(--border);
+            padding: 0.85rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ctrl-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--dark-3);
+            border: 1px solid var(--border);
+            color: #aaa;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ctrl-btn:hover { color: #fff; border-color: var(--border-blue); background: rgba(52,152,219,0.1); }
+        .ctrl-btn.active { color: var(--blue); border-color: rgba(52,152,219,0.5); background: rgba(52,152,219,0.12); }
+        .ctrl-btn i { font-size: 0.9rem; }
+
+        /* Auto-rotate toggle */
+        .auto-btn.spinning { color: var(--blue); border-color: rgba(52,152,219,0.5); background: rgba(52,152,219,0.12); }
+        .auto-btn.spinning i { animation: rotate-icon 1.5s linear infinite; }
+
+        /* Speed control */
+        .speed-label {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+        .speed-slider {
+            -webkit-appearance: none;
+            width: 100px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+        .speed-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 8px var(--blue-glow);
+            cursor: pointer;
+        }
+
+        /* Frame counter */
+        .frame-counter {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+        }
+        .frame-counter span { color: var(--blue); }
+
+        /* ─── COLOR SELECTOR ─── */
+        .color-bar {
+            background: var(--dark-3);
+            border-top: 1px solid var(--border);
+            padding: 0.75rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            overflow-x: auto;
+        }
+        .color-bar::-webkit-scrollbar { display: none; }
+        .color-bar-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .color-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .color-option:hover { border-color: var(--border-blue); background: rgba(52,152,219,0.06); }
+        .color-option.active { border-color: rgba(52,152,219,0.5); background: rgba(52,152,219,0.1); }
+        .color-swatch {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        .color-option.active .color-swatch { transform: scale(1.2); border-color: rgba(52,152,219,0.7); }
+        .color-name {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #aaa;
+            white-space: nowrap;
+        }
+        .color-option.active .color-name { color: #fff; }
+
+        /* ─── HOTSPOT OVERLAY ─── */
+        .hotspot {
+            position: absolute;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: rgba(52,152,219,0.2);
+            border: 1.5px solid rgba(52,152,219,0.7);
+            cursor: pointer;
+            z-index: 15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .hotspot::before {
+            content: '';
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 10px var(--blue);
+        }
+        .hotspot::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(52,152,219,0.3);
+            animation: hotspot-pulse 2s ease-in-out infinite;
+        }
+        @keyframes hotspot-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 0; }
+        }
+        .hotspot:hover { background: rgba(52,152,219,0.35); transform: scale(1.15); }
+        .hotspot-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(6,6,8,0.95);
+            border: 1px solid rgba(52,152,219,0.35);
+            border-radius: 8px;
+            padding: 0.6rem 0.9rem;
+            min-width: 140px;
+            max-width: 200px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateX(-50%) translateY(4px);
+            z-index: 50;
+        }
+        .hotspot:hover .hotspot-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .hotspot-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(52,152,219,0.35);
+        }
+        .ht-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 3px;
+        }
+        .ht-desc {
+            font-size: 0.68rem;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* ─── FRAME SCRUBBER ─── */
+        .scrubber-container {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            padding: 0 3%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .scrubber-track {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            position: relative;
+            pointer-events: all;
+            cursor: pointer;
+        }
+        .scrubber-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--blue), #5dade2);
+            border-radius: 2px;
+            transition: width 0.05s;
+        }
+        .scrubber-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 10px var(--blue-glow);
+            pointer-events: none;
+        }
+
+        /* ─── FEATURE PANELS ─── */
+        .panels-section {
+            background: var(--dark-2);
+            border-top: 1px solid var(--border);
+            padding: 2rem 2.5rem;
+        }
+        .panels-label {
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+        }
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .feature-panel {
+            background: var(--dark-3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .feature-panel:hover { border-color: var(--border-blue); background: rgba(52,152,219,0.04); }
+        .fp-icon {
+            font-size: 1.3rem;
+            color: var(--blue);
+            margin-bottom: 0.6rem;
+        }
+        .fp-label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 3px;
+        }
+        .fp-value {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .car-info-bar { padding: 0.85rem 1.25rem; flex-wrap: wrap; }
+            .controls-bar { padding: 0.75rem 1.25rem; }
+            .color-bar { padding: 0.65rem 1.25rem; }
+            .panels-section { padding: 1.5rem 1.25rem; }
+            .viewer-360 { aspect-ratio: 4/3; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="viewer-nav">
+    <a href="javascript:history.back()" class="nav-brand">EDELHAUS</a>
+    <span class="nav-title">360° Studio View</span>
+    <a href="javascript:history.back()" class="btn-back">
+        <i class="bi bi-arrow-left"></i> Back to Detail
+    </a>
+</nav>
+
+<div class="viewer-wrapper" id="viewerWrapper">
+
+    <!-- CAR INFO BAR -->
+    <div class="car-info-bar">
+        <div class="car-name-block">
+            <div class="car-brand" id="carBrand">EDELHAUS AUTOMOTIVE</div>
+            <div class="car-full-name" id="carName">Loading...</div>
+            <div class="car-subtitle-text" id="carSubtitle"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;justify-content:flex-end;">
+            <div class="status-pill" id="statusPill">Available</div>
+            <div class="car-price-block">
+                <div class="price-main" id="carPrice">—</div>
+                <div class="price-usd" id="carPriceUSD"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 360 STAGE -->
+    <div class="stage-container" id="stageContainer">
+        <div class="corner-decor corner-tl"></div>
+        <div class="corner-decor corner-tr"></div>
+        <div class="corner-decor corner-bl"></div>
+        <div class="corner-decor corner-br"></div>
+        <div class="stage-floor-glow"></div>
+        <div class="stage-floor-reflect"></div>
+
+        <!-- LOADING OVERLAY -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Initialising 360° View</div>
+            <div class="loading-progress">
+                <div class="loading-bar" id="loadingBar" style="width:0%"></div>
+            </div>
+        </div>
+
+        <!-- 360 VIEWER -->
+        <div class="viewer-360" id="viewer360">
+            <!-- frames injected by JS -->
+
+            <!-- 360° badge -->
+            <div class="badge-360">
+                <i class="bi bi-arrow-repeat spin-icon"></i>
+                360°
+            </div>
+
+            <!-- Angle compass -->
+            <div class="angle-indicator">
+                <div class="angle-ring">
+                    <div class="angle-needle" id="angleNeedle"></div>
+                    <div class="angle-dot"></div>
+                </div>
+                <div class="angle-text" id="angleText">0°</div>
+            </div>
+
+            <!-- Drag hint -->
+            <div class="drag-hint" id="dragHint">
+                <div class="drag-hint-icon">
+                    <i class="bi bi-arrows-move"></i>
+                </div>
+                <div class="drag-hint-text">Drag to Rotate</div>
+            </div>
+
+            <!-- Hotspots (positioned by JS per frame) -->
+            <div id="hotspotLayer"></div>
+
+            <!-- Frame scrubber -->
+            <div class="scrubber-container">
+                <div class="scrubber-track" id="scrubberTrack">
+                    <div class="scrubber-fill" id="scrubberFill" style="width:0%"></div>
+                    <div class="scrubber-thumb" id="scrubberThumb" style="left:0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLS BAR -->
+    <div class="controls-bar">
+        <div class="ctrl-group">
+            <button class="ctrl-btn auto-btn" id="autoBtn" onclick="toggleAutoRotate()">
+                <i class="bi bi-play-circle"></i> Auto Rotate
+            </button>
+            <button class="ctrl-btn" onclick="rotateTo(0)">
+                <i class="bi bi-aspect-ratio"></i> Front View
+            </button>
+            <button class="ctrl-btn" onclick="rotateTo(90)">
+                <i class="bi bi-aspect-ratio"></i> Side View
+            </button>
+            <button class="ctrl-btn" onclick="rotateTo(180)">
+                <i class="bi bi-aspect-ratio"></i> Rear View
+            </button>
+        </div>
+        <div class="ctrl-group">
+            <span class="speed-label">Speed</span>
+            <input type="range" class="speed-slider" id="speedSlider"
+                min="1" max="10" value="5" oninput="updateSpeed(this.value)">
+            <span class="frame-counter" id="frameCounter">
+                Frame <span id="currentFrame">1</span> / <span id="totalFrames">36</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- COLOR SELECTOR -->
+    <div class="color-bar" id="colorBar">
+        <span class="color-bar-label">Colour</span>
+        <!-- Injected by JS -->
+    </div>
+
+    <!-- FEATURE PANELS -->
+    <div class="panels-section">
+        <div class="panels-label">Key Specifications</div>
+        <div class="panels-grid" id="panelsGrid">
+            <!-- injected by JS -->
+        </div>
+    </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════
+//  360° VIEWER ENGINE
+// ══════════════════════════════════════════
+
+let car = null;
+let frames = [];
+let currentFrameIndex = 0;
+let totalFrameCount = 36;
+let isAutoRotating = false;
+let autoTimer = null;
+let autoSpeed = 60; // ms per frame
+let isDragging = false;
+let dragStartX = 0;
+let dragStartFrame = 0;
+let hintHidden = false;
+let imagesLoaded = 0;
+
+const DRAG_SENSITIVITY = 6; // px per frame step
+
+// ── HOTSPOT DEFINITIONS (frame-relative positions)
+const HOTSPOT_DEFS = [
+    { frameRange: [0, 5],  x: '60%', y: '35%', title: 'Front Fascia',    desc: 'Active aerodynamic splitter with carbon fibre detailing.' },
+    { frameRange: [5, 12], x: '70%', y: '50%', title: 'Side Profile',    desc: 'Sculpted bodysides with integrated air curtains.' },
+    { frameRange: [12,20], x: '55%', y: '30%', title: 'Roofline',        desc: 'Panoramic glass roof with electrochromic tinting.' },
+    { frameRange: [20,28], x: '40%', y: '55%', title: 'Rear Diffuser',   desc: 'Active rear diffuser generating 120kg downforce at 250km/h.' },
+    { frameRange: [28,35], x: '45%', y: '65%', title: 'Alloy Wheels',    desc: '22-inch forged alloy wheels in dark tungsten finish.' },
+];
+
+// ── LOAD CAR DATA
+(function init() {
+    const params = new URLSearchParams(window.location.search);
+    const carId  = parseInt(params.get('id') || '1');
+
+    // Try localStorage first (set by /car-detail)
+    const cached = localStorage.getItem('edelhausDetailCar');
+    if (cached) {
+        try {
+            const parsed = JSON.parse(cached);
+            if (parsed.id === carId) { setupViewer(parsed); return; }
+        } catch(e) {}
+    }
+
+    // Fallback: fetch cars.json
+    // Try Flask API first, then cars.json fallback
+    fetch('/api/cars/' + carId)
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(car => setupViewer(car))
+        .catch(() => 
+            fetch('cars.json')
+                .then(r => r.json())
+                .then(cars => setupViewer(cars.find(c => c.id === carId) || cars[0]))
+                .catch(() => setupViewer(getDemoCarData()))
+        );
+})();
+
+function getDemoCarData() {
+    return {
+        id: 1, name: 'Ferrari F8 Spider', brand: 'Ferrari',
+        subtitle: 'Italian Supercar Spider', year: '2024', status: 'Available',
+        price: '₹4.02 Crore', price_usd: 333000,
+        engine: '3.9L V8 Twin-Turbo', power: '710 HP', power_hp: 710,
+        torque_nm: 770, acceleration: '0-100: 2.9s',
+        top_speed_kmh: 340, transmission: '7-Speed F1 DCT',
+        drivetrain: 'RWD', weight_kg: 1330, seats: 2,
+        colors: [
+            { name: 'Rosso Corsa', hex: '#cc0000', img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=900&q=85&fit=crop' },
+            { name: 'Giallo Modena', hex: '#FFD700', img: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=85&fit=crop' },
+            { name: 'Nero', hex: '#111', img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&q=85&fit=crop' },
+        ],
+        images: [
+            'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=900&q=85&fit=crop',
+        ],
+        highlights: ['F1-Derived Technology', 'Side Slip Control', 'Magnetorheological Dampers', 'Retractable Hardtop'],
+    };
+}
+
+function setupViewer(carData) {
+    car = carData;
+    updateCarInfoBar(car);
+    buildColorBar(car.colors || []);
+    buildPanels(car);
+    generate360Frames(car);
+}
+
+// ── CAR INFO BAR
+function updateCarInfoBar(c) {
+    document.getElementById('carBrand').textContent   = c.brand ? c.brand.toUpperCase() + ' · EDELHAUS' : 'EDELHAUS';
+    document.getElementById('carName').textContent    = c.name || 'Luxury Vehicle';
+    document.getElementById('carSubtitle').textContent = c.subtitle || '';
+    document.getElementById('carPrice').textContent   = c.price || '—';
+    document.getElementById('carPriceUSD').textContent = c.price_usd ? `≈ USD $${c.price_usd.toLocaleString()}` : '';
+
+    const pill = document.getElementById('statusPill');
+    const s = (c.status || 'Available').toLowerCase();
+    if (s.includes('sold')) {
+        pill.style.cssText = 'border-color:rgba(231,76,60,0.4);background:rgba(231,76,60,0.1);color:#e74c3c';
+    } else if (s.includes('reserved')) {
+        pill.style.cssText = 'border-color:rgba(241,196,15,0.4);background:rgba(241,196,15,0.1);color:#f1c40f';
+    }
+    pill.textContent = c.status || 'Available';
+    // Re-add the dot
+    pill.innerHTML = `<span style="width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 6px currentColor;display:inline-block;"></span>${c.status || 'Available'}`;
+}
+
+// ── CURRENT COLOR STATE
+let currentColorHex = null;
+let activeSourceImages = [];
+
+// ── GENERATE 360 FRAMES
+//    Simulates a convincing 360° rotation using real car images + CSS transforms.
+//    Color switching uses canvas-based tinting to accurately reflect the selected colour.
+function generate360Frames(c) {
+    const viewer  = document.getElementById('viewer360');
+    const overlay = document.getElementById('loadingOverlay');
+    const bar     = document.getElementById('loadingBar');
+
+    // Collect all available source images (must be http URLs)
+    activeSourceImages = [];
+    if (c.images && c.images.length) {
+        c.images.forEach(img => { if (img && img.startsWith('http')) activeSourceImages.push(img); });
+    }
+    // Add any colour-specific images that are different
+    if (c.colors) {
+        c.colors.forEach(col => {
+            if (col.img && col.img.startsWith('http') && !activeSourceImages.includes(col.img)) {
+                activeSourceImages.push(col.img);
+            }
+        });
+    }
+
+    // Fallback
+    if (activeSourceImages.length === 0) {
+        activeSourceImages.push('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=85&fit=crop');
+    }
+
+    // Set initial colour from first defined colour option
+    currentColorHex = (c.colors && c.colors[0] && c.colors[0].hex) ? c.colors[0].hex : null;
+
+    totalFrameCount = 36;
+    document.getElementById('totalFrames').textContent = totalFrameCount;
+    frames = [];
+    imagesLoaded = 0;
+
+    for (let i = 0; i < totalFrameCount; i++) {
+        // Use canvas elements so we can paint tinted images onto them
+        const canvas = document.createElement('canvas');
+        canvas.className = 'frame-img' + (i === 0 ? ' active' : '');
+        canvas.draggable = false;
+
+        // Perspective simulation: subtle brightness shift only — NO skew/scale distortion
+        // that was making the car look warped
+        const angle  = (i / totalFrameCount) * 360;
+        const bright = 0.80 + 0.20 * Math.abs(Math.cos((angle - 20) * Math.PI / 180));
+        canvas.style.filter    = `drop-shadow(0 30px 80px rgba(0,0,0,0.9)) brightness(${bright})`;
+        canvas.style.transition = 'none';
+        canvas._bright = bright; // store for tint re-apply
+
+        // Cycle source images across frames (more images = better variety)
+        const imgIdx = Math.floor((i / totalFrameCount) * activeSourceImages.length) % activeSourceImages.length;
+        canvas._srcUrl = activeSourceImages[imgIdx];
+        canvas._frameIdx = i;
+
+        viewer.insertBefore(canvas, viewer.querySelector('.badge-360'));
+        frames.push(canvas);
+
+        // Load image and paint it (with optional colour tint)
+        loadAndPaintFrame(canvas, canvas._srcUrl, currentColorHex, () => {
+            imagesLoaded++;
+            const pct = Math.round((imagesLoaded / totalFrameCount) * 100);
+            bar.style.width = pct + '%';
+            if (imagesLoaded >= totalFrameCount * 0.75) {
+                setTimeout(() => { overlay.classList.add('hidden'); }, 300);
+                if (!isAutoRotating) startAutoRotate();
+            }
+        });
+    }
+
+    // Safety fallback — hide loader after 4s regardless
+    setTimeout(() => {
+        overlay.classList.add('hidden');
+        if (!isAutoRotating) startAutoRotate();
+    }, 4000);
+
+    setupDragControls(viewer);
+    setupScrubber();
+}
+
+// ── PAINT A FRAME CANVAS
+//    Draws the source image contained within canvas (like object-fit: contain)
+//    and blends the car colour on top using pixel-level hue tinting.
+function loadAndPaintFrame(canvas, srcUrl, hexColor, onDone) {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+        // Use a fixed internal resolution for consistent rendering
+        const W = 900, H = 506;
+        canvas.width  = W;
+        canvas.height = H;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, W, H);
+
+        // Draw image contained (letterboxed) inside the canvas
+        const imgAR  = img.naturalWidth / img.naturalHeight;
+        const canAR  = W / H;
+        let dw, dh, dx, dy;
+        if (imgAR > canAR) {
+            dw = W; dh = W / imgAR;
+            dx = 0; dy = (H - dh) / 2;
+        } else {
+            dh = H; dw = H * imgAR;
+            dx = (W - dw) / 2; dy = 0;
+        }
+        ctx.drawImage(img, dx, dy, dw, dh);
+
+        if (hexColor) {
+            applyColorTint(ctx, W, H, hexColor);
+        }
+        if (onDone) onDone();
+    };
+    img.onerror = () => { if (onDone) onDone(); };
+    // Append cache-buster to help with CORS on some CDNs
+    img.src = srcUrl;
+}
+
+// ── COLOUR TINT via Canvas
+//    Converts the hex colour to HSL, then applies it as a selective hue-shift:
+//    only mid-tone pixels (car body) get tinted; very dark (shadows) and very
+//    light (reflections/sky) pixels are preserved so the result looks photorealistic.
+function applyColorTint(ctx, w, h, hexColor) {
+    const [tr, tg, tb] = hexToRgb(hexColor);
+
+    // Convert target colour to HSL to determine if it's a neutral (grey/white/black)
+    const [th, ts, tl] = rgbToHsl(tr, tg, tb);
+    const isNeutral = ts < 0.12; // saturation < 12% → grey/silver/white/black
+
+    // For neutral colours, desaturate the image instead of hue-shifting
+    if (isNeutral) {
+        const imgData = ctx.getImageData(0, 0, w, h);
+        const d = imgData.data;
+        for (let i = 0; i < d.length; i += 4) {
+            const r = d[i], g = d[i+1], b = d[i+2];
+            const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            const [, , pl] = rgbToHsl(r, g, b);
+            // Only affect mid-tones (car body)
+            if (pl > 0.08 && pl < 0.92) {
+                // Blend toward luminance-adjusted target
+                const targetL = tl;
+                const blendFactor = 0.45;
+                const grey = lum * (1 - blendFactor) + (targetL * 255) * blendFactor;
+                d[i]   = Math.round(r * 0.6 + grey * 0.4);
+                d[i+1] = Math.round(g * 0.6 + grey * 0.4);
+                d[i+2] = Math.round(b * 0.6 + grey * 0.4);
+            }
+        }
+        ctx.putImageData(imgData, 0, 0);
+        return;
+    }
+
+    // For chromatic colours: use pixel-level hue rotation on mid-tone pixels
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const d = imgData.data;
+
+    for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const [ph, ps, pl] = rgbToHsl(r, g, b);
+
+        // Skip very dark pixels (shadows, tyres) and very light pixels (sky, reflections)
+        if (pl < 0.09 || pl > 0.91) continue;
+
+        // Shift hue toward target colour hue, blend saturation
+        const newH = th;
+        const newS = Math.max(ps * 0.3 + ts * 0.7, 0.25); // blend toward target saturation
+        const newL = pl; // keep original lightness (preserves shading/reflections)
+
+        const [nr, ng, nb] = hslToRgb(newH, newS, newL);
+
+        // Blend: stronger mix on mid-tones, weaker at extremes
+        const blend = Math.min(1, 4 * pl * (1 - pl)) * 0.72; // smooth step, max 72%
+        d[i]   = Math.round(r * (1 - blend) + nr * blend);
+        d[i+1] = Math.round(g * (1 - blend) + ng * blend);
+        d[i+2] = Math.round(b * (1 - blend) + nb * blend);
+    }
+    ctx.putImageData(imgData, 0, 0);
+}
+
+// ── COLOUR UTILS
+function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
+    const n = parseInt(hex, 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) { h = s = 0; }
+    else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+            case g: h = ((b - r) / d + 2) / 6; break;
+            case b: h = ((r - g) / d + 4) / 6; break;
+        }
+    }
+    return [h, s, l];
+}
+
+function hslToRgb(h, s, l) {
+    if (s === 0) { const v = Math.round(l * 255); return [v, v, v]; }
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    const hue2rgb = (p, q, t) => {
+        if (t < 0) t += 1; if (t > 1) t -= 1;
+        if (t < 1/6) return p + (q - p) * 6 * t;
+        if (t < 1/2) return q;
+        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        return p;
+    };
+    return [
+        Math.round(hue2rgb(p, q, h + 1/3) * 255),
+        Math.round(hue2rgb(p, q, h)       * 255),
+        Math.round(hue2rgb(p, q, h - 1/3) * 255),
+    ];
+}
+
+// ── SHOW FRAME
+function showFrame(idx) {
+    if (frames.length === 0) return;
+    idx = ((idx % frames.length) + frames.length) % frames.length;
+    if (currentFrameIndex === idx) return;
+
+    frames[currentFrameIndex].classList.remove('active');
+    currentFrameIndex = idx;
+    frames[currentFrameIndex].classList.add('active');
+
+    // Update UI
+    const pct = (idx / frames.length) * 100;
+    document.getElementById('currentFrame').textContent = idx + 1;
+    document.getElementById('scrubberFill').style.width  = pct + '%';
+    document.getElementById('scrubberThumb').style.left  = pct + '%';
+
+    // Compass needle
+    const deg = (idx / frames.length) * 360;
+    document.getElementById('angleNeedle').style.transform = `translateX(-50%) rotate(${deg}deg)`;
+    document.getElementById('angleText').textContent = Math.round(deg) + '°';
+
+    // Hotspots
+    updateHotspots(idx);
+}
+
+// ── HOTSPOTS
+function updateHotspots(frameIdx) {
+    const layer = document.getElementById('hotspotLayer');
+    layer.innerHTML = '';
+    HOTSPOT_DEFS.forEach(hs => {
+        if (frameIdx >= hs.frameRange[0] && frameIdx < hs.frameRange[1]) {
+            const el = document.createElement('div');
+            el.className = 'hotspot';
+            el.style.left = hs.x;
+            el.style.top  = hs.y;
+            el.innerHTML  = `<div class="hotspot-tooltip">
+                <div class="ht-title">${hs.title}</div>
+                <div class="ht-desc">${hs.desc}</div>
+            </div>`;
+            layer.appendChild(el);
+        }
+    });
+}
+
+// ── AUTO ROTATE
+function startAutoRotate() {
+    if (isAutoRotating) return;
+    isAutoRotating = true;
+    const btn = document.getElementById('autoBtn');
+    btn.classList.add('spinning');
+    btn.querySelector('i').className = 'bi bi-pause-circle';
+    btn.childNodes[1].textContent = ' Pause';
+    scheduleNext();
+}
+function stopAutoRotate() {
+    isAutoRotating = false;
+    clearTimeout(autoTimer);
+    const btn = document.getElementById('autoBtn');
+    btn.classList.remove('spinning');
+    btn.querySelector('i').className = 'bi bi-play-circle';
+    btn.childNodes[1].textContent = ' Auto Rotate';
+}
+function scheduleNext() {
+    if (!isAutoRotating) return;
+    autoTimer = setTimeout(() => {
+        showFrame(currentFrameIndex + 1);
+        scheduleNext();
+    }, autoSpeed);
+}
+function toggleAutoRotate() {
+    if (isAutoRotating) stopAutoRotate();
+    else startAutoRotate();
+}
+function updateSpeed(val) {
+    // val 1..10 → ms 120..20
+    autoSpeed = Math.round(120 - (val - 1) * (100 / 9));
+}
+
+// ── SNAP TO VIEW ANGLE
+function rotateTo(angleDeg) {
+    stopAutoRotate();
+    const targetFrame = Math.round((angleDeg / 360) * frames.length) % frames.length;
+    // Animate to target
+    let steps = targetFrame - currentFrameIndex;
+    if (Math.abs(steps) > frames.length / 2) steps -= Math.sign(steps) * frames.length;
+    let count = 0;
+    const abs = Math.abs(steps);
+    const dir = Math.sign(steps);
+    function step() {
+        if (count >= abs) return;
+        showFrame(currentFrameIndex + dir);
+        count++;
+        setTimeout(step, 18);
+    }
+    step();
+}
+
+// ── DRAG CONTROLS
+function setupDragControls(el) {
+    // Mouse
+    el.addEventListener('mousedown', e => {
+        if (e.target.closest('.hotspot') || e.target.closest('.scrubber-track')) return;
+        isDragging = true; dragStartX = e.clientX; dragStartFrame = currentFrameIndex;
+        el.classList.add('dragging');
+        stopAutoRotate();
+        hideDragHint();
+        e.preventDefault();
+    });
+    window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const delta = e.clientX - dragStartX;
+        const frameDelta = Math.round(delta / DRAG_SENSITIVITY);
+        showFrame(dragStartFrame - frameDelta);
+    });
+    window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        el.classList.remove('dragging');
+    });
+
+    // Touch
+    el.addEventListener('touchstart', e => {
+        if (e.target.closest('.hotspot') || e.target.closest('.scrubber-track')) return;
+        isDragging = true;
+        dragStartX = e.touches[0].clientX;
+        dragStartFrame = currentFrameIndex;
+        stopAutoRotate();
+        hideDragHint();
+        e.preventDefault();
+    }, { passive: false });
+    el.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        const delta = e.touches[0].clientX - dragStartX;
+        const frameDelta = Math.round(delta / DRAG_SENSITIVITY);
+        showFrame(dragStartFrame - frameDelta);
+        e.preventDefault();
+    }, { passive: false });
+    el.addEventListener('touchend', () => { isDragging = false; });
+}
+
+function hideDragHint() {
+    if (hintHidden) return;
+    hintHidden = true;
+    document.getElementById('dragHint').classList.add('hidden');
+}
+
+// ── SCRUBBER
+function setupScrubber() {
+    const track = document.getElementById('scrubberTrack');
+    track.addEventListener('click', e => {
+        const rect = track.getBoundingClientRect();
+        const pct  = (e.clientX - rect.left) / rect.width;
+        stopAutoRotate();
+        hideDragHint();
+        showFrame(Math.round(pct * frames.length));
+    });
+    let scrubbing = false;
+    track.addEventListener('mousedown', () => { scrubbing = true; stopAutoRotate(); });
+    window.addEventListener('mousemove', e => {
+        if (!scrubbing) return;
+        const rect = track.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        showFrame(Math.round(pct * frames.length));
+    });
+    window.addEventListener('mouseup', () => { scrubbing = false; });
+}
+
+// ── COLOR SELECTOR
+function buildColorBar(colors) {
+    const bar = document.getElementById('colorBar');
+    if (!colors || !colors.length) { bar.style.display = 'none'; return; }
+    colors.forEach((col, idx) => {
+        const el = document.createElement('div');
+        el.className = 'color-option' + (idx === 0 ? ' active' : '');
+        el.innerHTML = `
+            <div class="color-swatch" style="background:${col.hex || '#888'}"></div>
+            <span class="color-name">${col.name || 'Option ' + (idx+1)}</span>`;
+        el.onclick = () => {
+            document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+            el.classList.add('active');
+            // Pass BOTH the image URL and hex colour so tinting is accurate
+            switchColorImage(col.img || null, col.hex || null);
+        };
+        bar.appendChild(el);
+    });
+}
+
+// ── SWITCH COLOUR — re-tint all frames using canvas pixel manipulation
+function switchColorImage(imgUrl, hexColor) {
+    currentColorHex = hexColor || null;
+
+    // Fade out active frame briefly for a smooth transition feel
+    if (frames[currentFrameIndex]) {
+        frames[currentFrameIndex].style.opacity = '0.4';
+        setTimeout(() => { frames[currentFrameIndex].style.opacity = ''; }, 200);
+    }
+
+    // Re-paint all frames with new colour tint
+    // Stagger repaints so the UI stays responsive
+    frames.forEach((canvas, i) => {
+        // Pick the best source image for this frame:
+        // prefer the colour-specific image URL if provided, else cycle through sources
+        let srcUrl;
+        if (imgUrl && imgUrl.startsWith('http')) {
+            // Use the colour image for frames that were previously showing colour images,
+            // and keep the regular car images for variety on the rest.
+            // Simple strategy: blend colour image into cycle at the position it was before
+            const imgIdx = Math.floor((i / frames.length) * activeSourceImages.length) % activeSourceImages.length;
+            // Replace the first source with the colour-specific image
+            const updatedSources = [...activeSourceImages];
+            updatedSources[0] = imgUrl;
+            srcUrl = updatedSources[imgIdx % updatedSources.length];
+        } else {
+            const imgIdx = Math.floor((i / frames.length) * activeSourceImages.length) % activeSourceImages.length;
+            srcUrl = activeSourceImages[imgIdx];
+        }
+
+        canvas._srcUrl = srcUrl;
+        setTimeout(() => {
+            loadAndPaintFrame(canvas, srcUrl, currentColorHex, null);
+        }, i * 12); // stagger 12ms per frame
+    });
+}
+
+// ── FEATURE PANELS
+function buildPanels(c) {
+    const specs = [
+        { icon: 'bi-lightning-charge', label: 'Power',        value: c.power || '—' },
+        { icon: 'bi-speedometer2',     label: 'Top Speed',    value: c.top_speed_kmh ? c.top_speed_kmh + ' km/h' : '—' },
+        { icon: 'bi-arrow-right-circle', label: '0–100 km/h', value: c.acceleration ? c.acceleration.replace('0-100: ','') : '—' },
+        { icon: 'bi-gear',             label: 'Transmission', value: c.transmission || '—' },
+        { icon: 'bi-tornado',          label: 'Torque',       value: c.torque_nm ? c.torque_nm + ' Nm' : '—' },
+        { icon: 'bi-wrench-adjustable', label: 'Engine',      value: c.engine || '—' },
+        { icon: 'bi-arrows-expand',    label: 'Drivetrain',   value: c.drivetrain || '—' },
+        { icon: 'bi-people',           label: 'Seats',        value: c.seats || '—' },
+    ].filter(s => s.value !== '—');
+
+    const grid = document.getElementById('panelsGrid');
+    grid.innerHTML = specs.map(s => `
+        <div class="feature-panel">
+            <div class="fp-icon"><i class="bi ${s.icon}"></i></div>
+            <div class="fp-label">${s.label}</div>
+            <div class="fp-value">${s.value}</div>
+        </div>`).join('');
+}
+
+// ── KEYBOARD CONTROLS
+window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { stopAutoRotate(); hideDragHint(); showFrame(currentFrameIndex - 1); }
+    if (e.key === 'ArrowRight') { stopAutoRotate(); hideDragHint(); showFrame(currentFrameIndex + 1); }
+    if (e.key === ' ')          { e.preventDefault(); toggleAutoRotate(); }
+});
+</script>
+</body>
+</html>

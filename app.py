@@ -90,7 +90,7 @@ def email_test_drive(td):
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Phone</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;">{td.user_phone}</td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Vehicle</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;font-weight:700;">{td.car_name}</td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Date</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#2ecc71;">{td.date} at {td.time}</td></tr>
-              <tr><td style="padding:10px 0;color:#888;font-size:0.85rem;">Notes</td><td style="padding:10px 0;color:#ccc;">{td.notes or '—'}</td></tr>
+              <tr><td style="padding:10px 0;color:#888;font-size:0.85rem;">Notes</td><td style="padding:10px 0;color:#ccc;">{td.notes or 'N/A'}</td></tr>
             </table>
           </div>
           <div style="padding:16px 32px;background:#111;text-align:center;">
@@ -114,7 +114,7 @@ def email_inquiry(inq):
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;width:140px;font-size:0.85rem;">Name</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;font-weight:600;">{inq.name}</td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Email</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#3498db;">{inq.email}</td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Phone</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#fff;">{inq.phone}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Car Interest</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#f1c40f;font-weight:700;">{inq.car_interest or '—'}</td></tr>
+              <tr><td style="padding:10px 0;border-bottom:1px solid #222;color:#888;font-size:0.85rem;">Car Interest</td><td style="padding:10px 0;border-bottom:1px solid #222;color:#f1c40f;font-weight:700;">{inq.car_interest or 'N/A'}</td></tr>
               <tr><td style="padding:10px 0;color:#888;font-size:0.85rem;">Message</td><td style="padding:10px 0;color:#ccc;">{inq.message}</td></tr>
             </table>
           </div>
@@ -169,6 +169,7 @@ class Car(db_sql.Model):
     images_json          = db_sql.Column(db_sql.Text, default='[]')
     colors_json          = db_sql.Column(db_sql.Text, default='[]')
     highlights_json      = db_sql.Column(db_sql.Text, default='[]')
+    model_url            = db_sql.Column(db_sql.String, default=None)
     created_at           = db_sql.Column(db_sql.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
@@ -213,6 +214,7 @@ class Car(db_sql.Model):
             'images':               json.loads(self.images_json   or '[]'),
             'colors':               json.loads(self.colors_json   or '[]'),
             'highlights':           json.loads(self.highlights_json or '[]'),
+            'model_url':            self.model_url,
         }
 
 
@@ -328,6 +330,10 @@ def help_page():
 def car_detail():
     return send_from_directory('.', 'car-detail.html')
 
+@app.route('/car-360')
+def car_360():
+    return send_from_directory('.', 'car_360.html')
+
 # Serve static files (js, css, images, car photo folders)
 @app.route('/<path:filename>')
 def static_files(filename):
@@ -412,6 +418,7 @@ def add_car():
         images_json  = json.dumps(data.get('images', [])),
         colors_json  = json.dumps(data.get('colors', [])),
         highlights_json = json.dumps(data.get('highlights', [])),
+        model_url       = data.get('model_url'),
     )
     db_sql.session.add(car)
     db_sql.session.commit()
@@ -434,6 +441,7 @@ def update_car(car_id):
     if 'images'     in data: c.images_json     = json.dumps(data['images'])
     if 'colors'     in data: c.colors_json     = json.dumps(data['colors'])
     if 'highlights' in data: c.highlights_json = json.dumps(data['highlights'])
+    if 'model_url'  in data: c.model_url = data['model_url']
     db_sql.session.commit()
     return jsonify(c.to_dict())
 
@@ -813,6 +821,7 @@ def _seed_database():
                 images_json          = json.dumps(car.get('images', [])),
                 colors_json          = json.dumps(car.get('colors', [])),
                 highlights_json      = json.dumps(car.get('highlights', [])),
+                model_url            = car.get('model_url'),
             )
             db_sql.session.add(c)
             db_sql.session.commit()
@@ -826,8 +835,45 @@ def _seed_database():
 # ================================================================
 #  STARTUP — create tables + auto-seed
 # ================================================================
+# ================================================================
+#  SAFE COLUMN MIGRATION
+#  Adds any missing columns to an existing database without
+#  dropping data — handles upgrades from older schema versions.
+# ================================================================
+def _migrate_database():
+    """Add missing columns to existing SQLite DB (safe, non-destructive)."""
+    import sqlite3
+    db_path = 'edelhaus.db'
+    if not os.path.exists(db_path):
+        return  # Fresh DB — create_all() will handle it
+
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # Get current columns in the cars table
+    cursor.execute("PRAGMA table_info(cars)")
+    existing = {row[1] for row in cursor.fetchall()}
+
+    # Map of column_name -> ALTER TABLE statement
+    migrations = {
+        'model_url': "ALTER TABLE cars ADD COLUMN model_url VARCHAR",
+    }
+
+    for col, sql in migrations.items():
+        if col not in existing:
+            try:
+                cursor.execute(sql)
+                print(f'  ✅ Migration: added column [{col}] to cars table')
+            except Exception as e:
+                print(f'  ⚠  Migration warning for [{col}]: {e}')
+
+    conn.commit()
+    conn.close()
+
+
 with app.app_context():
-    db_sql.create_all()
+    _migrate_database()       # Step 1: patch any missing columns first
+    db_sql.create_all()       # Step 2: create any brand-new tables
     if Car.query.count() == 0:
         print('🌱 Seeding database from cars.json ...')
         n = _seed_database()
